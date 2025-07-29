@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "267245779720",
+    "project_id": "rtsoftsolutions-a4f5d",
+    "storage_bucket": "rtsoftsolutions-a4f5d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:267245779720:android:9079a0a9f80795f2b20abd",
+        "android_client_info": {
+          "package_name": "com.example.rtsoftsolutions"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAC-vIrFfIJ5ADYWTdSmqsOJ18OdYYTLoI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
