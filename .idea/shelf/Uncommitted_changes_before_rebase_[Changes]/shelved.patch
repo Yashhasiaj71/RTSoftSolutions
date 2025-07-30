@@ -1,0 +1,379 @@
+Index: app/src/main/res/layout/fragment_first.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.core.widget.NestedScrollView xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".FirstFragment\">\r\n\r\n    <androidx.constraintlayout.widget.ConstraintLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\"\r\n        android:padding=\"16dp\">\r\n\r\n        <Button\r\n            android:id=\"@+id/button_first\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"@string/next\"\r\n            app:layout_constraintBottom_toTopOf=\"@id/textview_first\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n        <TextView\r\n            android:id=\"@+id/textview_first\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"16dp\"\r\n            android:text=\"@string/lorem_ipsum\"\r\n            app:layout_constraintBottom_toBottomOf=\"parent\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintTop_toBottomOf=\"@id/button_first\" />\r\n    </androidx.constraintlayout.widget.ConstraintLayout>\r\n</androidx.core.widget.NestedScrollView>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_first.xml b/app/src/main/res/layout/fragment_first.xml
+--- a/app/src/main/res/layout/fragment_first.xml	(revision 1796cfbd0fcc87e86c2800bdc7e0a368b3301364)
++++ b/app/src/main/res/layout/fragment_first.xml	(date 1753773385680)
+@@ -1,35 +1,82 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
++<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+-    tools:context=".FirstFragment">
++    android:background="#234359"
++    android:padding="16dp">
+ 
+-    <androidx.constraintlayout.widget.ConstraintLayout
++    <LinearLayout
+         android:layout_width="match_parent"
+-        android:layout_height="match_parent"
+-        android:padding="16dp">
++        android:layout_height="wrap_content"
++        android:orientation="vertical"
++        android:gravity="center_horizontal">
++
++        <!-- Profile Image -->
++
++        <FrameLayout
++            android:id="@+id/image_profile"
++            android:layout_width="100dp"
++            android:layout_height="100dp"
++            android:scaleType="centerCrop"
++            android:background="@drawable/circle_shape"
++            android:layout_marginBottom="12dp">
++            <ImageView
++                android:layout_width="60dp"
++                android:layout_height="50dp"
++                android:layout_gravity="center"
++                android:background="@drawable/ic_launcher_background"
++        </FrameLayout>
++
++        <!-- Company Name -->
++        <TextView
++            android:id="@+id/tv_company"
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:text="RTSoftSolution"
++            android:textSize="20sp"
++            android:textColor="#FFFFFF"
++            android:textStyle="bold"
++            android:layout_marginBottom="24dp" />
++
++        <!-- Student Info Entries -->
++        <TextView android:text="Email: xyz@gmail.com" style="@style/InfoStyle" />
++        <TextView android:text="Address: Some Place" style="@style/InfoStyle" />
++        <TextView android:text="Phone no: 9876543210" style="@style/InfoStyle" />
++        <TextView android:text="Father's name: Mr. XYZ" style="@style/InfoStyle" />
++        <TextView android:text="Mother's name: Mrs. ABC" style="@style/InfoStyle" />
++        <TextView android:text="Performance: Poor" style="@style/InfoStyle" />
++        <TextView android:text="Total fees: ₹50,000" style="@style/InfoStyle" />
++        <TextView android:text="Remaining fees: ₹20,000" style="@style/InfoStyle" />
++        <TextView android:text="Aadhaar no: 1234-5678-9012" style="@style/InfoStyle" />
++        <TextView android:text="Gender: Male" style="@style/InfoStyle" />
++        <TextView android:text="Parent's contact: 9876543210" style="@style/InfoStyle" />
++
++        <!-- Navigation Buttons -->
++        <LinearLayout
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:orientation="horizontal"
++            android:gravity="center"
++            android:layout_marginTop="24dp">
+ 
+-        <Button
+-            android:id="@+id/button_first"
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:text="@string/next"
+-            app:layout_constraintBottom_toTopOf="@id/textview_first"
+-            app:layout_constraintEnd_toEndOf="parent"
+-            app:layout_constraintStart_toStartOf="parent"
+-            app:layout_constraintTop_toTopOf="parent" />
++            <Button
++                android:id="@+id/btn_previous"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:text="Previous"
++                android:layout_marginEnd="8dp" />
+ 
+-        <TextView
+-            android:id="@+id/textview_first"
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:layout_marginTop="16dp"
+-            android:text="@string/lorem_ipsum"
+-            app:layout_constraintBottom_toBottomOf="parent"
+-            app:layout_constraintEnd_toEndOf="parent"
+-            app:layout_constraintStart_toStartOf="parent"
+-            app:layout_constraintTop_toBottomOf="@id/button_first" />
+-    </androidx.constraintlayout.widget.ConstraintLayout>
+-</androidx.core.widget.NestedScrollView>
+\ No newline at end of file
++            <Button
++                android:id="@+id/btn_reminder"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:text="Send Reminder"
++                android:layout_marginEnd="8dp" />
++
++            <Button
++                android:id="@+id/btn_next"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:text="Next" />
++        </LinearLayout>
++    </LinearLayout>
++</ScrollView>
+\ No newline at end of file
+Index: app/src/main/java/com/example/rtsoftsolutions/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.rtsoftsolutions;\r\n\r\nimport android.os.Bundle;\r\n\r\nimport com.google.android.material.snackbar.Snackbar;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport android.view.View;\r\n\r\nimport androidx.navigation.NavController;\r\nimport androidx.navigation.Navigation;\r\nimport androidx.navigation.ui.AppBarConfiguration;\r\nimport androidx.navigation.ui.NavigationUI;\r\nimport androidx.recyclerview.widget.LinearLayoutManager;\r\nimport androidx.recyclerview.widget.RecyclerView;\r\n\r\nimport com.example.rtsoftsolutions.databinding.ActivityMainBinding;\r\n\r\nimport android.view.Menu;\r\nimport android.view.MenuItem;\r\n// In your Activity or Fragment (e.g., in onCreate or onStart)\r\n\r\nimport com.google.firebase.database.DataSnapshot;\r\nimport com.google.firebase.database.DatabaseError;\r\nimport com.google.firebase.database.DatabaseReference;\r\nimport com.google.firebase.database.FirebaseDatabase;\r\nimport com.google.firebase.database.ValueEventListener;\r\nimport android.util.Log; // For logging the value\r\nimport android.widget.TextView;\r\n\r\npublic class MainActivity extends AppCompatActivity { // Or your relevant class\r\nRecyclerView recyclerView;\r\n    private static final String TAG = \"FirebaseS_idAccess\";\r\n    private DatabaseReference sIdRef;\r\n    private ValueEventListener sIdListener;\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_main); // Your layout\r\n      recyclerView=  (RecyclerView) findViewById(R.id.rv);\r\n      recyclerView.setLayoutManager(new LinearLayoutManager(this));\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/rtsoftsolutions/MainActivity.java b/app/src/main/java/com/example/rtsoftsolutions/MainActivity.java
+--- a/app/src/main/java/com/example/rtsoftsolutions/MainActivity.java	(revision 1796cfbd0fcc87e86c2800bdc7e0a368b3301364)
++++ b/app/src/main/java/com/example/rtsoftsolutions/MainActivity.java	(date 1753773811994)
+@@ -39,8 +39,6 @@
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_main); // Your layout
+-      recyclerView=  (RecyclerView) findViewById(R.id.rv);
+-      recyclerView.setLayoutManager(new LinearLayoutManager(this));
+ 
+     }
+ }
+Index: app/src/main/res/values/themes.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><resources xmlns:tools=\"http://schemas.android.com/tools\">\r\n    <!-- Base application theme. -->\r\n    <style name=\"Base.Theme.RTSoftSolutions\" parent=\"Theme.Material3.DayNight.NoActionBar\">\r\n        <!-- Customize your light theme here. -->\r\n        <!-- <item name=\"colorPrimary\">@color/my_light_primary</item> -->\r\n    </style>\r\n\r\n    <style name=\"Theme.RTSoftSolutions\" parent=\"Base.Theme.RTSoftSolutions\" />\r\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/themes.xml b/app/src/main/res/values/themes.xml
+--- a/app/src/main/res/values/themes.xml	(revision 1796cfbd0fcc87e86c2800bdc7e0a368b3301364)
++++ b/app/src/main/res/values/themes.xml	(date 1753771119935)
+@@ -6,4 +6,19 @@
+     </style>
+ 
+     <style name="Theme.RTSoftSolutions" parent="Base.Theme.RTSoftSolutions" />
++
++    <style name="InfoStyle">
++        <item name="android:layout_width">wrap_content</item>
++        <item name="android:layout_height">wrap_content</item>
++        <item name="android:textColor">#FFFFFF</item>
++        <item name="android:textSize">16sp</item>
++        <item name="android:layout_marginBottom">8dp</item>
++    </style>
++
++    <style name="BottomIconStyle">
++        <item name="android:layout_width">48dp</item>
++        <item name="android:layout_height">48dp</item>
++        <item name="android:background">@android:color/transparent</item>
++        <item name="android:layout_margin">8dp</item>
++    </style>
+ </resources>
+\ No newline at end of file
+Index: app/src/main/res/navigation/nav_graph.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<navigation xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:id=\"@+id/nav_graph\"\r\n    app:startDestination=\"@id/FirstFragment\">\r\n\r\n    <fragment\r\n        android:id=\"@+id/FirstFragment\"\r\n        android:name=\"com.example.rtsoftsolutions.FirstFragment\"\r\n        android:label=\"@string/first_fragment_label\"\r\n        tools:layout=\"@layout/fragment_first\">\r\n\r\n        <action\r\n            android:id=\"@+id/action_FirstFragment_to_SecondFragment\"\r\n            app:destination=\"@id/SecondFragment\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/SecondFragment\"\r\n        android:name=\"com.example.rtsoftsolutions.SecondFragment\"\r\n        android:label=\"@string/second_fragment_label\"\r\n        tools:layout=\"@layout/fragment_second\">\r\n\r\n        <action\r\n            android:id=\"@+id/action_SecondFragment_to_FirstFragment\"\r\n            app:destination=\"@id/FirstFragment\" />\r\n    </fragment>\r\n</navigation>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/navigation/nav_graph.xml b/app/src/main/res/navigation/nav_graph.xml
+--- a/app/src/main/res/navigation/nav_graph.xml	(revision 1796cfbd0fcc87e86c2800bdc7e0a368b3301364)
++++ b/app/src/main/res/navigation/nav_graph.xml	(date 1753773811998)
+@@ -2,27 +2,4 @@
+ <navigation xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     xmlns:tools="http://schemas.android.com/tools"
+-    android:id="@+id/nav_graph"
+-    app:startDestination="@id/FirstFragment">
+-
+-    <fragment
+-        android:id="@+id/FirstFragment"
+-        android:name="com.example.rtsoftsolutions.FirstFragment"
+-        android:label="@string/first_fragment_label"
+-        tools:layout="@layout/fragment_first">
+-
+-        <action
+-            android:id="@+id/action_FirstFragment_to_SecondFragment"
+-            app:destination="@id/SecondFragment" />
+-    </fragment>
+-    <fragment
+-        android:id="@+id/SecondFragment"
+-        android:name="com.example.rtsoftsolutions.SecondFragment"
+-        android:label="@string/second_fragment_label"
+-        tools:layout="@layout/fragment_second">
+-
+-        <action
+-            android:id="@+id/action_SecondFragment_to_FirstFragment"
+-            app:destination="@id/FirstFragment" />
+-    </fragment>
+-</navigation>
+\ No newline at end of file
++    android:id="@+id/nav_graph" />
+\ No newline at end of file
+Index: app/src/main/java/com/example/rtsoftsolutions/FirstFragment.java
+===================================================================
+diff --git a/app/src/main/java/com/example/rtsoftsolutions/FirstFragment.java b/app/src/main/java/com/example/rtsoftsolutions/FirstFragment.java
+deleted file mode 100644
+--- a/app/src/main/java/com/example/rtsoftsolutions/FirstFragment.java	(revision 1796cfbd0fcc87e86c2800bdc7e0a368b3301364)
++++ /dev/null	(revision 1796cfbd0fcc87e86c2800bdc7e0a368b3301364)
+@@ -1,44 +0,0 @@
+-package com.example.rtsoftsolutions;
+-
+-import android.os.Bundle;
+-import android.view.LayoutInflater;
+-import android.view.View;
+-import android.view.ViewGroup;
+-
+-import androidx.annotation.NonNull;
+-import androidx.fragment.app.Fragment;
+-import androidx.navigation.fragment.NavHostFragment;
+-
+-import com.example.rtsoftsolutions.databinding.FragmentFirstBinding;
+-
+-public class FirstFragment extends Fragment {
+-
+-    private FragmentFirstBinding binding;
+-
+-    @Override
+-    public View onCreateView(
+-            @NonNull LayoutInflater inflater, ViewGroup container,
+-            Bundle savedInstanceState
+-    ) {
+-
+-        binding = FragmentFirstBinding.inflate(inflater, container, false);
+-        return binding.getRoot();
+-
+-    }
+-
+-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+-        super.onViewCreated(view, savedInstanceState);
+-
+-        binding.buttonFirst.setOnClickListener(v ->
+-                NavHostFragment.findNavController(FirstFragment.this)
+-                        .navigate(R.id.action_FirstFragment_to_SecondFragment)
+-        );
+-    }
+-
+-    @Override
+-    public void onDestroyView() {
+-        super.onDestroyView();
+-        binding = null;
+-    }
+-
+-}
+\ No newline at end of file
+Index: app/src/main/java/com/example/rtsoftsolutions/SecondFragment.java
+===================================================================
+diff --git a/app/src/main/java/com/example/rtsoftsolutions/SecondFragment.java b/app/src/main/java/com/example/rtsoftsolutions/SecondFragment.java
+deleted file mode 100644
+--- a/app/src/main/java/com/example/rtsoftsolutions/SecondFragment.java	(revision 1796cfbd0fcc87e86c2800bdc7e0a368b3301364)
++++ /dev/null	(revision 1796cfbd0fcc87e86c2800bdc7e0a368b3301364)
+@@ -1,44 +0,0 @@
+-package com.example.rtsoftsolutions;
+-
+-import android.os.Bundle;
+-import android.view.LayoutInflater;
+-import android.view.View;
+-import android.view.ViewGroup;
+-
+-import androidx.annotation.NonNull;
+-import androidx.fragment.app.Fragment;
+-import androidx.navigation.fragment.NavHostFragment;
+-
+-import com.example.rtsoftsolutions.databinding.FragmentSecondBinding;
+-
+-public class SecondFragment extends Fragment {
+-
+-    private FragmentSecondBinding binding;
+-
+-    @Override
+-    public View onCreateView(
+-            @NonNull LayoutInflater inflater, ViewGroup container,
+-            Bundle savedInstanceState
+-    ) {
+-
+-        binding = FragmentSecondBinding.inflate(inflater, container, false);
+-        return binding.getRoot();
+-
+-    }
+-
+-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+-        super.onViewCreated(view, savedInstanceState);
+-
+-        binding.buttonSecond.setOnClickListener(v ->
+-                NavHostFragment.findNavController(SecondFragment.this)
+-                        .navigate(R.id.action_SecondFragment_to_FirstFragment)
+-        );
+-    }
+-
+-    @Override
+-    public void onDestroyView() {
+-        super.onDestroyView();
+-        binding = null;
+-    }
+-
+-}
+\ No newline at end of file
+Index: .idea/.name
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.name b/.idea/.name
+new file mode 100644
+--- /dev/null	(date 1753768492332)
++++ b/.idea/.name	(date 1753768492332)
+@@ -0,0 +1,1 @@
++RTSoftSolutions
+\ No newline at end of file
+Index: .idea/appInsightsSettings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/appInsightsSettings.xml b/.idea/appInsightsSettings.xml
+new file mode 100644
+--- /dev/null	(date 1753768927911)
++++ b/.idea/appInsightsSettings.xml	(date 1753768927911)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="AppInsightsSettings">
++    <option name="selectedTabId" value="Firebase Crashlytics" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_21\" default=\"true\" project-jdk-name=\"jbr-21\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\r\n  </component>\r\n  <component name=\"ProjectType\">\r\n    <option name=\"id\" value=\"Android\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 1796cfbd0fcc87e86c2800bdc7e0a368b3301364)
++++ b/.idea/misc.xml	(date 1753768433170)
+@@ -1,4 +1,3 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ExternalStorageConfigurationManager" enabled="true" />
+   <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="jbr-21" project-jdk-type="JavaSDK">
+Index: app/src/main/res/drawable/circle_shape.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/circle_shape.xml b/app/src/main/res/drawable/circle_shape.xml
+new file mode 100644
+--- /dev/null	(date 1753772850445)
++++ b/app/src/main/res/drawable/circle_shape.xml	(date 1753772850445)
+@@ -0,0 +1,5 @@
++<?xml version="1.0" encoding="utf-8"?>
++<shape xmlns:android="http://schemas.android.com/apk/res/android"
++    android:shape="oval">
++    <solid android:color="@color/ColorSecondary"/>
++</shape>
+\ No newline at end of file

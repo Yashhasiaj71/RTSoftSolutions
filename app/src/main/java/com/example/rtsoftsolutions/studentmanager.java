@@ -1,12 +1,26 @@
 package com.example.rtsoftsolutions;
 
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
+
+import static androidx.navigation.fragment.FragmentKt.findNavController;
+
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentContainer;
+import androidx.fragment.app.FragmentContainerView;
+import androidx.navigation.NavController;
+import androidx.navigation.NavHostController;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.FrameLayout;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +37,10 @@ public class studentmanager extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private Button addnewstudent ;
+    private Button std_mgr_view ;
+    private FrameLayout frame ;
+    private FragmentContainerView std_mgr;
 
     public studentmanager() {
         // Required empty public constructor
@@ -54,6 +72,19 @@ public class studentmanager extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        addnewstudent = getActivity().findViewById(R.id.addstudent) ;
+        std_mgr_view = requireActivity().findViewById(R.id.viewstudent) ;
+        frame = requireActivity().findViewById(R.id.showcount) ;
+
+        addnewstudent.setOnClickListener(v -> {
+            findNavController(studentmanager.this).navigate(R.id.action_studentmanager_to_addStudent_Fragment);
+    }) ;
+}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

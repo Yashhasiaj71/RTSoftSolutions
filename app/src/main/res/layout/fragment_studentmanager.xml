@@ -1,14 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".studentmanager">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <FrameLayout
+        android:id="@+id/showcount"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="305dp"
+        android:layout_height="166dp"
+        android:background="@drawable/roundedrectangle"
+        android:layout_gravity="center_horizontal"
+        android:elevation="10dp"
+        >
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="295dp"
+            android:layout_height="158dp"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/ColorPrimary"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="100dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="right"
+                android:layout_marginEnd="25dp"
+                android:layout_marginTop="10dp"
+                android:hint="Total Students"
+                android:padding="0dp"
+                android:textColorHint="@color/Accent_green"
+                android:textSize="25dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginEnd="80dp"
+                android:hint="13121"
+                android:padding="0dp"
+                android:textColorHint="@color/Accent_green"
+                android:textSize="25dp"/>
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:elevation="20dp"
+                android:foreground="@drawable/studentsimage"
+                android:layout_gravity="left"
+                android:layout_marginTop="15dp"
+                />
+        </androidx.cardview.widget.CardView>
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/addstudent"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/ColorPrimary"
+        android:hint="Add Student"
+        android:textColorHint="#FFF"
+        app:layout_constraintEnd_toStartOf="@id/viewstudent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/showcount" />
+
+    <Button
+        android:hint="@string/view_student"
+        android:textColorHint="#FFF"
+        app:layout_constraintTop_toBottomOf="@id/showcount"
+        android:id="@+id/viewstudent"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:background="@color/ColorPrimary"
+        app:layout_constraintTop_toTopOf="@id/addstudent"
+        app:layout_constraintBottom_toBottomOf="@id/addstudent"
+        app:layout_constraintStart_toEndOf="@id/addstudent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+<!--    <androidx.fragment.app.FragmentContainerView
+        android:visibility="gone"
+        android:layout_marginTop="10dp"
+        android:id="@+id/fragmentContainerView3"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:defaultNavHost="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewstudent"
+        app:navGraph="@navigation/nav_graphstudentmanager"
+        />
+        -->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

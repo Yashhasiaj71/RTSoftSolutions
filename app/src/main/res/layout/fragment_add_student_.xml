@@ -1,14 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".AddStudent_Fragment">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".AddStudent_Fragment"
+    android:id="@+id/studentmanagerroot"
+    >
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/titlecard"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center"
+        android:hint="Fill The Form"
+        android:textSize="30sp"
+        android:textColorHint="#3E0101"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/ColorSecondary"
+        />
+
+
+    <ImageView
+        android:id="@+id/imageview"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="30dp"
+        android:foreground="@drawable/studentsimage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titlecard" />
+
+    <EditText
+        android:layout_marginStart="30dp"
+        android:id="@+id/nameinput"
+        android:layout_width="260dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="4dp"
+        android:hint="Enter Name"
+        android:padding="0dp"
+        android:textColorHint="#020000"
+        app:layout_constraintTop_toTopOf="@id/imageview"
+        app:layout_constraintBottom_toBottomOf="@id/imageview"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageview" />
+
+    <EditText
+        android:inputType="textEmailAddress"
+        android:padding="0dp"
+        android:layout_marginTop="16dp"
+        android:id="@+id/emailinput"
+        android:hint="Enter Email"
+        android:textColorHint="#01111F"
+        android:layout_width="300dp"
+        android:layout_height="35dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameinput" />
+
+
+    <EditText
+        android:inputType="number"
+        android:padding="0dp"
+        android:layout_marginTop="16dp"
+        android:id="@+id/phoneinput"
+        android:hint="Enter Phone no"
+        android:textColorHint="#01111F"
+        android:layout_width="300dp"
+        android:layout_height="35dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailinput"/>
+
+    <EditText
+        android:padding="0dp"
+        android:layout_marginTop="16dp"
+        android:id="@+id/addressinput"
+        android:hint="enter Address"
+        android:textColorHint="#01111F"
+        android:layout_width="300dp"
+        android:layout_height="35dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phoneinput"/>
+
+    <EditText
+        android:padding="0dp"
+        android:layout_marginTop="16dp"
+        android:id="@+id/aadharinput"
+        android:hint="Enter Aadhar no."
+        android:textColorHint="#01111F"
+        android:layout_width="300dp"
+        android:layout_height="35dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addressinput"/>
+
+
+    <EditText
+        android:padding="0dp"
+        android:layout_marginTop="16dp"
+        android:id="@+id/fathernameinput"
+        android:hint="Enter Father's name"
+        android:textColorHint="#01111F"
+        android:layout_width="300dp"
+        android:layout_height="35dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aadharinput"/>
+
+    <EditText
+        android:padding="0dp"
+        android:layout_marginTop="16dp"
+        android:id="@+id/mothernameinput"
+        android:hint="Enter Mother's name"
+        android:textColorHint="#01111F"
+        android:layout_width="300dp"
+        android:layout_height="35dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fathernameinput"/>
+
+
+    <EditText
+        android:padding="0dp"
+        android:inputType="number"
+        android:id="@+id/tpainput"
+        android:layout_width="300dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="16dp"
+        android:hint="Total Payable Fees"
+        android:textColorHint="#01111F"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mothernameinput" />
+
+    <EditText
+        android:inputType="number"
+        android:id="@+id/amountfilled"
+        android:layout_width="304dp"
+        android:layout_height="35dp"
+        android:padding="0dp"
+        android:layout_marginTop="16dp"
+        android:hint="Fees paid"
+        android:textColorHint="#01111F"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tpainput" />
+
+    <Button
+        android:id="@+id/savedetails"
+        android:layout_width="300dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/ColorPrimary"
+        android:elevation="20dp"
+        android:hint="Save Details"
+        android:padding="0dp"
+        android:textColorHint="#000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/amountfilled" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
