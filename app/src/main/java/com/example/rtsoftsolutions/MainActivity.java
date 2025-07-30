@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -29,16 +31,19 @@ import com.google.firebase.database.ValueEventListener;
 import android.util.Log; // For logging the value
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity { // Or your relevant class
-RecyclerView recyclerView;
-    private static final String TAG = "FirebaseS_idAccess";
-    private DatabaseReference sIdRef;
-    private ValueEventListener sIdListener;
+public class MainActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); // Your layout
+        Fragment AdminHome = new AdminHome(); // your target fragment
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.ContainerView, AdminHome);
+        transaction.addToBackStack(null); // optional, allows user to press back button to return
+        transaction.commit();
 
     }
 }
