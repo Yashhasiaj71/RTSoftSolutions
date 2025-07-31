@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
@@ -42,10 +44,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main); // Your layout
         Fragment AdminHome = new AdminHome(); // your target fragment
 
-       // NavController navController = Navigation.findNavController(this, R.id.ContainerView);
-    }
 
-    @Override
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.ContainerView, AdminHome);
+        transaction.addToBackStack(null); // optional, allows user to press back button to return
+        transaction.commit() ; 
+    }
+  
+   @Override
     protected void onStart() {
         super.onStart();
         NavController navController = Navigation.findNavController(this , R.id.ContainerView);

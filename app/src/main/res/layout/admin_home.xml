@@ -91,6 +91,7 @@
         >
 
         <ImageButton
+            android:id="@+id/FeesButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/indian_rupee_sign_solid_full"
@@ -130,7 +131,7 @@
               android:layout_height="wrap_content"
               android:text="its student1's birthday
 Wish Them on :-"
-              android:textSize="20sp" />
+              android:textSize="16sp" />
 
 
           <ImageButton
@@ -139,8 +140,8 @@ Wish Them on :-"
               android:layout_width="80dp"
               android:layout_gravity="bottom"
               android:scaleType="fitXY"
+              android:layout_marginTop="10dp"
               android:background="@color/Transperent"
-              android:layout_marginEnd="20dp"
               android:src="@drawable/whatsapp_logo"
               android:layout_marginStart="50dp"
 

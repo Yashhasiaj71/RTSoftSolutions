@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".FeesFragment"
+    android:background="@color/ColorSecondary">
+
+    <!-- TODO: Update blank fragment layout -->
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="Back"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/Accent_green"
+        />
+
+    <EditText
+        android:id="@+id/StudentSearch"
+        android:inputType="text"
+        android:layout_width="370dp"
+        android:background="@color/white"
+        android:layout_height="50dp"
+        android:layout_marginTop="100dp"
+        android:layout_gravity="center_horizontal"
+        android:hint="Search Student Name"
+        android:textColorHint="@color/black"
+        android:padding="16dp"
+        android:drawableEnd="@drawable/magnifying_glass_solid_full"
+        />
+
+
+<!--    invisible button for search icon-->
+    <Button
+        android:id="@+id/SearchButton"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="310dp"
+        android:layout_marginTop="100dp"
+        android:backgroundTint="@color/Transperent" />
+
+
+<!--    student view-->
+    <LinearLayout
+        android:id="@+id/StudentView"
+        android:layout_width="380dp"
+        android:layout_height="60dp"
+  android:layout_marginTop="180dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/Accent_green"
+        />
+
+
+<!--    remaining fees section-->
+    <LinearLayout
+        android:layout_width="380dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="250dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/Accent_green"
+        >
+        <TextView
+            android:id="@+id/RemainingFees"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Remaining fees for Student = "
+            android:textSize="20sp"
+            android:gravity="center"
+            />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/AmountEditText"
+        android:inputType="number"
+        android:layout_width="380dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="320dp"
+        android:hint="Enter Amount Paid"
+        android:textColorHint="@color/black"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/Accent_green"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Payment Mode"
+        android:layout_gravity="center_horizontal"
+        android:textSize="32sp"
+        android:layout_marginTop="400dp"
+        />
+
+<!--    sections for selection of payment modes-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="380dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="450dp"
+        android:background="@drawable/rounded_rectangle"
+        >
+   
+<!--        upi payment mode section-->
+        <LinearLayout
+            android:id="@+id/UPI"
+            android:layout_width="80dp"
+            android:orientation="vertical"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+            <ImageButton
+                android:id="@+id/Upi_mode"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/Transperent"
+                android:scaleType="fitXY"
+                android:src="@drawable/upi_logo" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:text="UPI"
+                android:textSize="20sp"
+                android:layout_gravity="center_horizontal"
+                />
+        </LinearLayout>
+
+
+<!--        cash payment mode -->
+        <LinearLayout
+            android:id="@+id/CASH"
+            android:layout_width="80dp"
+            android:orientation="vertical"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toStartOf="@+id/BANK"
+            app:layout_constraintStart_toEndOf="@+id/UPI"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+            <ImageButton
+                android:id="@+id/cash_mode"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/Transperent"
+                android:scaleType="fitXY"
+                android:src="@drawable/money_bills_solid_full" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:text="CASH"
+                android:textSize="20sp"
+                android:layout_gravity="center_horizontal"
+                />
+        </LinearLayout>
+
+
+<!--        Bank Transfer Section-->
+        <LinearLayout
+            android:id="@+id/BANK"
+            android:layout_width="80dp"
+            android:orientation="vertical"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+            <ImageButton
+                android:id="@+id/bank_mode"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/Transperent"
+                android:scaleType="fitXY"
+                android:src="@drawable/building_columns_solid_full" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:text="BANK"
+                android:textSize="20sp"
+                android:layout_gravity="center_horizontal"
+                />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OR"
+        android:textSize="32sp"
+        android:layout_marginTop="560dp"
+        android:layout_gravity="center_horizontal"
+        />
+
+
+<!--    whatsapp reminder layout-->
+    <GridLayout
+        android:id="@+id/BirthdayInfo"
+        android:layout_width="380dp"
+        android:layout_height="100dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/rounded_rectangle">
+
+
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_width="190dp"
+                android:layout_marginLeft="20dp"
+                android:layout_gravity="center_vertical"
+                android:layout_height="wrap_content"
+                android:text="Send Fees reminder on :-"
+                android:textSize="20sp" />
+
+
+            <ImageButton
+                android:id="@+id/WhatsappButton"
+                android:layout_height="80dp"
+                android:layout_width="80dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="10dp"
+                android:scaleType="fitXY"
+                android:layout_marginTop="10dp"
+                android:background="@color/Transperent"
+                android:src="@drawable/whatsapp_logo"
+                android:layout_marginStart="50dp"
+
+                />
+        </LinearLayout>
+
+    </GridLayout>
+
+
+</FrameLayout>
