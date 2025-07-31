@@ -48,27 +48,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-
     protected void onStart() {
         super.onStart();
         NavController navController = Navigation.findNavController(this , R.id.ContainerView);
-
-
-       ImageButton homeB = findViewById(R.id.HomeButton);
-       ImageButton studentB = findViewById(R.id.StudentButton);
-       ImageButton reportB = findViewById(R.id.ReportButton);
-
-       homeB.setOnClickListener(v->{
-           navController.navigate(R.id.action_global_AdminHome);
-       });
-
-       studentB.setOnClickListener(v->{
-           navController.navigate(R.id.action_global_studentmanager);
-       });
-
-       reportB.setOnClickListener(v->{
-           navController.navigate(R.id.action_global_fragmentReport);
-       });
 
         ImageButton homeB = findViewById(R.id.HomeButton);
         ImageButton studentB = findViewById(R.id.StudentButton);
@@ -87,7 +69,5 @@ public class MainActivity extends AppCompatActivity {
 //       reportB.setOnClickListener(v->{
 //           navController.navigate(R.id.action_global_AdminHome);
 //       });
-
-
     }
 }
