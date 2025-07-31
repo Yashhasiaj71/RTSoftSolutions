@@ -13,7 +13,9 @@ import android.view.View;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
+import androidx.navigation.NavHostController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -42,9 +44,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main); // Your layout
         Fragment AdminHome = new AdminHome(); // your target fragment
 
+
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.ContainerView, AdminHome);
         transaction.addToBackStack(null); // optional, allows user to press back button to return
-        transaction.commit();
+        transaction.commit() ; 
+    }
+  
+   @Override
+    protected void onStart() {
+        super.onStart();
+        NavController navController = Navigation.findNavController(this , R.id.ContainerView);
     }
 }
