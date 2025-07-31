@@ -1,12 +1,31 @@
 package com.example.rtsoftsolutions;
 
+import static androidx.navigation.fragment.FragmentKt.findNavController;
+
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -58,7 +77,38 @@ public class AdminHome extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.admin_home,container,false);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.admin_home, container, false);
+
+//        Fees Button ClickListner
+        ImageButton fees = view.findViewById(R.id.FeesButton);
+        fees.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavController controller = findNavController(AdminHome.this);
+                controller.navigate(R.id.action_AdminHome_to_feesFragment);
+            }
+        });
+
+//        Whatsapp icon click listner
+        ImageButton whatsapp = view.findViewById(R.id.WhatsappButton);
+        whatsapp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String PhoneNo = "+916266381188";
+                String Message = "Wishing you A very happy birthday Student, team Interns";
+
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("https://wa.me/"+PhoneNo+"?text="+Uri.encode(Message)));
+
+                try{
+                   startActivity(intent);
+                }catch(ActivityNotFoundException e){
+                    Toast.makeText(requireContext(),"Whatsapp not installed",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        return view;
     }
 }

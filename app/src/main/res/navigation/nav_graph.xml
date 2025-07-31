@@ -3,14 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/studentmanager">
+    app:startDestination="@id/AdminHome">
 
 
     <fragment
-        android:id="@+id/blankFragment"
+        android:id="@+id/AdminHome"
         android:name="com.example.rtsoftsolutions.AdminHome"
-        android:label="fragment_blank"
-        tools:layout="@layout/admin_home" />
+        android:label="admin_home"
+        tools:layout="@layout/admin_home"
+
+        >
+        <action
+            android:id="@+id/action_AdminHome_to_feesFragment"
+            app:destination="@id/feesFragment" />
+    </fragment>
+
     <fragment
         android:id="@+id/addStudent_Fragment"
         android:name="com.example.rtsoftsolutions.AddStudent_Fragment"
@@ -21,8 +28,27 @@
         android:name="com.example.rtsoftsolutions.studentmanager"
         android:label="fragment_studentmanager"
         tools:layout="@layout/fragment_studentmanager" >
-        <action
+        <actiona
             android:id="@+id/action_studentmanager_to_addStudent_Fragment"
             app:destination="@id/addStudent_Fragment" />
+        <action
+            android:id="@+id/action_studentmanager_to_addStudent_Fragment2"
+            app:destination="@id/addStudent_Fragment" />
     </fragment>
+    <fragment
+        android:id="@+id/feesFragment"
+        android:name="com.example.rtsoftsolutions.FeesFragment"
+        android:label="fragment_fees"
+        tools:layout="@layout/fragment_fees" />
+    <action android:id="@+id/action_global_studentmanager" app:destination="@id/studentmanager" />
+    <action android:id="@+id/action_global_AdminHome" app:destination="@id/AdminHome" />
+    <include app:graph="@navigation/subnavgraph" />
+    <fragment
+        android:id="@+id/fragmentReport"
+        android:name="com.example.rtsoftsolutions.FragmentReport"
+        android:label="FragmentReport" >
+        <action
+            android:id="@+id/action_fragmentReport_to_subnavgraph"
+            app:destination="@id/subnavgraph" />
+    </fragment><action android:id="@+id/action_global_fragmentReport" app:destination="@id/fragmentReport"/>
 </navigation>
