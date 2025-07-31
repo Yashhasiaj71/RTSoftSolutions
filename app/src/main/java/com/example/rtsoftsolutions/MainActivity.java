@@ -35,19 +35,4 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main); // Your layout
-        Fragment AdminHome = new AdminHome(); // your target fragment
-
-       // NavController navController = Navigation.findNavController(this, R.id.ContainerView);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        NavController navController = Navigation.findNavController(this , R.id.ContainerView);
-    }
 }
