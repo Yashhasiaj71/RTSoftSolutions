@@ -28,9 +28,6 @@
         android:name="com.example.rtsoftsolutions.studentmanager"
         android:label="fragment_studentmanager"
         tools:layout="@layout/fragment_studentmanager" >
-        <actiona
-            android:id="@+id/action_studentmanager_to_addStudent_Fragment"
-            app:destination="@id/addStudent_Fragment" />
         <action
             android:id="@+id/action_studentmanager_to_addStudent_Fragment2"
             app:destination="@id/addStudent_Fragment" />
