@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); // Your layout
         Fragment AdminHome = new AdminHome(); // your target fragment
-
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.ContainerView, AdminHome);
         transaction.addToBackStack(null); // optional, allows user to press back button to return
