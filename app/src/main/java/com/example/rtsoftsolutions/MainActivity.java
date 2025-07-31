@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
@@ -44,6 +46,5 @@ public class MainActivity extends AppCompatActivity {
         transaction.replace(R.id.ContainerView, AdminHome);
         transaction.addToBackStack(null); // optional, allows user to press back button to return
         transaction.commit();
-
     }
 }
