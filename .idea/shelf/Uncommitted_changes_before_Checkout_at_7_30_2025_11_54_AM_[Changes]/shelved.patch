@@ -1,0 +1,46 @@
+Index: app/src/main/res/layout/admin_home.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<FrameLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    android:background=\"@color/ColorBG\"\r\n    tools:context=\".AdminHome\">\r\n\r\n\r\n    <androidx.cardview.widget.CardView\r\n        android:layout_width=\"300dp\"\r\n        android:layout_height=\"200dp\"\r\n        android:layout_marginTop=\"30dp\"\r\n  android:layout_gravity=\"top|center_horizontal\"\r\n        android:layout_marginBottom=\"220dp\"\r\n        android:backgroundTint=\"#8C9FA6\"\r\n        app:cardCornerRadius=\"24dp\">\r\n\r\n        <TextView\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_gravity=\"center\"\r\n            android:text=\"Course Name\"\r\n            android:textSize=\"24sp\" />\r\n\r\n    </androidx.cardview.widget.CardView>\r\n\r\n    <LinearLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"70dp\"\r\n        android:background=\"@color/ColorSecondary\"\r\n        android:layout_marginTop=\"250dp\"\r\n        android:orientation=\"horizontal\">\r\n\r\n        <ImageView\r\n            android:layout_width=\"70dp\"\r\n            android:layout_height=\"match_parent\"\r\n            android:layout_marginLeft=\"10dp\"\r\n            android:background=\"@drawable/round\"\r\n            android:src=\"@drawable/teacher\" />\r\n\r\n        <ImageView\r\n            android:layout_width=\"70dp\"\r\n            android:layout_height=\"match_parent\"\r\n            android:layout_marginLeft=\"30dp\"\r\n            android:background=\"@drawable/round\"\r\n            android:src=\"@drawable/teacher\" />\r\n\r\n        <ImageView\r\n            android:layout_width=\"70dp\"\r\n            android:layout_height=\"match_parent\"\r\n            android:layout_marginLeft=\"30dp\"\r\n            android:background=\"@drawable/round\"\r\n            android:src=\"@drawable/teacher\" />\r\n\r\n        <ImageButton\r\n            android:layout_width=\"70dp\"\r\n            android:layout_height=\"70dp\"\r\n            android:layout_marginLeft=\"30dp\"\r\n            android:background=\"@drawable/round\"\r\n            android:scaleType=\"fitXY\"\r\n            android:src=\"@drawable/plus_solid\" />\r\n    </LinearLayout>\r\n\r\n\r\n    <androidx.cardview.widget.CardView\r\n        android:id=\"@+id/messegeBox\"\r\n        android:layout_width=\"200dp\"\r\n        android:layout_height=\"130dp\"\r\n        android:layout_marginLeft=\"20dp\"\r\n        android:layout_marginTop=\"380dp\"\r\n        android:backgroundTint=\"@color/ColorSecondary\"\r\n        app:cardCornerRadius=\"24dp\">\r\n\r\n        <TextView\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_gravity=\"center\"\r\n            android:text=\"Add a note , messege\" />\r\n    </androidx.cardview.widget.CardView>\r\n\r\n    <androidx.cardview.widget.CardView\r\n        android:id=\"@+id/FeesCox\"\r\n        android:layout_width=\"150dp\"\r\n        android:layout_height=\"130dp\"\r\n        android:layout_marginTop=\"380dp\"\r\n        app:cardCornerRadius=\"24dp\"\r\n        android:backgroundTint=\"@color/ColorSecondary\"\r\n        android:layout_marginLeft=\"250dp\"\r\n        >\r\n\r\n        <ImageButton\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:src=\"@drawable/indian_rupee_sign_solid_full\"\r\n            android:scaleType=\"fitXY\"\r\n            android:layout_marginTop=\"10dp\"\r\n            android:background=\"@color/Transperent\"\r\n            android:layout_gravity=\"center\"/>\r\n\r\n        <TextView\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_gravity=\"center_horizontal\"\r\n            android:text=\"Manage Fees\" />\r\n    </androidx.cardview.widget.CardView>\r\n\r\n    <GridLayout\r\n        android:id=\"@+id/BirthdayInfo\"\r\n        android:layout_width=\"300dp\"\r\n        android:layout_height=\"150dp\"\r\n        android:layout_gravity=\"bottom|center_horizontal\"\r\n        android:layout_marginBottom=\"20dp\"\r\n        android:background=\"@drawable/rounded_rectangle\">\r\n\r\n        <ImageView\r\n            android:layout_width=\"100dp\"\r\n            android:layout_height=\"match_parent\"\r\n            android:src=\"@drawable/cake_anim\" />\r\n\r\n      <LinearLayout\r\n          android:layout_height=\"match_parent\"\r\n          android:layout_width=\"200dp\"\r\n          android:orientation=\"vertical\"\r\n          >\r\n          <TextView\r\n              android:id=\"@+id/BirthdayText\"\r\n              android:layout_width=\"190dp\"\r\n              android:layout_height=\"wrap_content\"\r\n              android:text=\"its student1's birthday\r\nWish Them on :-\"\r\n              android:textSize=\"20sp\" />\r\n\r\n\r\n          <ImageButton\r\n              android:id=\"@+id/WhatsappButton\"\r\n              android:layout_height=\"80dp\"\r\n              android:layout_width=\"80dp\"\r\n              android:layout_gravity=\"bottom\"\r\n              android:scaleType=\"fitXY\"\r\n              android:background=\"@color/Transperent\"\r\n              android:layout_marginEnd=\"20dp\"\r\n              android:src=\"@drawable/whatsapp_logo\"\r\n              android:layout_marginStart=\"50dp\"\r\n\r\n              />\r\n      </LinearLayout>\r\n\r\n    </GridLayout>\r\n\r\n</FrameLayout>
+===================================================================
+diff --git a/app/src/main/res/layout/admin_home.xml b/app/src/main/res/layout/admin_home.xml
+--- a/app/src/main/res/layout/admin_home.xml	(revision 9463d1d08e5c744ffb43c41b382008a4df51de95)
++++ b/app/src/main/res/layout/admin_home.xml	(date 1753893425655)
+@@ -55,6 +55,7 @@
+             android:src="@drawable/teacher" />
+ 
+         <ImageButton
++            android:id="@+id/AddFacultyButton"
+             android:layout_width="70dp"
+             android:layout_height="70dp"
+             android:layout_marginLeft="30dp"
+@@ -67,7 +68,7 @@
+     <androidx.cardview.widget.CardView
+         android:id="@+id/messegeBox"
+         android:layout_width="200dp"
+-        android:layout_height="130dp"
++        android:layout_height="150dp"
+         android:layout_marginLeft="20dp"
+         android:layout_marginTop="380dp"
+         android:backgroundTint="@color/ColorSecondary"
+@@ -83,7 +84,7 @@
+     <androidx.cardview.widget.CardView
+         android:id="@+id/FeesCox"
+         android:layout_width="150dp"
+-        android:layout_height="130dp"
++        android:layout_height="150dp"
+         android:layout_marginTop="380dp"
+         app:cardCornerRadius="24dp"
+         android:backgroundTint="@color/ColorSecondary"
+@@ -128,9 +129,8 @@
+               android:id="@+id/BirthdayText"
+               android:layout_width="190dp"
+               android:layout_height="wrap_content"
+-              android:text="its student1's birthday
+-Wish Them on :-"
+-              android:textSize="20sp" />
++              android:text="its student1's birthday, Wish Them on :-"
++              android:textSize="19sp" />
+ 
+ 
+           <ImageButton
