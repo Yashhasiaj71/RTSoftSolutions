@@ -13,10 +13,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentContainerView;
+import androidx.navigation.NavController;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link studentmanager#newInstance} factory method to
+ * Use the {@link studentmanager#} factory method to
  * create an instance of this fragment.
  */
 public class studentmanager extends Fragment {
@@ -41,18 +42,16 @@ public class studentmanager extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         //Initializing all data in that is required once for all==========================================
         addnewstudent = getActivity().findViewById(R.id.addstudent) ;
 
-
         //call to add student fragment so that admin can add new student==============================================
         addnewstudent.setOnClickListener(v -> {
-            findNavController(studentmanager.this).navigate(R.id.action_studentmanager_to_addStudent_Fragment);
-    }) ;
+            NavController controller = findNavController(studentmanager.this);
+            controller.navigate(R.id.action_studentmanager_to_addStudent_Fragment2);  }) ;
 }
 
     @Override
