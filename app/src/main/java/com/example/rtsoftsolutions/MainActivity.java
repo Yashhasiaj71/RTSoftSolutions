@@ -55,15 +55,8 @@ public class MainActivity extends AppCompatActivity {
            navController.navigate(R.id.action_global_studentmanager);
        });
 
-
-//      ========= :TODO report fragment button ========
-//       reportB.setOnClickListener(v->{
-//           navController.navigate(R.id.action_global_AdminHome);
-//       });
-
-
-
+       reportB.setOnClickListener(v->{
+           navController.navigate(R.id.action_global_AdminHome);
+       });
     }
-
-
 }
