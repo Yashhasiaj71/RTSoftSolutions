@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".StudentProfile"
+    android:background="#074A4E">
+
+<!--    edit and delete buttons-->
+    <LinearLayout
+        android:id="@+id/ButtonsLayout"
+        android:layout_marginTop="10dp"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        >
+
+        <ImageButton
+            android:id="@+id/EditButtom"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:src="@drawable/pen_to_square_solid_full"
+            android:scaleType="fitXY"
+            />
+
+        <ImageButton
+            android:id="@+id/DeleteButtom"
+            android:layout_width="45dp"
+            android:layout_marginLeft="5dp"
+            android:layout_height="45dp"
+            android:src="@drawable/trash_solid_full"
+            android:scaleType="fitXY"
+            />
+
+
+    </LinearLayout>
+
+   <!--side button-->
+    <ImageButton
+        android:id="@+id/ViewAllButtons"
+        android:layout_width="50dp"
+        android:layout_height="100dp"
+        android:src="@drawable/arrow_right_solid_full"
+        android:scaleType="centerInside"
+        android:background="@drawable/semi_circle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499" />
+
+<!--    student image-->
+    <ImageView
+        android:id="@+id/StudentImage"
+        android:layout_width="130dp"
+        android:layout_height="120dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+ app:layout_constraintTop_toTopOf="@id/ButtonsLayout"
+        android:src="@drawable/student_anim"
+        android:background="@drawable/round"
+        />
+
+    <!--    student name-->
+    <TextView
+        android:id="@+id/StudentName"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@id/StudentImage"
+        android:layout_marginTop="30dp"
+        android:text="Student name"
+        android:textSize="24sp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        />
+
+<!--all info about students-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="30dp"
+    android:layout_marginStart="30dp"
+ app:layout_constraintTop_toBottomOf="@id/StudentName"
+    app:layout_constraintStart_toEndOf="@id/ViewAllButtons"
+    >
+
+
+    <!--    email text-->
+    <TextView
+        android:id="@+id/EmailText"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:text="Student Email"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <!--    Address text-->
+    <TextView
+        android:id="@+id/AddressText"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:text="Student Address"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"
+
+        app:layout_constraintTop_toBottomOf="@+id/EmailText"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <!--    Phone no-->
+    <TextView
+        android:id="@+id/PhoneNOText"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:text="Student PhoneNo"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/AddressText"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <!--    Genter Text-->
+    <TextView
+        android:id="@+id/GenderText"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:text="Student Gender"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/PhoneNOText"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <!--    father's name-->
+    <TextView
+        android:id="@+id/FatherNameText"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:text="Fathers Name"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/GenderText"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <!--    fees text :TODO add remaining fees dynamicly -->
+    <TextView
+        android:id="@+id/FeesText"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:text="Total Fees"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/FatherNameText"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
