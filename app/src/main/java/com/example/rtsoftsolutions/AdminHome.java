@@ -1,5 +1,7 @@
 package com.example.rtsoftsolutions;
 
+import static androidx.navigation.fragment.FragmentKt.findNavController;
+
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
@@ -9,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -43,14 +47,6 @@ public class AdminHome extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment BlankFragment.
-     */
     // TODO: Rename and change types and number of parameters
     public static AdminHome newInstance(String param1, String param2) {
         AdminHome fragment = new AdminHome();
@@ -81,11 +77,8 @@ public class AdminHome extends Fragment {
         fees.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment FeesFragment = new FeesFragment(); // your target fragment
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.ContainerView, FeesFragment);
-                transaction.addToBackStack(null); // optional, allows user to press back button to return
-                transaction.commit();
+                NavController controller = findNavController(AdminHome.this);
+                controller.navigate(R.id.action_AdminHome_to_feesFragment);
             }
         });
 
