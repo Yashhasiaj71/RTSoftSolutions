@@ -27,6 +27,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".AuthenticationActivity"
+                  android:exported="true"
+                 android:theme="@style/Theme.RTSoftSolutions">
+             <intent-filter>
+                 <action android:name="andrid.intent.action.MAIN"/>
+                 <category android:name="android.intent.category.DEFAULT"/>
+             </intent-filter>
+        </activity>
     </application>
 
 </manifest>
