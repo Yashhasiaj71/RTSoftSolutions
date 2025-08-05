@@ -21,7 +21,6 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.rtsoftsolutions.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
@@ -69,18 +68,6 @@ public class MainActivity extends AppCompatActivity {
        reportB.setOnClickListener(v->{
            navController.navigate(R.id.action_global_fragmentReport);
        });
-
-        ImageButton homeB = findViewById(R.id.HomeButton);
-        ImageButton studentB = findViewById(R.id.StudentButton);
-        ImageButton reportB = findViewById(R.id.ReportButton);
-
-        homeB.setOnClickListener(v->{
-            navController.navigate(R.id.action_global_AdminHome);
-        });
-
-        studentB.setOnClickListener(v->{
-            navController.navigate(R.id.action_global_studentmanager);
-        });
 
 
 //      ========= :TODO report fragment button ========
