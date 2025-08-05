@@ -1,15 +1,10 @@
 package com.example.rtsoftsolutions;
-
 import android.os.Bundle;
-
 import com.google.android.material.snackbar.Snackbar;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.view.View;
-
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
@@ -20,12 +15,8 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-
 import android.view.Menu;
 import android.view.MenuItem;
-// In your Activity or Fragment (e.g., in onCreate or onStart)
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -66,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
        });
 
        reportB.setOnClickListener(v->{
+
            navController.navigate(R.id.action_global_fragmentReport);
        });
 
@@ -74,7 +66,5 @@ public class MainActivity extends AppCompatActivity {
 //       reportB.setOnClickListener(v->{
 //           navController.navigate(R.id.action_global_AdminHome);
 //       });
-
-
     }
 }
