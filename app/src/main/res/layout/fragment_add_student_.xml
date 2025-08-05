@@ -7,7 +7,7 @@
     tools:context=".AddStudent_Fragment"
     android:layout_marginTop="10dp"
     android:id="@+id/studentmanagerroot"
-    android:background="@color/ColorSecondary"
+    android:background="@color/white"
     >
 
     <!-- TODO: Update blank fragment layout -->
@@ -20,7 +20,7 @@
         android:layout_marginTop="4dp"
         android:background="@color/Accent_green"
         android:gravity="center"
-        android:hint="Fill The Form"
+        android:hint="Add new Student"
         android:textColorHint="#3E0101"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"

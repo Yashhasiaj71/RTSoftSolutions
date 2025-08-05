@@ -43,20 +43,42 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         NavController navController = Navigation.findNavController(this , R.id.ContainerView);
 
+       FirebaseDatabase database = FirebaseDatabase.getInstance("http://10.0.2.2:9000/?ns=rtsoftsolutions-fc2cf");
+       database.useEmulator("10.0.2.2", 9000);
+       DatabaseReference ref = database.getReference("testNode");
+       ref.setValue("Hello from Emulator")
+               .addOnCompleteListener(task -> {
+                   if (task.isSuccessful()) {
+                       Log.d("FirebaseTest", "Data written successfully.");
+                   } else {
+                       Log.e("FirebaseTest", "Write failed.", task.getException());
+                   }
+               });
+
        ImageButton homeB = findViewById(R.id.HomeButton);
        ImageButton studentB = findViewById(R.id.StudentButton);
        ImageButton reportB = findViewById(R.id.ReportButton);
 
        homeB.setOnClickListener(v->{
            navController.navigate(R.id.action_global_AdminHome);
+
+           homeB.setImageResource(R.drawable.house_regular_full_green);
+           studentB.setImageResource(R.drawable.user_regular_full);
+           reportB.setImageResource(R.drawable.chart_bar_regular_full);
        });
 
        studentB.setOnClickListener(v->{
            navController.navigate(R.id.action_global_studentmanager);
+           homeB.setImageResource(R.drawable.house_regular_full);
+           studentB.setImageResource(R.drawable.user_regular_full_green);
+           reportB.setImageResource(R.drawable.chart_bar_regular_full);
        });
 
        reportB.setOnClickListener(v->{
-           navController.navigate(R.id.action_global_AdminHome);
+           navController.navigate(R.id.action_global_fragmentReport);
+           homeB.setImageResource(R.drawable.house_regular_full);
+           studentB.setImageResource(R.drawable.user_regular_full);
+           reportB.setImageResource(R.drawable.chart_bar_regular_full_green);
        });
     }
 }

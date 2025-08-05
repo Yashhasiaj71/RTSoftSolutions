@@ -42,4 +42,8 @@
         tools:layout="@layout/fragment_fees" />
     <action android:id="@+id/action_global_studentmanager" app:destination="@id/studentmanager" />
     <action android:id="@+id/action_global_AdminHome" app:destination="@id/AdminHome" />
+    <fragment
+        android:id="@+id/fragmentReport"
+        android:name="com.example.rtsoftsolutions.FragmentReport"
+        android:label="FragmentReport" /><action android:id="@+id/action_global_fragmentReport" app:destination="@id/fragmentReport"/>
 </navigation>
