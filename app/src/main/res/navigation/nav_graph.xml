@@ -28,8 +28,9 @@
         android:name="com.example.rtsoftsolutions.studentmanager"
         android:label="fragment_studentmanager"
         tools:layout="@layout/fragment_studentmanager" >
-        <actiona
-            android:id="@+id/action_studentmanager_to_addStudent_Fragment"
+ <action
+            android:id="@+id/action_studentmanager_to_addStudent_Fragment2"
+
             app:destination="@id/addStudent_Fragment" />
         <action
             android:id="@+id/action_studentmanager_to_addStudent_Fragment2"
@@ -42,8 +43,13 @@
         tools:layout="@layout/fragment_fees" />
     <action android:id="@+id/action_global_studentmanager" app:destination="@id/studentmanager" />
     <action android:id="@+id/action_global_AdminHome" app:destination="@id/AdminHome" />
+   <include app:graph="@navigation/subnavgraph" />
     <fragment
         android:id="@+id/fragmentReport"
         android:name="com.example.rtsoftsolutions.FragmentReport"
-        android:label="FragmentReport" /><action android:id="@+id/action_global_fragmentReport" app:destination="@id/fragmentReport"/>
+        android:label="FragmentReport" >
+        <action
+            android:id="@+id/action_fragmentReport_to_subnavgraph"
+            app:destination="@id/subnavgraph" />
+    </fragment><action android:id="@+id/action_global_fragmentReport" app:destination="@id/fragmentReport"/>
 </navigation>

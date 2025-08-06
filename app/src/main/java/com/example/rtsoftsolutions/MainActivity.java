@@ -38,7 +38,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-   @Override
+    @Override
+
     protected void onStart() {
         super.onStart();
         NavController navController = Navigation.findNavController(this , R.id.ContainerView);
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
                        Log.e("FirebaseTest", "Write failed.", task.getException());
                    }
                });
+
 
        ImageButton homeB = findViewById(R.id.HomeButton);
        ImageButton studentB = findViewById(R.id.StudentButton);
@@ -76,9 +78,11 @@ public class MainActivity extends AppCompatActivity {
 
        reportB.setOnClickListener(v->{
            navController.navigate(R.id.action_global_fragmentReport);
+
            homeB.setImageResource(R.drawable.house_regular_full);
            studentB.setImageResource(R.drawable.user_regular_full);
            reportB.setImageResource(R.drawable.chart_bar_regular_full_green);
        });
+
     }
 }
