@@ -15,7 +15,6 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.rtsoftsolutions.databinding.ActivityMainBinding;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.google.firebase.database.DataSnapshot;
@@ -25,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import android.util.Log; // For logging the value
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -43,25 +43,17 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         NavController navController = Navigation.findNavController(this , R.id.ContainerView);
 
-       FirebaseDatabase database = FirebaseDatabase.getInstance("http://10.0.2.2:9000/?ns=rtsoftsolutions-fc2cf");
-       database.useEmulator("10.0.2.2", 9000);
-       DatabaseReference ref = database.getReference("testNode");
-       ref.setValue("Hello from Emulator")
-               .addOnCompleteListener(task -> {
-                   if (task.isSuccessful()) {
-                       Log.d("FirebaseTest", "Data written successfully.");
-                   } else {
-                       Log.e("FirebaseTest", "Write failed.", task.getException());
-                   }
-               });
-
        ImageButton homeB = findViewById(R.id.HomeButton);
        ImageButton studentB = findViewById(R.id.StudentButton);
        ImageButton reportB = findViewById(R.id.ReportButton);
 
+       LinearLayout Homebg = findViewById(R.id.HomeLayout);
+       LinearLayout Studentbg = findViewById(R.id.HomeLayout);
+       LinearLayout Reportbgbg = findViewById(R.id.ReportLayout);
+
+
        homeB.setOnClickListener(v->{
            navController.navigate(R.id.action_global_AdminHome);
-
            homeB.setImageResource(R.drawable.house_regular_full_green);
            studentB.setImageResource(R.drawable.user_regular_full);
            reportB.setImageResource(R.drawable.chart_bar_regular_full);
