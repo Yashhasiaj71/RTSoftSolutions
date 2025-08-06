@@ -16,7 +16,6 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.rtsoftsolutions.databinding.ActivityMainBinding;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.google.firebase.database.DataSnapshot;
@@ -87,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
            reportB.setImageResource(R.drawable.chart_bar_regular_full_green);
        });
 
-       });
+       };
 
 
 //      ========= :TODO report fragment button ========
@@ -95,4 +94,3 @@ public class MainActivity extends AppCompatActivity {
 //           navController.navigate(R.id.action_global_AdminHome);
 //       });
     }
-}

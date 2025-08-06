@@ -87,20 +87,16 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
 
-<!--    <androidx.fragment.app.FragmentContainerView
-        android:visibility="gone"
-        android:layout_marginTop="10dp"
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView3"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
         app:defaultNavHost="true"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewstudent"
-        app:navGraph="@navigation/nav_graphstudentmanager"
-        />
-        -->
+        app:layout_constraintTop_toBottomOf="@+id/viewstudent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

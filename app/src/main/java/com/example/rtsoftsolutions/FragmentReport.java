@@ -59,7 +59,7 @@ public class FragmentReport extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Activity active = getActivity() ;
-        TextView[] arr = {active.findViewById(R.id.slider1) , active.findViewById(R.id.slider2) , active.findViewById(R.id.slider3) , active.findViewById(R.id.slider4) , active.findViewById(R.id.slider5)} ;
+        TextView[] arr = {active.findViewById(R.id.slider1)} ;
 
         NavController controller = findNavController(FragmentReport.this);
         ToggleButton buttonordinaryreport = view.findViewById(R.id.ordinarybutton);
@@ -70,6 +70,8 @@ public class FragmentReport extends Fragment {
         buttonordinaryreport.setTextOn("Ordinary Report");
         buttonordinaryreport.setTextOff("") ;
         state[0] = true ;
+       int width =  active.findViewById(R.id.togglebuttonview).getWidth() ;
+        active.findViewById(R.id.togglebuttonview).setMinimumWidth(width + 30);
         if(!buttonordinaryreport.isChecked() && !buttonfeesreport.isChecked()) {
             buttonordinaryreport.setChecked(true);
             Fragment fragmentB = new FragmentOrdinaryReport();
@@ -110,7 +112,7 @@ public class FragmentReport extends Fragment {
                        buttonordinaryreport.setChecked(false);
                        buttonfeesreport.setChecked(true);
                        //buttonordinaryreport.setForeground(drawable);
-                     //  buttonfeesreport.setForeground(null);
+                 // buttonfeesreport.setForeground(null);
                       Animation Rightmovement= AnimationUtils.loadAnimation(getContext() , R.anim.rightswipe) ;
                       Animation fadein = AnimationUtils.loadAnimation(getContext() , R.anim.fadein);
                       blockanimator(getContext() , arr);
@@ -134,7 +136,7 @@ public class FragmentReport extends Fragment {
 
     private void animateBlockOnUIThreadltr(TextView block) {
         getActivity().runOnUiThread(() -> {
-            ObjectAnimator animator = ObjectAnimator.ofFloat(block, "translationX", 25f);
+            ObjectAnimator animator = ObjectAnimator.ofFloat(block, "translationX", 35f);
             animator.setDuration(700);
             animator.start();
             block.setLayoutDirection(LAYOUT_DIRECTION_RTL);
