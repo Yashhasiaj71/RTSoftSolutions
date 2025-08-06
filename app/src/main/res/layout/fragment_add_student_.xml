@@ -201,11 +201,42 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tpainput" />
 
+    <EditText
+        android:id="@+id/Batchname"
+        android:layout_width="350dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/Accent_green"
+        android:hint="Fees paid"
+        android:inputType="number"
+        android:padding="0dp"
+        android:paddingStart="10dp"
+        android:textColorHint="#01111F"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/amountfilled" />
+
+    <EditText
+        android:id="@+id/Coursename"
+        android:layout_width="350dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/Accent_green"
+        android:hint="Fees paid"
+        android:inputType="number"
+        android:padding="0dp"
+        android:paddingStart="10dp"
+        android:textColorHint="#01111F"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Batchname" />
+
+
     <Button
         android:id="@+id/savedetails"
         android:layout_width="235dp"
         android:layout_height="55dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="12dp"
         android:backgroundTint="@color/white"
         android:elevation="20dp"
         android:hint="Save Details"
@@ -213,7 +244,7 @@
         android:textColorHint="#000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/amountfilled" />
+        app:layout_constraintTop_toBottomOf="@id/Coursename" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,353 @@
+Index: app/src/main/res/layout/report_fragment.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\">\r\n\r\n\r\n    <androidx.constraintlayout.widget.ConstraintLayout\r\n        android:id=\"@+id/togglebuttonview\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.494\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        android:layout_marginTop=\"20dp\">\r\n\r\n        <ToggleButton\r\n            android:id=\"@+id/toggleButton\"\r\n            android:layout_width=\"150dp\"\r\n            android:layout_height=\"39dp\"\r\n            android:layout_marginStart=\"16dp\"\r\n            android:background=\"@drawable/lefthalf\"\r\n            android:text=\"ToggleButton\"\r\n            app:layout_constraintBottom_toBottomOf=\"@id/toggleButton2\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintTop_toTopOf=\"@id/toggleButton2\"\r\n            app:layout_constraintVertical_bias=\"0.0\" />\r\n\r\n        <ToggleButton\r\n            android:id=\"@+id/toggleButton2\"\r\n            android:layout_width=\"150dp\"\r\n            android:layout_height=\"39dp\"\r\n            android:background=\"@drawable/righthalf\"\r\n            android:text=\"ToggleButton\"\r\n            app:layout_constraintStart_toEndOf=\"@id/toggleButton\"\r\n            app:layout_constraintTop_toTopOf=\"parent\" />\r\n    </androidx.constraintlayout.widget.ConstraintLayout>\r\n\r\n\r\n    <!-- container to switchs between ordinary fragment and fees report -->\r\n    <androidx.fragment.app.FragmentContainerView\r\n        app:layout_constraintTop_toBottomOf=\"@id/togglebuttonview\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        android:id=\"@+id/fragmentContainerView\"\r\n        android:name=\"androidx.navigation.fragment.NavHostFragment\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"0dp\"\r\n        app:layout_constraintVertical_weight=\"1\"\r\n        app:defaultNavHost=\"true\"\r\n        app:navGraph=\"@navigation/subnavgraph\" />\r\n\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+===================================================================
+diff --git a/app/src/main/res/layout/report_fragment.xml b/app/src/main/res/layout/report_fragment.xml
+--- a/app/src/main/res/layout/report_fragment.xml	(revision 0247957a444f184deb5a141cd1d4a42f35dc609b)
++++ b/app/src/main/res/layout/report_fragment.xml	(date 1754414201019)
+@@ -3,54 +3,116 @@
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+-    android:layout_height="match_parent">
+-
++    android:layout_height="match_parent"
++    android:background="@color/ColorBG"
++    >
+ 
+     <androidx.constraintlayout.widget.ConstraintLayout
++
++        android:background="@drawable/capsule"
+         android:id="@+id/togglebuttonview"
+         android:layout_width="wrap_content"
++        android:elevation="20dp"
+         android:layout_height="wrap_content"
++        android:padding="5dp"
++
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintHorizontal_bias="0.494"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent"
+         android:layout_marginTop="20dp">
+ 
++        <LinearLayout
++            android:layoutDirection="rtl"
++            android:orientation="horizontal"
++            android:layout_width="294dp"
++            android:layout_height="43dp"
++            android:elevation="30dp"
++            android:animateLayoutChanges="true"
++            android:background="#01000000"
++            app:layout_constraintEnd_toEndOf="parent"
++            app:layout_constraintStart_toStartOf="parent"
++            app:layout_constraintTop_toTopOf="parent">
++
++            <TextView
++                android:elevation="35dp"
++                android:id="@+id/slider1"
++                android:layout_width="30dp"
++                android:layout_height="39dp"
++                android:background="#D6039FE7"
++                />
++            <TextView
++                android:elevation="34dp"
++                android:id="@+id/slider2"
++                android:layout_width="30dp"
++                android:layout_height="39dp"
++                android:background="#AD03E703"
++                />
++            <TextView
++                android:elevation="33dp"
++                android:id="@+id/slider3"
++                android:layout_width="30dp"
++                android:layout_height="39dp"
++                android:background="#AD8803E7"/>
++
++                <TextView
++                    android:elevation="32dp"
++                    android:id="@+id/slider4"
++                    android:layout_width="30dp"
++                android:layout_height="39dp"
++                    android:background="#ADE7DC03"
++                />
++            <TextView
++                android:elevation="32dp"
++                android:id="@+id/slider5"
++                android:layout_width="30dp"
++                android:layout_height="39dp"
++                android:background="#ADCE083F"
++                />
++        </LinearLayout>
++
++
+         <ToggleButton
+-            android:id="@+id/toggleButton"
++            android:id="@+id/ordinarybutton"
+             android:layout_width="150dp"
+             android:layout_height="39dp"
+-            android:layout_marginStart="16dp"
+             android:background="@drawable/lefthalf"
+             android:text="ToggleButton"
+-            app:layout_constraintBottom_toBottomOf="@id/toggleButton2"
++            app:layout_constraintBottom_toBottomOf="@id/feesbutton"
+             app:layout_constraintStart_toStartOf="parent"
+-            app:layout_constraintTop_toTopOf="@id/toggleButton2"
+-            app:layout_constraintVertical_bias="0.0" />
++            app:layout_constraintTop_toTopOf="@id/feesbutton"
++            app:layout_constraintVertical_bias="1.0" />
+ 
+         <ToggleButton
+-            android:id="@+id/toggleButton2"
++            android:id="@+id/feesbutton"
++
+             android:layout_width="150dp"
+             android:layout_height="39dp"
+             android:background="@drawable/righthalf"
+             android:text="ToggleButton"
+-            app:layout_constraintStart_toEndOf="@id/toggleButton"
++
++            app:layout_constraintStart_toEndOf="@id/ordinarybutton"
++
+             app:layout_constraintTop_toTopOf="parent" />
+     </androidx.constraintlayout.widget.ConstraintLayout>
+ 
+ 
+     <!-- container to switchs between ordinary fragment and fees report -->
+     <androidx.fragment.app.FragmentContainerView
+-        app:layout_constraintTop_toBottomOf="@id/togglebuttonview"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintBottom_toBottomOf="parent"
++
++
+         android:id="@+id/fragmentContainerView"
+         android:name="androidx.navigation.fragment.NavHostFragment"
+         android:layout_width="match_parent"
+         android:layout_height="0dp"
+-        app:layout_constraintVertical_weight="1"
+         app:defaultNavHost="true"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.0"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@id/togglebuttonview"
++        app:layout_constraintVertical_bias="0.0"
++        app:layout_constraintVertical_weight="1"
+         app:navGraph="@navigation/subnavgraph" />
+ 
+ 
+Index: app/src/main/res/drawable/righthalf.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<shape xmlns:android=\"http://schemas.android.com/apk/res/android\">\r\n    <corners android:bottomRightRadius=\"60dp\"\r\n        android:topRightRadius=\"60dp\"/>\r\n    <solid\r\n        android:color=\"@color/ColorSecondary\"/>\r\n</shape>
+===================================================================
+diff --git a/app/src/main/res/drawable/righthalf.xml b/app/src/main/res/drawable/righthalf.xml
+--- a/app/src/main/res/drawable/righthalf.xml	(revision 0247957a444f184deb5a141cd1d4a42f35dc609b)
++++ b/app/src/main/res/drawable/righthalf.xml	(date 1754411431799)
+@@ -1,7 +1,5 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <shape xmlns:android="http://schemas.android.com/apk/res/android">
+-    <corners android:bottomRightRadius="60dp"
+-        android:topRightRadius="60dp"/>
+     <solid
+         android:color="@color/ColorSecondary"/>
+ </shape>
+\ No newline at end of file
+Index: app/src/main/res/navigation/subnavgraph.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<navigation xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:id=\"@+id/subnavgraph\"\r\n    app:startDestination=\"@id/fragmentOrdinaryReport\">\r\n    <fragment\r\n        android:id=\"@+id/fragmentOrdinaryReport\"\r\n        android:name=\"com.example.rtsoftsolutions.FragmentOrdinaryReport\"\r\n        android:label=\"FragmentOrdinaryReport\" />\r\n</navigation>
+===================================================================
+diff --git a/app/src/main/res/navigation/subnavgraph.xml b/app/src/main/res/navigation/subnavgraph.xml
+--- a/app/src/main/res/navigation/subnavgraph.xml	(revision 0247957a444f184deb5a141cd1d4a42f35dc609b)
++++ b/app/src/main/res/navigation/subnavgraph.xml	(date 1754411435784)
+@@ -3,9 +3,15 @@
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     xmlns:tools="http://schemas.android.com/tools"
+     android:id="@+id/subnavgraph"
+-    app:startDestination="@id/fragmentOrdinaryReport">
++    app:startDestination="@id/fragment_feesReport">
+     <fragment
+         android:id="@+id/fragmentOrdinaryReport"
+         android:name="com.example.rtsoftsolutions.FragmentOrdinaryReport"
+         android:label="FragmentOrdinaryReport" />
++    <action android:id="@+id/action_global_fragmentOrdinaryReport" app:destination="@id/fragmentOrdinaryReport" />
++    <fragment
++        android:id="@+id/fragment_feesReport"
++        android:name="com.example.rtsoftsolutions.Fragment_feesReport"
++        android:label="Fragment_feesReport" />
++    <action android:id="@+id/action_global_fragment_feesReport" app:destination="@id/fragment_feesReport" />
+ </navigation>
+\ No newline at end of file
+Index: app/src/main/java/com/example/rtsoftsolutions/FragmentReport.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.rtsoftsolutions;\r\n\r\nimport static androidx.navigation.fragment.FragmentKt.findNavController;\r\n\r\nimport android.os.Bundle;\r\nimport android.view.LayoutInflater;\r\nimport android.view.View;\r\nimport android.view.ViewGroup;\r\n\r\nimport androidx.annotation.NonNull;\r\nimport androidx.annotation.Nullable;\r\nimport androidx.fragment.app.Fragment;\r\nimport androidx.navigation.NavController;\r\n\r\npublic class FragmentReport extends Fragment {\r\n\r\n\r\n    @Nullable\r\n    @Override\r\n    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {\r\n         return inflater.inflate(R.layout.report_fragment , container , false) ;\r\n    }\r\n\r\n    @Override\r\n    public void onCreate(@Nullable Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n    }\r\n\r\n    @Override\r\n    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {\r\n        super.onViewCreated(view, savedInstanceState);\r\n        NavController controller = findNavController(FragmentReport.this);\r\n    }\r\n}\r\n
+===================================================================
+diff --git a/app/src/main/java/com/example/rtsoftsolutions/FragmentReport.java b/app/src/main/java/com/example/rtsoftsolutions/FragmentReport.java
+--- a/app/src/main/java/com/example/rtsoftsolutions/FragmentReport.java	(revision 0247957a444f184deb5a141cd1d4a42f35dc609b)
++++ b/app/src/main/java/com/example/rtsoftsolutions/FragmentReport.java	(date 1754411356149)
+@@ -1,24 +1,52 @@
+ package com.example.rtsoftsolutions;
+ 
++import static android.view.View.GONE;
++import static android.view.View.LAYOUT_DIRECTION_LTR;
++import static android.view.View.LAYOUT_DIRECTION_RTL;
+ import static androidx.navigation.fragment.FragmentKt.findNavController;
+ 
++import static java.lang.Thread.sleep;
++
++import android.animation.ObjectAnimator;
++import android.app.Activity;
++import android.content.Context;
++import android.graphics.drawable.Drawable;
++
+ import android.os.Bundle;
+ import android.view.LayoutInflater;
+ import android.view.View;
+ import android.view.ViewGroup;
+ 
++import android.view.animation.Animation;
++import android.view.animation.AnimationUtils;
++import android.widget.TextView;
++import android.widget.Toast;
++import android.widget.ToggleButton;
++
+ import androidx.annotation.NonNull;
+ import androidx.annotation.Nullable;
++import androidx.core.content.ContextCompat;
+ import androidx.fragment.app.Fragment;
++import androidx.fragment.app.FragmentContainerView;
++import androidx.fragment.app.FragmentManager;
+ import androidx.navigation.NavController;
++import androidx.navigation.Navigation;
++
++import com.example.rtsoftsolutions.databinding.ActivityAuthenticationBinding;
++
+ 
+ public class FragmentReport extends Fragment {
+ 
+ 
++
++
++    final boolean[] state = new boolean[1] ;
++
+     @Nullable
+     @Override
+     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+          return inflater.inflate(R.layout.report_fragment , container , false) ;
++
+     }
+ 
+     @Override
+@@ -29,6 +57,109 @@
+     @Override
+     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+         super.onViewCreated(view, savedInstanceState);
++
++        Activity active = getActivity() ;
++        TextView[] arr = {active.findViewById(R.id.slider1) , active.findViewById(R.id.slider2) , active.findViewById(R.id.slider3) , active.findViewById(R.id.slider4) , active.findViewById(R.id.slider5)} ;
++
+         NavController controller = findNavController(FragmentReport.this);
++        ToggleButton buttonordinaryreport = view.findViewById(R.id.ordinarybutton);
++        ToggleButton buttonfeesreport = view.findViewById(R.id.feesbutton) ;
++        Drawable drawable = ContextCompat.getDrawable(getContext(), R.drawable.ic_launcher_background);
++        buttonfeesreport.setTextOn("Fees report");
++        buttonfeesreport.setTextOff("") ;
++        buttonordinaryreport.setTextOn("Ordinary Report");
++        buttonordinaryreport.setTextOff("") ;
++        state[0] = true ;
++        if(!buttonordinaryreport.isChecked() && !buttonfeesreport.isChecked()) {
++            buttonordinaryreport.setChecked(true);
++            Fragment fragmentB = new FragmentOrdinaryReport();
++            requireActivity().getSupportFragmentManager()
++                    .beginTransaction()
++                    .replace(R.id.fragmentContainerView, fragmentB)
++                    .commit();
++            buttonfeesreport.setChecked(false);
++        }
++
++
++
++        buttonordinaryreport.setOnCheckedChangeListener((buttonView, isChecked) -> {
++              if(state[0]) {
++                   buttonordinaryreport.setChecked(true);
++              }else {
++                  if(isChecked) {
++                      state[0] = true ;
++                      Fragment fragmentB = new FragmentOrdinaryReport() ;
++                      requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView , fragmentB).commit() ;
++                      buttonfeesreport.setChecked(false);
++                      buttonordinaryreport.setChecked(true);
++                    //  buttonfeesreport.setForeground(drawable);
++                     // buttonordinaryreport.setForeground(null);
++                       blockanimator(getContext() , arr);
++                  }
++              }
++        });
++
++        buttonfeesreport.setOnCheckedChangeListener((buttonView, isChecked) -> {
++              if(!state[0]) {
++                  buttonfeesreport.setChecked(true);
++              }else {
++                  if(isChecked) {
++                      state[0] = false ;
++                       Fragment fragmentB = new Fragment_feesReport() ;
++                       requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView , fragmentB).commit() ;
++                       buttonordinaryreport.setChecked(false);
++                       buttonfeesreport.setChecked(true);
++                       //buttonordinaryreport.setForeground(drawable);
++                     //  buttonfeesreport.setForeground(null);
++                      Animation Rightmovement= AnimationUtils.loadAnimation(getContext() , R.anim.rightswipe) ;
++                      Animation fadein = AnimationUtils.loadAnimation(getContext() , R.anim.fadein);
++                      blockanimator(getContext() , arr);
++
++
++                  }
++              }
++        });
++
++    }
++
++
++    private void animateBlockOnUIThreadrtl(TextView block) {
++         getActivity().runOnUiThread(() -> {
++            ObjectAnimator animator = ObjectAnimator.ofFloat(block, "translationX", 0f, -400f);
++            animator.setDuration(700);
++            animator.start();
++            block.setLayoutDirection(LAYOUT_DIRECTION_LTR);
++        });
++    }
++
++    private void animateBlockOnUIThreadltr(TextView block) {
++        getActivity().runOnUiThread(() -> {
++            ObjectAnimator animator = ObjectAnimator.ofFloat(block, "translationX", 25f);
++            animator.setDuration(700);
++            animator.start();
++            block.setLayoutDirection(LAYOUT_DIRECTION_RTL);
++        });
++    }
++
++
++    private void blockanimator(Context context ,TextView[] arr) {
++         new Thread(new Runnable() {
++             @Override
++             public void run() {
++                 for(int i = 0 ; i < arr.length ; i++) {
++                     if(state[0]) {
++                         animateBlockOnUIThreadltr(arr[i]);
++                     }else {
++                          animateBlockOnUIThreadrtl(arr[(arr.length - 1) - i]);
++                     }
++                      try {
++                           Thread.sleep(50) ;
++                     } catch (InterruptedException e) {
++                          throw new RuntimeException(e);
++                      }
++                 }
++             }
++         }).start();
++
+     }
+ }
