@@ -11,10 +11,12 @@ import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
@@ -32,11 +34,14 @@ import androidx.navigation.Navigation;
 
 import com.example.rtsoftsolutions.databinding.ActivityAuthenticationBinding;
 
+
 public class FragmentReport extends Fragment {
 
 
 
+
     final boolean[] state = new boolean[1] ;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -52,6 +57,7 @@ public class FragmentReport extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         Activity active = getActivity() ;
         TextView[] arr = {active.findViewById(R.id.slider1)} ;
 
@@ -156,5 +162,6 @@ public class FragmentReport extends Fragment {
                  }
              }
          }).start();
+
     }
 }

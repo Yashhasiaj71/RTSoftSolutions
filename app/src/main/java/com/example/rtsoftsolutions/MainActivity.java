@@ -1,16 +1,10 @@
 package com.example.rtsoftsolutions;
-
-import android.graphics.Color;
 import android.os.Bundle;
-
 import com.google.android.material.snackbar.Snackbar;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.view.View;
-
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
@@ -22,11 +16,8 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import android.view.Menu;
 import android.view.MenuItem;
-// In your Activity or Fragment (e.g., in onCreate or onStart)
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -43,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); // Your layout
+        Fragment AdminHome = new AdminHome(); // your target fragment
 
     }
 
@@ -51,40 +43,54 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         NavController navController = Navigation.findNavController(this , R.id.ContainerView);
+
+       FirebaseDatabase database = FirebaseDatabase.getInstance("http://10.0.2.2:9000/?ns=rtsoftsolutions-fc2cf");
+       database.useEmulator("10.0.2.2", 9000);
+       DatabaseReference ref = database.getReference("testNode");
+       ref.setValue("Hello from Emulator")
+               .addOnCompleteListener(task -> {
+                   if (task.isSuccessful()) {
+                       Log.d("FirebaseTest", "Data written successfully.");
+                   } else {
+                       Log.e("FirebaseTest", "Write failed.", task.getException());
+                   }
+               });
+
+
        ImageButton homeB = findViewById(R.id.HomeButton);
        ImageButton studentB = findViewById(R.id.StudentButton);
        ImageButton reportB = findViewById(R.id.ReportButton);
 
        homeB.setOnClickListener(v->{
            navController.navigate(R.id.action_global_AdminHome);
+
+           homeB.setImageResource(R.drawable.house_regular_full_green);
+           studentB.setImageResource(R.drawable.user_regular_full);
+           reportB.setImageResource(R.drawable.chart_bar_regular_full);
        });
 
        studentB.setOnClickListener(v->{
            navController.navigate(R.id.action_global_studentmanager);
-           new Thread(new Runnable() {
-               @Override
-               public void run() {
-                   studentB.setBackgroundColor(Color.BLUE);
-                   try {
-                       Thread.sleep(1000) ;
-                   }catch (Exception e) {
-                        e.printStackTrace() ;
-                   }
-                   studentB.setBackgroundColor(Color.BLACK) ;
-               }
-           });
+           homeB.setImageResource(R.drawable.house_regular_full);
+           studentB.setImageResource(R.drawable.user_regular_full_green);
+           reportB.setImageResource(R.drawable.chart_bar_regular_full);
        });
 
        reportB.setOnClickListener(v->{
+
            navController.navigate(R.id.action_global_fragmentReport);
+
+
+           homeB.setImageResource(R.drawable.house_regular_full);
+           studentB.setImageResource(R.drawable.user_regular_full);
+           reportB.setImageResource(R.drawable.chart_bar_regular_full_green);
        });
+
+       };
 
 
 //      ========= :TODO report fragment button ========
 //       reportB.setOnClickListener(v->{
 //           navController.navigate(R.id.action_global_AdminHome);
 //       });
-
-
     }
-}

@@ -17,7 +17,7 @@ import androidx.navigation.NavController;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link studentmanager#} factory method to
+ * Use the {@link #} factory method to
  * create an instance of this fragment.
  */
 public class studentmanager extends Fragment {
@@ -50,8 +50,11 @@ public class studentmanager extends Fragment {
 
         //call to add student fragment so that admin can add new student==============================================
         addnewstudent.setOnClickListener(v -> {
-            NavController controller = findNavController(studentmanager.this);
-            controller.navigate(R.id.action_studentmanager_to_addStudent_Fragment2);  }) ;
+            Fragment formfragment = new AddStudent_Fragment() ;
+            requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView3 , formfragment).commit() ;
+        }) ;
+
+
 }
 
     @Override
@@ -60,4 +63,6 @@ public class studentmanager extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_studentmanager, container, false);
     }
+
+
 }
