@@ -52,5 +52,4 @@
             android:id="@+id/action_fragmentReport_to_subnavgraph"
             app:destination="@id/subnavgraph" />
     </fragment><action android:id="@+id/action_global_fragmentReport" app:destination="@id/fragmentReport"/>
-
 </navigation>

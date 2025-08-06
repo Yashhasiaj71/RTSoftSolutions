@@ -1,0 +1,1797 @@
+Index: app/src/main/res/values/colors.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<resources>\r\n    <color name=\"black\">#FF000000</color>\r\n    <color name=\"white\">#FFFFFFFF</color>\r\n    <color name=\"ColorPrimary\">#007BFF</color>\r\n    <color name=\"ColorSecondary\">#72C3FC</color>\r\n    <color name=\"Accent_green\">#A8E6CF</color>\r\n    <color name=\"ColorBG\">#F8F9FA</color>\r\n    <color name=\"Transperent\">#00F8F9FA</color>\r\n\r\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/colors.xml b/app/src/main/res/values/colors.xml
+--- a/app/src/main/res/values/colors.xml	(revision 0247957a444f184deb5a141cd1d4a42f35dc609b)
++++ b/app/src/main/res/values/colors.xml	(date 1754413821127)
+@@ -5,7 +5,7 @@
+     <color name="ColorPrimary">#007BFF</color>
+     <color name="ColorSecondary">#72C3FC</color>
+     <color name="Accent_green">#A8E6CF</color>
+-    <color name="ColorBG">#F8F9FA</color>
++    <color name="ColorBG">#8C8E8F99</color>
+     <color name="Transperent">#00F8F9FA</color>
+ 
+ </resources>
+\ No newline at end of file
+Index: app/src/main/java/com/example/rtsoftsolutions/FeesFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.rtsoftsolutions;\r\n\r\nimport android.os.Bundle;\r\n\r\nimport androidx.fragment.app.Fragment;\r\n\r\nimport android.view.LayoutInflater;\r\nimport android.view.View;\r\nimport android.view.ViewGroup;\r\n\r\n/**\r\n * A simple {@link Fragment} subclass.\r\n * Use the {@link FeesFragment#newInstance} factory method to\r\n * create an instance of this fragment.\r\n */\r\npublic class FeesFragment extends Fragment {\r\n\r\n    // TODO: Rename parameter arguments, choose names that match\r\n    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER\r\n    private static final String ARG_PARAM1 = \"param1\";\r\n    private static final String ARG_PARAM2 = \"param2\";\r\n\r\n    // TODO: Rename and change types of parameters\r\n    private String mParam1;\r\n    private String mParam2;\r\n\r\n    public FeesFragment() {\r\n        // Required empty public constructor\r\n    }\r\n\r\n    /**\r\n     * Use this factory method to create a new instance of\r\n     * this fragment using the provided parameters.\r\n     *\r\n     * @param param1 Parameter 1.\r\n     * @param param2 Parameter 2.\r\n     * @return A new instance of fragment FeesFragment.\r\n     */\r\n    // TODO: Rename and change types and number of parameters\r\n    public static FeesFragment newInstance(String param1, String param2) {\r\n        FeesFragment fragment = new FeesFragment();\r\n        Bundle args = new Bundle();\r\n        args.putString(ARG_PARAM1, param1);\r\n        args.putString(ARG_PARAM2, param2);\r\n        fragment.setArguments(args);\r\n        return fragment;\r\n    }\r\n\r\n    @Override\r\n    public void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        if (getArguments() != null) {\r\n            mParam1 = getArguments().getString(ARG_PARAM1);\r\n            mParam2 = getArguments().getString(ARG_PARAM2);\r\n        }\r\n    }\r\n\r\n    @Override\r\n    public View onCreateView(LayoutInflater inflater, ViewGroup container,\r\n                             Bundle savedInstanceState) {\r\n\r\n        // Inflate the layout for this fragment\r\n        return inflater.inflate(R.layout.fragment_fees, container, false);\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/rtsoftsolutions/FeesFragment.java b/app/src/main/java/com/example/rtsoftsolutions/FeesFragment.java
+--- a/app/src/main/java/com/example/rtsoftsolutions/FeesFragment.java	(revision 0247957a444f184deb5a141cd1d4a42f35dc609b)
++++ b/app/src/main/java/com/example/rtsoftsolutions/FeesFragment.java	(date 1754419162845)
+@@ -1,5 +1,8 @@
+ package com.example.rtsoftsolutions;
+ 
++import android.content.ActivityNotFoundException;
++import android.content.Intent;
++import android.net.Uri;
+ import android.os.Bundle;
+ 
+ import androidx.fragment.app.Fragment;
+@@ -7,6 +10,8 @@
+ import android.view.LayoutInflater;
+ import android.view.View;
+ import android.view.ViewGroup;
++import android.widget.ImageButton;
++import android.widget.Toast;
+ 
+ /**
+  * A simple {@link Fragment} subclass.
+@@ -60,6 +65,26 @@
+                              Bundle savedInstanceState) {
+ 
+         // Inflate the layout for this fragment
+-        return inflater.inflate(R.layout.fragment_fees, container, false);
++        View view =  inflater.inflate(R.layout.fragment_fees, container, false);
++
++        //        Whatsapp icon click listner
++        ImageButton whatsapp = view.findViewById(R.id.WhatsappButton);
++        whatsapp.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View v) {
++                String PhoneNo = "+916266381188";
++                String Message = "Dear Student, your fees ($ xxx) is pending, Kindly pay it by the due date team Interns";
++
++                Intent intent = new Intent(Intent.ACTION_VIEW);
++                intent.setData(Uri.parse("https://wa.me/"+PhoneNo+"?text="+Uri.encode(Message)));
++
++                try{
++                    startActivity(intent);
++                }catch(ActivityNotFoundException e){
++                    Toast.makeText(requireContext(),"Whatsapp not installed",Toast.LENGTH_SHORT).show();
++                }
++            }
++        });
++   return view ;
+     }
+ }
+\ No newline at end of file
+Index: app/src/main/res/layout/fragment_fees.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<FrameLayout\r\n\r\n    xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    tools:context=\".FeesFragment\"\r\n   >\r\n\r\n    <!-- TODO: Update blank fragment layout -->\r\n    <Button\r\n        android:layout_width=\"100dp\"\r\n        android:layout_height=\"50dp\"\r\n        android:text=\"Back\"\r\n        android:textColor=\"@color/black\"\r\n        android:backgroundTint=\"@color/Accent_green\"\r\n        />\r\n\r\n    <EditText\r\n        android:id=\"@+id/StudentSearch\"\r\n        android:inputType=\"text\"\r\n        android:layout_width=\"370dp\"\r\n        android:background=\"@color/white\"\r\n        android:layout_height=\"50dp\"\r\n        android:layout_marginTop=\"100dp\"\r\n        android:layout_gravity=\"center_horizontal\"\r\n        android:hint=\"Search Student Name\"\r\n        android:textColorHint=\"@color/black\"\r\n        android:padding=\"16dp\"\r\n        android:drawableEnd=\"@drawable/magnifying_glass_solid_full\"\r\n        />\r\n\r\n\r\n<!--    invisible button for search icon-->\r\n    <Button\r\n        android:id=\"@+id/SearchButton\"\r\n        android:layout_width=\"60dp\"\r\n        android:layout_height=\"60dp\"\r\n        android:layout_marginLeft=\"310dp\"\r\n        android:layout_marginTop=\"100dp\"\r\n        android:backgroundTint=\"@color/Transperent\" />\r\n\r\n\r\n<!--    student view-->\r\n    <LinearLayout\r\n        android:orientation=\"horizontal\"\r\n        android:id=\"@+id/StudentView\"\r\n        android:layout_width=\"380dp\"\r\n        android:layout_height=\"60dp\"\r\n  android:layout_marginTop=\"180dp\"\r\n        android:layout_gravity=\"center_horizontal\"\r\n        android:background=\"@color/Accent_green\"\r\n        />\r\n\r\n\r\n<!--    remaining fees section-->\r\n    <LinearLayout\r\n        android:layout_width=\"380dp\"\r\n        android:layout_height=\"60dp\"\r\n        android:layout_marginTop=\"250dp\"\r\n        android:layout_gravity=\"center_horizontal\"\r\n        android:background=\"@color/Accent_green\"\r\n        >\r\n        <TextView\r\n            android:id=\"@+id/RemainingFees\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"match_parent\"\r\n            android:text=\"Remaining fees for Student = \"\r\n            android:textSize=\"20sp\"\r\n            android:gravity=\"center\"\r\n            />\r\n    </LinearLayout>\r\n\r\n<!--    amount section-->\r\n    <EditText\r\n        android:id=\"@+id/AmountEditText\"\r\n        android:inputType=\"number\"\r\n        android:layout_width=\"380dp\"\r\n        android:layout_height=\"60dp\"\r\n        android:layout_marginTop=\"320dp\"\r\n        android:hint=\"Enter Amount Paid\"\r\n        android:textColorHint=\"@color/black\"\r\n        android:gravity=\"center\"\r\n        android:layout_gravity=\"center_horizontal\"\r\n        android:background=\"@color/Accent_green\"\r\n        />\r\n\r\n<!--    paymrnt mode text-->\r\n    <TextView\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:text=\"Select Payment Mode\"\r\n        android:layout_gravity=\"center_horizontal\"\r\n        android:textSize=\"32sp\"\r\n        android:layout_marginTop=\"400dp\"\r\n        />\r\n\r\n<!--    sections for selection of payment modes-->\r\n    <androidx.constraintlayout.widget.ConstraintLayout\r\n        android:layout_width=\"380dp\"\r\n        android:layout_height=\"80dp\"\r\n        android:layout_gravity=\"center_horizontal\"\r\n        android:layout_marginTop=\"450dp\"\r\n        android:background=\"@drawable/rounded_rectangle\"\r\n        >\r\n   \r\n<!--        upi payment mode section-->\r\n        <LinearLayout\r\n            android:id=\"@+id/UPI\"\r\n            android:layout_width=\"80dp\"\r\n            android:orientation=\"vertical\"\r\n            android:layout_height=\"match_parent\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintTop_toTopOf=\"parent\"\r\n            >\r\n            <ImageButton\r\n                android:id=\"@+id/Upi_mode\"\r\n                android:layout_gravity=\"center_horizontal\"\r\n                android:layout_width=\"60dp\"\r\n                android:layout_height=\"50dp\"\r\n                android:layout_marginTop=\"5dp\"\r\n                android:background=\"@color/Transperent\"\r\n                android:scaleType=\"fitXY\"\r\n                android:src=\"@drawable/upi_logo\" />\r\n\r\n            <TextView\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"20dp\"\r\n                android:text=\"UPI\"\r\n                android:textSize=\"20sp\"\r\n                android:layout_gravity=\"center_horizontal\"\r\n                />\r\n        </LinearLayout>\r\n\r\n\r\n<!--        cash payment mode -->\r\n        <LinearLayout\r\n            android:id=\"@+id/CASH\"\r\n            android:layout_width=\"80dp\"\r\n            android:orientation=\"vertical\"\r\n            android:layout_height=\"match_parent\"\r\n            app:layout_constraintEnd_toStartOf=\"@+id/BANK\"\r\n            app:layout_constraintStart_toEndOf=\"@+id/UPI\"\r\n            app:layout_constraintTop_toTopOf=\"parent\"\r\n            >\r\n            <ImageButton\r\n                android:id=\"@+id/cash_mode\"\r\n                android:layout_gravity=\"center_horizontal\"\r\n                android:layout_width=\"50dp\"\r\n                android:layout_height=\"50dp\"\r\n                android:layout_marginTop=\"5dp\"\r\n                android:background=\"@color/Transperent\"\r\n                android:scaleType=\"fitXY\"\r\n                android:src=\"@drawable/money_bills_solid_full\" />\r\n\r\n            <TextView\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"20dp\"\r\n                android:text=\"CASH\"\r\n                android:textSize=\"20sp\"\r\n                android:layout_gravity=\"center_horizontal\"\r\n                />\r\n        </LinearLayout>\r\n\r\n\r\n<!--        Bank Transfer Section-->\r\n        <LinearLayout\r\n            android:id=\"@+id/BANK\"\r\n            android:layout_width=\"80dp\"\r\n            android:orientation=\"vertical\"\r\n            android:layout_height=\"match_parent\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\"\r\n            app:layout_constraintTop_toTopOf=\"parent\"\r\n            >\r\n            <ImageButton\r\n                android:id=\"@+id/bank_mode\"\r\n                android:layout_gravity=\"center_horizontal\"\r\n                android:layout_width=\"60dp\"\r\n                android:layout_height=\"50dp\"\r\n                android:layout_marginTop=\"5dp\"\r\n                android:background=\"@color/Transperent\"\r\n                android:scaleType=\"fitXY\"\r\n                android:src=\"@drawable/building_columns_solid_full\" />\r\n\r\n            <TextView\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"20dp\"\r\n                android:text=\"BANK\"\r\n                android:textSize=\"20sp\"\r\n                android:layout_gravity=\"center_horizontal\"\r\n                />\r\n        </LinearLayout>\r\n\r\n    </androidx.constraintlayout.widget.ConstraintLayout>\r\n\r\n\r\n    <TextView\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:text=\"OR\"\r\n        android:textSize=\"32sp\"\r\n        android:layout_marginTop=\"560dp\"\r\n        android:layout_gravity=\"center_horizontal\"\r\n        />\r\n\r\n\r\n<!--    whatsapp reminder layout-->\r\n    <GridLayout\r\n        android:id=\"@+id/BirthdayInfo\"\r\n        android:layout_width=\"380dp\"\r\n        android:layout_height=\"100dp\"\r\n        android:layout_gravity=\"bottom|center_horizontal\"\r\n        android:layout_marginBottom=\"20dp\"\r\n        android:background=\"@drawable/rounded_rectangle\">\r\n\r\n\r\n        <LinearLayout\r\n            android:layout_height=\"match_parent\"\r\n            android:layout_width=\"match_parent\"\r\n            android:orientation=\"horizontal\"\r\n            >\r\n            <TextView\r\n                android:layout_width=\"190dp\"\r\n                android:layout_marginLeft=\"20dp\"\r\n                android:layout_gravity=\"center_vertical\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:text=\"Send Fees reminder on :-\"\r\n                android:textSize=\"20sp\" />\r\n\r\n\r\n            <ImageButton\r\n                android:id=\"@+id/WhatsappButton\"\r\n                android:layout_height=\"80dp\"\r\n                android:layout_width=\"80dp\"\r\n                android:layout_gravity=\"center_vertical\"\r\n                android:layout_marginBottom=\"10dp\"\r\n                android:scaleType=\"fitXY\"\r\n                android:layout_marginTop=\"10dp\"\r\n                android:background=\"@color/Transperent\"\r\n                android:src=\"@drawable/whatsapp_logo\"\r\n                android:layout_marginStart=\"50dp\"\r\n\r\n                />\r\n        </LinearLayout>\r\n\r\n    </GridLayout>\r\n\r\n\r\n</FrameLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_fees.xml b/app/src/main/res/layout/fragment_fees.xml
+--- a/app/src/main/res/layout/fragment_fees.xml	(revision 0247957a444f184deb5a141cd1d4a42f35dc609b)
++++ b/app/src/main/res/layout/fragment_fees.xml	(date 1754417249343)
+@@ -15,7 +15,7 @@
+         android:layout_height="50dp"
+         android:text="Back"
+         android:textColor="@color/black"
+-        android:backgroundTint="@color/Accent_green"
++        android:backgroundTint="@color/white"
+         />
+ 
+     <EditText
+@@ -84,7 +84,7 @@
+         android:textColorHint="@color/black"
+         android:gravity="center"
+         android:layout_gravity="center_horizontal"
+-        android:background="@color/Accent_green"
++        android:background="@color/white"
+         />
+ 
+ <!--    paymrnt mode text-->
+@@ -103,7 +103,7 @@
+         android:layout_height="80dp"
+         android:layout_gravity="center_horizontal"
+         android:layout_marginTop="450dp"
+-        android:background="@drawable/rounded_rectangle"
++
+         >
+    
+ <!--        upi payment mode section-->
+@@ -118,8 +118,8 @@
+             <ImageButton
+                 android:id="@+id/Upi_mode"
+                 android:layout_gravity="center_horizontal"
+-                android:layout_width="60dp"
+-                android:layout_height="50dp"
++                android:layout_width="35dp"
++                android:layout_height="30dp"
+                 android:layout_marginTop="5dp"
+                 android:background="@color/Transperent"
+                 android:scaleType="fitXY"
+@@ -148,8 +148,8 @@
+             <ImageButton
+                 android:id="@+id/cash_mode"
+                 android:layout_gravity="center_horizontal"
+-                android:layout_width="50dp"
+-                android:layout_height="50dp"
++                android:layout_width="35dp"
++                android:layout_height="30dp"
+                 android:layout_marginTop="5dp"
+                 android:background="@color/Transperent"
+                 android:scaleType="fitXY"
+@@ -177,8 +177,8 @@
+             <ImageButton
+                 android:id="@+id/bank_mode"
+                 android:layout_gravity="center_horizontal"
+-                android:layout_width="60dp"
+-                android:layout_height="50dp"
++                android:layout_width="35dp"
++                android:layout_height="30dp"
+                 android:layout_marginTop="5dp"
+                 android:background="@color/Transperent"
+                 android:scaleType="fitXY"
+@@ -201,7 +201,7 @@
+         android:layout_height="wrap_content"
+         android:text="OR"
+         android:textSize="32sp"
+-        android:layout_marginTop="560dp"
++        android:layout_marginTop="530dp"
+         android:layout_gravity="center_horizontal"
+         />
+ 
+Index: app/src/main/res/layout/activity_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout\r\n    xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:background=\"@color/ColorBG\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    >\r\n\r\n<!--top panel -->\r\n<LinearLayout\r\n    android:id=\"@+id/titleBar\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"60dp\"\r\n    app:layout_constraintTop_toTopOf=\"parent\"\r\n    android:background=\"@color/ColorPrimary\"\r\n    app:layout_constraintStart_toStartOf=\"parent\">\r\n\r\n<!--  logo here-->\r\n    <ImageView\r\n        android:id=\"@+id/logo\"\r\n        android:layout_width=\"60dp\"\r\n        android:layout_height=\"60dp\"\r\n        android:src=\"@drawable/rt_logo\"\r\n        />\r\n\r\n<!--    name here-->\r\n<TextView\r\n    android:layout_width=\"wrap_content\"\r\n    android:layout_height=\"match_parent\"\r\n    android:gravity=\"center\"\r\n    android:text=\"RTSoftSolutions\"\r\n    android:fontFamily=\"@font/itim\"\r\n    android:layout_marginLeft=\"30dp\"\r\n    android:textSize=\"32sp\"\r\n    />\r\n\r\n<!--    profile button here-->\r\n    <ImageButton\r\n        android:layout_width=\"50dp\"\r\n        android:layout_height=\"50dp\"\r\n        android:layout_marginLeft=\"30dp\"\r\n        android:layout_marginTop=\"5dp\"\r\n        android:scaleType=\"fitXY\"\r\n        android:background=\"@color/Transperent\"\r\n        android:src=\"@drawable/user_regular_full\" />\r\n</LinearLayout>\r\n\r\n<!--    container here-->\r\n    <androidx.fragment.app.FragmentContainerView\r\n        android:id=\"@+id/ContainerView\"\r\n        android:name=\"androidx.navigation.fragment.NavHostFragment\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"0dp\"\r\n        app:layout_constraintVertical_weight=\"1\"\r\n        android:layout_gravity=\"center_horizontal\"\r\n        app:defaultNavHost=\"true\"\r\n        app:layout_constraintBottom_toTopOf=\"@id/BottomNavigation\"\r\n        app:layout_constraintTop_toBottomOf=\"@id/titleBar\"\r\n        app:navGraph=\"@navigation/nav_graph\" />\r\n\r\n<!--bottom navigation-->\r\n    <androidx.constraintlayout.widget.ConstraintLayout\r\n        android:id=\"@+id/BottomNavigation\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"60dp\"\r\n        android:background=\"@drawable/top_rounded\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        tools:layout_editor_absoluteX=\"-16dp\">\r\n\r\n\r\n        <!--        Layout for Home button and text-->\r\n        <LinearLayout\r\n            android:id=\"@+id/HomeLayout\"\r\n            android:layout_width=\"60dp\"\r\n            android:layout_height=\"match_parent\"\r\n            android:orientation=\"vertical\"\r\n            app:layout_constraintStart_toStartOf=\"parent\">\r\n            <!-- home icon-->\r\n            <ImageButton\r\n                android:id=\"@+id/HomeButton\"\r\n                android:layout_width=\"40dp\"\r\n                android:layout_height=\"40dp\"\r\n                android:layout_gravity=\"center\"\r\n                android:background=\"@color/Transperent\"\r\n                android:scaleType=\"fitXY\"\r\n                android:src=\"@drawable/house_regular_full\"\r\n                />\r\n\r\n            <TextView\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:gravity=\"center\"\r\n                android:text=\"Home\"\r\n                android:textColor=\"@color/black\"\r\n                android:textSize=\"18sp\"\r\n                android:textStyle=\"bold\" />\r\n        </LinearLayout>\r\n\r\n\r\n        <!-- Layout for Student button and text-->\r\n        <LinearLayout\r\n            android:id=\"@+id/StudentLayout\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"match_parent\"\r\n            android:orientation=\"vertical\"\r\n            app:layout_constraintEnd_toStartOf=\"@+id/ReportLayout\"\r\n            app:layout_constraintStart_toEndOf=\"@id/HomeLayout\"\r\n\r\n            >\r\n            <!--            student icon-->\r\n            <ImageButton\r\n                android:id=\"@+id/StudentButton\"\r\n                android:layout_width=\"40dp\"\r\n                android:layout_height=\"40dp\"\r\n                android:layout_gravity=\"center\"\r\n\r\n                android:background=\"@color/Transperent\"\r\n                android:scaleType=\"fitXY\"\r\n                android:src=\"@drawable/user_regular_full\" />\r\n\r\n            <!--            report icon here-->\r\n            <TextView\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:gravity=\"center\"\r\n                android:text=\"Students\"\r\n                android:textColor=\"@color/black\"\r\n                android:textSize=\"18sp\"\r\n                android:textStyle=\"bold\" />\r\n        </LinearLayout>\r\n\r\n\r\n        <!-- Layout for Report button and text-->\r\n        <LinearLayout\r\n            android:id=\"@+id/ReportLayout\"\r\n            android:layout_width=\"60dp\"\r\n            android:layout_height=\"match_parent\"\r\n            android:orientation=\"vertical\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\">\r\n\r\n            <ImageButton\r\n                android:id=\"@+id/ReportButton\"\r\n                android:layout_width=\"40dp\"\r\n                android:layout_height=\"40dp\"\r\n                android:layout_gravity=\"center\"\r\n                android:background=\"@color/Transperent\"\r\n                android:scaleType=\"fitXY\"\r\n                android:src=\"@drawable/chart_bar_regular_full\" />\r\n\r\n            <TextView\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:gravity=\"center\"\r\n                android:text=\"Report\"\r\n                android:textColor=\"@color/black\"\r\n                android:textSize=\"18sp\"\r\n                android:textStyle=\"bold\" />\r\n        </LinearLayout>\r\n\r\n    </androidx.constraintlayout.widget.ConstraintLayout>\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_main.xml b/app/src/main/res/layout/activity_main.xml
+--- a/app/src/main/res/layout/activity_main.xml	(revision 0247957a444f184deb5a141cd1d4a42f35dc609b)
++++ b/app/src/main/res/layout/activity_main.xml	(date 1754416456564)
+@@ -60,11 +60,14 @@
+         app:layout_constraintTop_toBottomOf="@id/titleBar"
+         app:navGraph="@navigation/nav_graph" />
+ 
++
++
++
+ <!--bottom navigation-->
+     <androidx.constraintlayout.widget.ConstraintLayout
+         android:id="@+id/BottomNavigation"
+         android:layout_width="match_parent"
+-        android:layout_height="60dp"
++        android:layout_height="50dp"
+         android:background="@drawable/top_rounded"
+         app:layout_constraintBottom_toBottomOf="parent"
+         tools:layout_editor_absoluteX="-16dp">
+@@ -80,8 +83,8 @@
+             <!-- home icon-->
+             <ImageButton
+                 android:id="@+id/HomeButton"
+-                android:layout_width="40dp"
+-                android:layout_height="40dp"
++                android:layout_width="30dp"
++                android:layout_height="30dp"
+                 android:layout_gravity="center"
+                 android:background="@color/Transperent"
+                 android:scaleType="fitXY"
+@@ -112,8 +115,8 @@
+             <!--            student icon-->
+             <ImageButton
+                 android:id="@+id/StudentButton"
+-                android:layout_width="40dp"
+-                android:layout_height="40dp"
++                android:layout_width="30dp"
++                android:layout_height="30dp"
+                 android:layout_gravity="center"
+ 
+                 android:background="@color/Transperent"
+@@ -142,8 +145,8 @@
+ 
+             <ImageButton
+                 android:id="@+id/ReportButton"
+-                android:layout_width="40dp"
+-                android:layout_height="40dp"
++                android:layout_width="30dp"
++                android:layout_height="30dp"
+                 android:layout_gravity="center"
+                 android:background="@color/Transperent"
+                 android:scaleType="fitXY"
+Index: app/src/main/res/layout/admin_home.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<FrameLayout\r\n    xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    android:background=\"#8C8E8F99\"\r\n    tools:context=\".AdminHome\">\r\n\r\n<!--    course info -->\r\n    <LinearLayout\r\n        android:layout_width=\"400dp\"\r\n        android:layout_height=\"200dp\"\r\n        android:layout_marginTop=\"10dp\"\r\n  android:layout_gravity=\"top|center_horizontal\"\r\n       android:background=\"@drawable/border_rectangle\"\r\n        android:padding=\"5dp\"\r\n        >\r\n\r\n<!--course image here -->\r\n        <ImageView\r\n            android:id=\"@+id/CourseImage\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"match_parent\"\r\n            android:layout_centerInParent=\"true\"\r\n            android:scaleType=\"fitXY\"\r\n            android:src=\"@drawable/java\" />\r\n\r\n    </LinearLayout>\r\n\r\n<!--    faculty list horizontal-->\r\n    <LinearLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"70dp\"\r\n        android:background=\"@color/white\"\r\n        android:layout_marginTop=\"230dp\"\r\n        android:orientation=\"horizontal\">\r\n\r\n<!--        teachers view -->\r\n        <ImageView\r\n            android:layout_width=\"70dp\"\r\n            android:padding=\"6dp\"\r\n            android:layout_height=\"match_parent\"\r\n            android:layout_marginLeft=\"10dp\"\r\n            android:background=\"@drawable/round\"\r\n            android:src=\"@drawable/teacher\" />\r\n\r\n        <ImageView\r\n            android:layout_width=\"70dp\"\r\n            android:layout_height=\"match_parent\"\r\n            android:padding=\"6dp\"\r\n            android:layout_marginLeft=\"30dp\"\r\n            android:background=\"@drawable/round\"\r\n            android:src=\"@drawable/teacher\" />\r\n\r\n        <ImageView\r\n            android:layout_width=\"70dp\"\r\n            android:layout_height=\"match_parent\"\r\n            android:layout_marginLeft=\"30dp\"\r\n            android:padding=\"6dp\"\r\n            android:background=\"@drawable/round\"\r\n            android:src=\"@drawable/teacher\" />\r\n\r\n<!--        add faculty button-->\r\n        <ImageButton\r\n            android:layout_width=\"70dp\"\r\n            android:layout_height=\"70dp\"\r\n            android:padding=\"16dp\"\r\n            android:layout_marginLeft=\"30dp\"\r\n            android:background=\"@drawable/round\"\r\n            android:scaleType=\"fitXY\"\r\n            android:src=\"@drawable/plus_solid\" />\r\n    </LinearLayout>\r\n<!--add messege cardview-->\r\n    <androidx.cardview.widget.CardView\r\n        android:id=\"@+id/messegeBox\"\r\n        android:layout_width=\"200dp\"\r\n        android:layout_height=\"130dp\"\r\n        android:layout_marginLeft=\"20dp\"\r\n        android:layout_marginTop=\"350dp\"\r\n        android:backgroundTint=\"@color/white\"\r\n        app:cardCornerRadius=\"24dp\">\r\n\r\n        <TextView\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:background=\"@color/Transperent\"\r\n            android:layout_gravity=\"center\"\r\n            android:text=\"Add a note , messege\"\r\n            android:textColor=\"#81B43E\"\r\n            />\r\n    </androidx.cardview.widget.CardView>\r\n\r\n<!--fees fragment button-->\r\n    <androidx.cardview.widget.CardView\r\n        android:id=\"@+id/FeesCox\"\r\n        android:layout_width=\"150dp\"\r\n        android:layout_height=\"130dp\"\r\n        android:layout_marginTop=\"350dp\"\r\n        app:cardCornerRadius=\"24dp\"\r\n        android:backgroundTint=\"@color/white\"\r\n        android:layout_marginLeft=\"250dp\"\r\n        >\r\n\r\n<!--        rupee button-->\r\n        <ImageButton\r\n            android:id=\"@+id/FeesButton\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:src=\"@drawable/indian_rupee_sign_solid_full\"\r\n            android:scaleType=\"fitXY\"\r\n            android:layout_marginTop=\"10dp\"\r\n            android:background=\"@color/Transperent\"\r\n            android:layout_gravity=\"center\"/>\r\n\r\n        <TextView\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_gravity=\"center_horizontal\"\r\n            android:text=\"Manage Fees\" />\r\n    </androidx.cardview.widget.CardView>\r\n\r\n<!--    birthday info grid-->\r\n    <GridLayout\r\n        android:id=\"@+id/BirthdayInfo\"\r\n        android:layout_width=\"300dp\"\r\n        android:layout_height=\"150dp\"\r\n        android:layout_gravity=\"bottom|center_horizontal\"\r\n        android:layout_marginBottom=\"20dp\"\r\n        android:background=\"@drawable/rounded_rectangle\">\r\n\r\n<!--        cake image-->\r\n        <ImageView\r\n            android:layout_width=\"100dp\"\r\n            android:layout_height=\"match_parent\"\r\n            android:src=\"@drawable/cake_anim\" />\r\n\r\n<!--        wish msg and whatsapp button-->\r\n      <LinearLayout\r\n          android:layout_height=\"match_parent\"\r\n          android:layout_width=\"200dp\"\r\n          android:orientation=\"vertical\"\r\n          >\r\n          <TextView\r\n              android:id=\"@+id/BirthdayText\"\r\n              android:layout_width=\"190dp\"\r\n              android:layout_height=\"wrap_content\"\r\n              android:text=\"its student1's birthday\r\nWish Them on :-\"\r\n              android:textSize=\"16sp\" />\r\n\r\n\r\n          <ImageButton\r\n              android:id=\"@+id/WhatsappButton\"\r\n              android:layout_height=\"80dp\"\r\n              android:layout_width=\"80dp\"\r\n              android:layout_gravity=\"bottom\"\r\n              android:scaleType=\"fitXY\"\r\n              android:layout_marginTop=\"10dp\"\r\n              android:background=\"@color/Transperent\"\r\n              android:src=\"@drawable/whatsapp_logo\"\r\n              android:layout_marginStart=\"50dp\"\r\n\r\n              />\r\n      </LinearLayout>\r\n\r\n    </GridLayout>\r\n\r\n\r\n</FrameLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/admin_home.xml b/app/src/main/res/layout/admin_home.xml
+--- a/app/src/main/res/layout/admin_home.xml	(revision 0247957a444f184deb5a141cd1d4a42f35dc609b)
++++ b/app/src/main/res/layout/admin_home.xml	(date 1754499718658)
+@@ -5,7 +5,7 @@
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+-    android:background="#8C8E8F99"
++    android:background="@color/ColorBG"
+     tools:context=".AdminHome">
+ 
+ <!--    course info -->
+@@ -32,14 +32,14 @@
+ <!--    faculty list horizontal-->
+     <LinearLayout
+         android:layout_width="match_parent"
+-        android:layout_height="70dp"
++        android:layout_height="50dp"
+         android:background="@color/white"
+         android:layout_marginTop="230dp"
+         android:orientation="horizontal">
+ 
+ <!--        teachers view -->
+         <ImageView
+-            android:layout_width="70dp"
++            android:layout_width="50dp"
+             android:padding="6dp"
+             android:layout_height="match_parent"
+             android:layout_marginLeft="10dp"
+@@ -47,80 +47,97 @@
+             android:src="@drawable/teacher" />
+ 
+         <ImageView
+-            android:layout_width="70dp"
++            android:layout_width="50dp"
+             android:layout_height="match_parent"
+             android:padding="6dp"
+-            android:layout_marginLeft="30dp"
++            android:layout_marginLeft="40dp"
+             android:background="@drawable/round"
+             android:src="@drawable/teacher" />
+ 
+         <ImageView
+-            android:layout_width="70dp"
++            android:layout_width="50dp"
+             android:layout_height="match_parent"
+-            android:layout_marginLeft="30dp"
++            android:layout_marginLeft="40dp"
+             android:padding="6dp"
+             android:background="@drawable/round"
+             android:src="@drawable/teacher" />
+ 
+ <!--        add faculty button-->
+         <ImageButton
+-            android:layout_width="70dp"
+-            android:layout_height="70dp"
++            android:layout_width="50dp"
++            android:layout_height="50dp"
+             android:padding="16dp"
+-            android:layout_marginLeft="30dp"
++            android:layout_marginLeft="50dp"
+             android:background="@drawable/round"
+             android:scaleType="fitXY"
+             android:src="@drawable/plus_solid" />
+     </LinearLayout>
+-<!--add messege cardview-->
+-    <androidx.cardview.widget.CardView
+-        android:id="@+id/messegeBox"
+-        android:layout_width="200dp"
+-        android:layout_height="130dp"
+-        android:layout_marginLeft="20dp"
+-        android:layout_marginTop="350dp"
+-        android:backgroundTint="@color/white"
+-        app:cardCornerRadius="24dp">
++
++    <androidx.constraintlayout.widget.ConstraintLayout
++        android:layout_width="match_parent"
++        android:layout_height="200dp"
++        android:layout_marginTop="350dp">
++
++        <!--add messege cardview-->
++        <androidx.cardview.widget.CardView
++            android:id="@+id/messegeBox"
++            android:layout_width="200dp"
++            android:layout_height="130dp"
++            android:backgroundTint="@color/white"
++            app:cardCornerRadius="24dp"
++            app:layout_constraintStart_toStartOf="parent"
++            app:layout_constraintEnd_toStartOf="@id/FeesBox"
++            app:layout_constraintTop_toTopOf="parent"
++            app:layout_constraintBottom_toBottomOf="parent"
++            >
+ 
+-        <TextView
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:background="@color/Transperent"
+-            android:layout_gravity="center"
+-            android:text="Add a note , messege"
+-            android:textColor="#81B43E"
+-            />
+-    </androidx.cardview.widget.CardView>
++            <TextView
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:background="@color/Transperent"
++                android:layout_gravity="center"
++                android:text="Add a note , messege"
++                android:textColor="#81B43E"
++                />
++        </androidx.cardview.widget.CardView>
+ 
+-<!--fees fragment button-->
+-    <androidx.cardview.widget.CardView
+-        android:id="@+id/FeesCox"
+-        android:layout_width="150dp"
+-        android:layout_height="130dp"
+-        android:layout_marginTop="350dp"
+-        app:cardCornerRadius="24dp"
+-        android:backgroundTint="@color/white"
+-        android:layout_marginLeft="250dp"
+-        >
++        <!--fees fragment button-->
++        <androidx.cardview.widget.CardView
++            android:id="@+id/FeesBox"
++            android:layout_width="150dp"
++            android:layout_height="130dp"
++            app:cardCornerRadius="24dp"
++            android:backgroundTint="@color/white"
++            app:layout_constraintTop_toTopOf="parent"
++            app:layout_constraintBottom_toBottomOf="parent"
++            app:layout_constraintStart_toEndOf="@id/messegeBox"
++            app:layout_constraintEnd_toEndOf="parent"
++            >
+ 
+-<!--        rupee button-->
+-        <ImageButton
+-            android:id="@+id/FeesButton"
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:src="@drawable/indian_rupee_sign_solid_full"
+-            android:scaleType="fitXY"
+-            android:layout_marginTop="10dp"
+-            android:background="@color/Transperent"
+-            android:layout_gravity="center"/>
++            <!--        rupee button-->
++            <ImageButton
++                android:id="@+id/FeesButton"
++                android:layout_width="80dp"
++                android:layout_height="80dp"
++                android:src="@drawable/indian_rupee_sign_solid_full"
++                android:scaleType="fitXY"
++                android:layout_marginRight="20dp"
++                android:layout_marginTop="20dp"
++                android:background="@color/Transperent"
++                android:layout_gravity="center"/>
+ 
+-        <TextView
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:layout_gravity="center_horizontal"
+-            android:text="Manage Fees" />
+-    </androidx.cardview.widget.CardView>
++            <TextView
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:layout_marginTop="10dp"
++                android:layout_gravity="center_horizontal"
++                android:text="Manage Fees" />
++        </androidx.cardview.widget.CardView>
+ 
++    </androidx.constraintlayout.widget.ConstraintLayout>
++
++
++
+ <!--    birthday info grid-->
+     <GridLayout
+         android:id="@+id/BirthdayInfo"
+@@ -167,5 +184,22 @@
+ 
+     </GridLayout>
+ 
++<!--<LinearLayout-->
++<!--    android:layout_width="300dp"-->
++<!--    android:layout_height="wrap_content"-->
++<!--    android:layout_gravity="bottom|center_horizontal"-->
++<!--    android:layout_marginBottom="10dp"-->
++<!--    >-->
++
++<!--    <EditText-->
++<!--android:id="@+id/EditBirthdaytext"-->
++<!--        android:background="@color/white"-->
++<!--        android:layout_width="match_parent"-->
++<!--        android:layout_height="wrap_content"-->
++<!--    android:text="Wishing you a very happy birthday {Student Name} from team RT Soft Solutions!"-->
++<!--   android:textSize="20sp"-->
++<!--        />-->
++
++<!--</LinearLayout>-->
+ 
+ </FrameLayout>
+\ No newline at end of file
+Index: app/src/main/java/com/example/rtsoftsolutions/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.rtsoftsolutions;\r\nimport android.os.Bundle;\r\nimport com.google.android.material.snackbar.Snackbar;\r\nimport androidx.annotation.NonNull;\r\nimport androidx.annotation.Nullable;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\nimport android.view.View;\r\nimport androidx.fragment.app.Fragment;\r\nimport androidx.fragment.app.FragmentTransaction;\r\nimport androidx.navigation.NavController;\r\nimport androidx.navigation.NavHostController;\r\nimport androidx.navigation.Navigation;\r\nimport androidx.navigation.fragment.NavHostFragment;\r\nimport androidx.navigation.ui.AppBarConfiguration;\r\nimport androidx.navigation.ui.NavigationUI;\r\nimport androidx.recyclerview.widget.LinearLayoutManager;\r\nimport androidx.recyclerview.widget.RecyclerView;\r\nimport com.example.rtsoftsolutions.databinding.ActivityMainBinding;\r\nimport android.view.Menu;\r\nimport android.view.MenuItem;\r\nimport com.google.firebase.database.DataSnapshot;\r\nimport com.google.firebase.database.DatabaseError;\r\nimport com.google.firebase.database.DatabaseReference;\r\nimport com.google.firebase.database.FirebaseDatabase;\r\nimport com.google.firebase.database.ValueEventListener;\r\nimport android.util.Log; // For logging the value\r\nimport android.widget.ImageButton;\r\nimport android.widget.TextView;\r\n\r\npublic class MainActivity extends AppCompatActivity {\r\n\r\n    //changes from madhav\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_main); // Your layout\r\n        Fragment AdminHome = new AdminHome(); // your target fragment\r\n\r\n    }\r\n\r\n   @Override\r\n    protected void onStart() {\r\n        super.onStart();\r\n        NavController navController = Navigation.findNavController(this , R.id.ContainerView);\r\n\r\n       FirebaseDatabase database = FirebaseDatabase.getInstance(\"http://10.0.2.2:9000/?ns=rtsoftsolutions-fc2cf\");\r\n       database.useEmulator(\"10.0.2.2\", 9000);\r\n       DatabaseReference ref = database.getReference(\"testNode\");\r\n       ref.setValue(\"Hello from Emulator\")\r\n               .addOnCompleteListener(task -> {\r\n                   if (task.isSuccessful()) {\r\n                       Log.d(\"FirebaseTest\", \"Data written successfully.\");\r\n                   } else {\r\n                       Log.e(\"FirebaseTest\", \"Write failed.\", task.getException());\r\n                   }\r\n               });\r\n\r\n       ImageButton homeB = findViewById(R.id.HomeButton);\r\n       ImageButton studentB = findViewById(R.id.StudentButton);\r\n       ImageButton reportB = findViewById(R.id.ReportButton);\r\n\r\n       homeB.setOnClickListener(v->{\r\n           navController.navigate(R.id.action_global_AdminHome);\r\n\r\n           homeB.setImageResource(R.drawable.house_regular_full_green);\r\n           studentB.setImageResource(R.drawable.user_regular_full);\r\n           reportB.setImageResource(R.drawable.chart_bar_regular_full);\r\n       });\r\n\r\n       studentB.setOnClickListener(v->{\r\n           navController.navigate(R.id.action_global_studentmanager);\r\n           homeB.setImageResource(R.drawable.house_regular_full);\r\n           studentB.setImageResource(R.drawable.user_regular_full_green);\r\n           reportB.setImageResource(R.drawable.chart_bar_regular_full);\r\n       });\r\n\r\n       reportB.setOnClickListener(v->{\r\n           navController.navigate(R.id.action_global_fragmentReport);\r\n           homeB.setImageResource(R.drawable.house_regular_full);\r\n           studentB.setImageResource(R.drawable.user_regular_full);\r\n           reportB.setImageResource(R.drawable.chart_bar_regular_full_green);\r\n       });\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/rtsoftsolutions/MainActivity.java b/app/src/main/java/com/example/rtsoftsolutions/MainActivity.java
+--- a/app/src/main/java/com/example/rtsoftsolutions/MainActivity.java	(revision 0247957a444f184deb5a141cd1d4a42f35dc609b)
++++ b/app/src/main/java/com/example/rtsoftsolutions/MainActivity.java	(date 1754416851764)
+@@ -15,7 +15,6 @@
+ import androidx.navigation.ui.NavigationUI;
+ import androidx.recyclerview.widget.LinearLayoutManager;
+ import androidx.recyclerview.widget.RecyclerView;
+-import com.example.rtsoftsolutions.databinding.ActivityMainBinding;
+ import android.view.Menu;
+ import android.view.MenuItem;
+ import com.google.firebase.database.DataSnapshot;
+@@ -25,6 +24,7 @@
+ import com.google.firebase.database.ValueEventListener;
+ import android.util.Log; // For logging the value
+ import android.widget.ImageButton;
++import android.widget.LinearLayout;
+ import android.widget.TextView;
+ 
+ public class MainActivity extends AppCompatActivity {
+@@ -43,25 +43,17 @@
+         super.onStart();
+         NavController navController = Navigation.findNavController(this , R.id.ContainerView);
+ 
+-       FirebaseDatabase database = FirebaseDatabase.getInstance("http://10.0.2.2:9000/?ns=rtsoftsolutions-fc2cf");
+-       database.useEmulator("10.0.2.2", 9000);
+-       DatabaseReference ref = database.getReference("testNode");
+-       ref.setValue("Hello from Emulator")
+-               .addOnCompleteListener(task -> {
+-                   if (task.isSuccessful()) {
+-                       Log.d("FirebaseTest", "Data written successfully.");
+-                   } else {
+-                       Log.e("FirebaseTest", "Write failed.", task.getException());
+-                   }
+-               });
+-
+        ImageButton homeB = findViewById(R.id.HomeButton);
+        ImageButton studentB = findViewById(R.id.StudentButton);
+        ImageButton reportB = findViewById(R.id.ReportButton);
+ 
++       LinearLayout Homebg = findViewById(R.id.HomeLayout);
++       LinearLayout Studentbg = findViewById(R.id.HomeLayout);
++       LinearLayout Reportbgbg = findViewById(R.id.ReportLayout);
++
++
+        homeB.setOnClickListener(v->{
+            navController.navigate(R.id.action_global_AdminHome);
+-
+            homeB.setImageResource(R.drawable.house_regular_full_green);
+            studentB.setImageResource(R.drawable.user_regular_full);
+            reportB.setImageResource(R.drawable.chart_bar_regular_full);
+Index: app/src/main/res/layout/fragment_add_student_.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    tools:context=\".AddStudent_Fragment\"\r\n    android:layout_marginTop=\"10dp\"\r\n    android:id=\"@+id/studentmanagerroot\"\r\n    android:background=\"@color/white\"\r\n    >\r\n\r\n    <!-- TODO: Update blank fragment layout -->\r\n\r\n\r\n    <TextView\r\n        android:id=\"@+id/titlecard\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"50dp\"\r\n        android:layout_marginTop=\"4dp\"\r\n        android:background=\"@color/Accent_green\"\r\n        android:gravity=\"center\"\r\n        android:hint=\"Add new Student\"\r\n        android:textColorHint=\"#3E0101\"\r\n        android:textSize=\"30sp\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.0\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <LinearLayout\r\n        android:backgroundTint=\"#E4DEDE\"\r\n        android:background=\"@drawable/rounded_rectangle\"\r\n        android:id=\"@+id/imageview\"\r\n        android:layout_width=\"110dp\"\r\n        android:layout_height=\"110dp\"\r\n        android:layout_marginTop=\"24dp\"\r\n        android:layout_marginEnd=\"16dp\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@id/titlecard\"\r\n        android:orientation=\"vertical\">\r\n\r\n        <TextView android:layout_width=\"100dp\"\r\n            android:layout_marginTop=\"10dp\"\r\n            android:layout_height=\"20dp\"\r\n            android:text=\"Select an Image\"\r\n            android:gravity=\"center\"\r\n            android:layout_gravity=\"center_horizontal\"\r\n            />\r\n\r\n        <ImageView\r\n            android:id=\"@+id/imageholder\"\r\n            android:layout_width=\"50dp\"\r\n            android:layout_height=\"50dp\"\r\n            android:layout_marginTop=\"10dp\"\r\n            android:layout_gravity=\"center_horizontal|bottom\"\r\n            android:background=\"@drawable/plus_solid\" />\r\n    </LinearLayout>\r\n\r\n    <EditText\r\n        android:id=\"@+id/emailinput\"\r\n        android:layout_width=\"250dp\"\r\n        android:layout_height=\"35dp\"\r\n        android:layout_marginStart=\"30dp\"\r\n        android:layout_marginEnd=\"10dp\"\r\n        android:background=\"@color/Accent_green\"\r\n        android:hint=\"Enter Email\"\r\n        android:padding=\"0dp\"\r\n        android:paddingStart=\"10dp\"\r\n        android:textColorHint=\"#020000\"\r\n        app:layout_constraintBottom_toBottomOf=\"@id/imageview\"\r\n        app:layout_constraintEnd_toStartOf=\"@id/imageview\"\r\n        app:layout_constraintHorizontal_bias=\"1.0\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"@id/imageview\"\r\n        app:layout_constraintVertical_bias=\"0.866\" />\r\n\r\n    <EditText\r\n        android:paddingStart=\"10dp\"\r\n        android:background=\"@color/Accent_green\"\r\n        app:layout_constraintEnd_toStartOf=\"@id/imageview\"\r\n        android:id=\"@+id/nameinput\"\r\n        android:layout_width=\"250dp\"\r\n        android:layout_height=\"35dp\"\r\n        android:layout_marginStart=\"16dp\"\r\n        android:layout_marginTop=\"16dp\"\r\n        android:hint=\"Enter name\"\r\n        android:inputType=\"textEmailAddress\"\r\n        android:padding=\"0dp\"\r\n\r\n        android:textColorHint=\"#01111F\"\r\n        app:layout_constraintBottom_toBottomOf=\"@id/imageview\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/emailinput\"\r\n        app:layout_constraintTop_toTopOf=\"@id/imageview\"\r\n        app:layout_constraintVertical_bias=\"0.0\" />\r\n\r\n    <EditText\r\n        android:paddingStart=\"10dp\"\r\n        android:background=\"@color/Accent_green\"\r\n        android:id=\"@+id/phoneinput\"\r\n        android:layout_width=\"350dp\"\r\n        android:layout_height=\"35dp\"\r\n        android:layout_marginStart=\"24dp\"\r\n        android:layout_marginTop=\"20dp\"\r\n        android:hint=\"Enter Phone no\"\r\n        android:inputType=\"number\"\r\n        android:padding=\"0dp\"\r\n        android:textColorHint=\"#01111F\"\r\n\r\n\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@id/emailinput\" />\r\n\r\n    <EditText\r\n        android:paddingStart=\"10dp\"\r\n        android:background=\"@color/Accent_green\"\r\n        android:id=\"@+id/addressinput\"\r\n        android:layout_width=\"350dp\"\r\n        android:layout_height=\"35dp\"\r\n        android:layout_marginStart=\"24dp\"\r\n        android:layout_marginTop=\"16dp\"\r\n        android:hint=\"enter Address\"\r\n        android:padding=\"0dp\"\r\n        android:textColorHint=\"#01111F\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/phoneinput\" />\r\n\r\n\r\n    <EditText\r\n        android:paddingStart=\"10dp\"\r\n        android:background=\"@color/Accent_green\"\r\n        android:id=\"@+id/aadharinput\"\r\n        android:layout_width=\"350dp\"\r\n        android:layout_height=\"35dp\"\r\n        android:layout_marginStart=\"24dp\"\r\n        android:layout_marginTop=\"12dp\"\r\n        android:hint=\"Enter Aadhar no.\"\r\n        android:padding=\"0dp\"\r\n        android:textColorHint=\"#01111F\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/addressinput\" />\r\n\r\n    <EditText\r\n        android:paddingStart=\"10dp\"\r\n        android:background=\"@color/Accent_green\"\r\n        android:id=\"@+id/fathernameinput\"\r\n        android:layout_width=\"350dp\"\r\n        android:layout_height=\"35dp\"\r\n        android:layout_marginStart=\"24dp\"\r\n        android:layout_marginTop=\"16dp\"\r\n        android:hint=\"Enter Father's name\"\r\n        android:padding=\"0dp\"\r\n        android:textColorHint=\"#01111F\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/aadharinput\" />\r\n\r\n\r\n    <EditText\r\n        android:paddingStart=\"10dp \"\r\n        android:background=\"@color/Accent_green\"\r\n        android:id=\"@+id/mothernameinput\"\r\n        android:layout_width=\"350dp\"\r\n        android:layout_height=\"35dp\"\r\n        android:layout_marginStart=\"24dp\"\r\n        android:layout_marginTop=\"16dp\"\r\n        android:hint=\"Enter Mother's name\"\r\n        android:padding=\"0dp\"\r\n        android:textColorHint=\"#01111F\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/fathernameinput\" />\r\n\r\n    <EditText\r\n        android:paddingStart=\"10dp\"\r\n        android:background=\"@color/Accent_green\"\r\n        android:id=\"@+id/tpainput\"\r\n        android:layout_width=\"350dp\"\r\n        android:layout_height=\"35dp\"\r\n        android:layout_marginStart=\"24dp\"\r\n        android:layout_marginTop=\"16dp\"\r\n        android:hint=\"Total Payable Fees\"\r\n        android:inputType=\"number\"\r\n        android:padding=\"0dp\"\r\n        android:textColorHint=\"#01111F\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/mothernameinput\" />\r\n   <!-- input total payable fees -->\r\n\r\n    <EditText\r\n        android:id=\"@+id/amountfilled\"\r\n        android:layout_width=\"350dp\"\r\n        android:layout_height=\"35dp\"\r\n        android:layout_marginStart=\"24dp\"\r\n        android:layout_marginTop=\"16dp\"\r\n        android:background=\"@color/Accent_green\"\r\n        android:hint=\"Fees paid\"\r\n        android:inputType=\"number\"\r\n        android:padding=\"0dp\"\r\n        android:paddingStart=\"10dp\"\r\n        android:textColorHint=\"#01111F\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/tpainput\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/savedetails\"\r\n        android:layout_width=\"235dp\"\r\n        android:layout_height=\"55dp\"\r\n        android:layout_marginTop=\"28dp\"\r\n        android:backgroundTint=\"@color/white\"\r\n        android:elevation=\"20dp\"\r\n        android:hint=\"Save Details\"\r\n        android:padding=\"0dp\"\r\n        android:textColorHint=\"#000\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@id/amountfilled\" />\r\n\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_add_student_.xml b/app/src/main/res/layout/fragment_add_student_.xml
+--- a/app/src/main/res/layout/fragment_add_student_.xml	(revision 0247957a444f184deb5a141cd1d4a42f35dc609b)
++++ b/app/src/main/res/layout/fragment_add_student_.xml	(date 1754411356166)
+@@ -201,11 +201,42 @@
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/tpainput" />
+ 
++    <EditText
++        android:id="@+id/Batchname"
++        android:layout_width="350dp"
++        android:layout_height="35dp"
++        android:layout_marginStart="24dp"
++        android:layout_marginTop="16dp"
++        android:background="@color/Accent_green"
++        android:hint="Fees paid"
++        android:inputType="number"
++        android:padding="0dp"
++        android:paddingStart="10dp"
++        android:textColorHint="#01111F"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/amountfilled" />
++
++    <EditText
++        android:id="@+id/Coursename"
++        android:layout_width="350dp"
++        android:layout_height="35dp"
++        android:layout_marginStart="24dp"
++        android:layout_marginTop="16dp"
++        android:background="@color/Accent_green"
++        android:hint="Fees paid"
++        android:inputType="number"
++        android:padding="0dp"
++        android:paddingStart="10dp"
++        android:textColorHint="#01111F"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/Batchname" />
++
++
+     <Button
+         android:id="@+id/savedetails"
+         android:layout_width="235dp"
+         android:layout_height="55dp"
+-        android:layout_marginTop="28dp"
++        android:layout_marginTop="12dp"
+         android:backgroundTint="@color/white"
+         android:elevation="20dp"
+         android:hint="Save Details"
+@@ -213,7 +244,7 @@
+         android:textColorHint="#000"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toBottomOf="@id/amountfilled" />
++        app:layout_constraintTop_toBottomOf="@id/Coursename" />
+ 
+ 
+ </androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/fragment_studentmanager.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    tools:context=\".studentmanager\">\r\n\r\n\r\n    <FrameLayout\r\n        android:layout_marginTop=\"10dp\"\r\n        android:id=\"@+id/showcount\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        android:layout_width=\"305dp\"\r\n        android:layout_height=\"166dp\"\r\n        android:background=\"@drawable/roundedrectangle\"\r\n        android:layout_gravity=\"center_horizontal\"\r\n        android:elevation=\"10dp\"\r\n        >\r\n\r\n        <androidx.cardview.widget.CardView\r\n            android:layout_width=\"295dp\"\r\n            android:layout_height=\"158dp\"\r\n            android:layout_gravity=\"center\"\r\n            android:backgroundTint=\"@color/ColorPrimary\"\r\n            app:cardCornerRadius=\"24dp\"\r\n            app:cardElevation=\"100dp\">\r\n\r\n            <TextView\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"50dp\"\r\n                android:layout_gravity=\"right\"\r\n                android:layout_marginEnd=\"25dp\"\r\n                android:layout_marginTop=\"10dp\"\r\n                android:hint=\"Total Students\"\r\n                android:padding=\"0dp\"\r\n                android:textColorHint=\"@color/Accent_green\"\r\n                android:textSize=\"25dp\"/>\r\n            <TextView\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"50dp\"\r\n                android:layout_gravity=\"center_vertical|right\"\r\n                android:layout_marginEnd=\"80dp\"\r\n                android:hint=\"13121\"\r\n                android:padding=\"0dp\"\r\n                android:textColorHint=\"@color/Accent_green\"\r\n                android:textSize=\"25dp\"/>\r\n\r\n            <ImageView\r\n                android:layout_width=\"153dp\"\r\n                android:layout_height=\"175dp\"\r\n                android:layout_gravity=\"left\"\r\n                android:layout_marginStart=\"-20dp\"\r\n                android:layout_marginBottom=\"35dp\"\r\n                android:elevation=\"20dp\"\r\n                android:foreground=\"@drawable/student_anim\"\r\n                android:scaleType=\"fitXY\" />\r\n        </androidx.cardview.widget.CardView>\r\n    </FrameLayout>\r\n\r\n    <Button\r\n        android:id=\"@+id/addstudent\"\r\n        android:layout_width=\"150dp\"\r\n        android:layout_height=\"40dp\"\r\n        android:layout_marginTop=\"24dp\"\r\n        android:background=\"@color/ColorPrimary\"\r\n        android:hint=\"Add Student\"\r\n        android:textColorHint=\"#FFF\"\r\n        app:layout_constraintEnd_toStartOf=\"@id/viewstudent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/showcount\" />\r\n\r\n    <Button\r\n        android:hint=\"view student\"\r\n        android:textColorHint=\"#FFF\"\r\n        app:layout_constraintTop_toBottomOf=\"@id/showcount\"\r\n        android:id=\"@+id/viewstudent\"\r\n        android:layout_width=\"150dp\"\r\n        android:layout_height=\"40dp\"\r\n        android:background=\"@color/ColorPrimary\"\r\n        app:layout_constraintTop_toTopOf=\"@id/addstudent\"\r\n        app:layout_constraintBottom_toBottomOf=\"@id/addstudent\"\r\n        app:layout_constraintStart_toEndOf=\"@id/addstudent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"/>\r\n\r\n\r\n<!--    <androidx.fragment.app.FragmentContainerView\r\n        android:visibility=\"gone\"\r\n        android:layout_marginTop=\"10dp\"\r\n        android:id=\"@+id/fragmentContainerView3\"\r\n        android:name=\"androidx.navigation.fragment.NavHostFragment\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        app:defaultNavHost=\"true\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/viewstudent\"\r\n        app:navGraph=\"@navigation/nav_graphstudentmanager\"\r\n        />\r\n        -->\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_studentmanager.xml b/app/src/main/res/layout/fragment_studentmanager.xml
+--- a/app/src/main/res/layout/fragment_studentmanager.xml	(revision 0247957a444f184deb5a141cd1d4a42f35dc609b)
++++ b/app/src/main/res/layout/fragment_studentmanager.xml	(date 1754413870218)
+@@ -3,6 +3,7 @@
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
++    android:background="@color/ColorBG"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     tools:context=".studentmanager">
+ 
+Index: app/src/main/java/com/example/rtsoftsolutions/Login_Fragment.java
+===================================================================
+diff --git a/app/src/main/java/com/example/rtsoftsolutions/Login_Fragment.java b/app/src/main/java/com/example/rtsoftsolutions/Login_Fragment.java
+new file mode 100644
+--- /dev/null	(date 1754411356151)
++++ b/app/src/main/java/com/example/rtsoftsolutions/Login_Fragment.java	(date 1754411356151)
+@@ -0,0 +1,34 @@
++package com.example.rtsoftsolutions;
++
++import android.os.Bundle;
++import android.view.LayoutInflater;
++import android.view.View;
++import android.view.ViewGroup;
++
++import androidx.annotation.NonNull;
++import androidx.annotation.Nullable;
++import androidx.fragment.app.Fragment;
++import androidx.navigation.Navigation;
++
++public class Login_Fragment extends Fragment {
++
++    @Override
++    public void onCreate(@Nullable Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++    }
++
++    @Nullable
++    @Override
++    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
++        return inflater.inflate(R.layout.fragment_login, container, false) ;
++    }
++
++    @Override
++    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
++        super.onViewCreated(view, savedInstanceState);
++
++        view.findViewById(R.id.loginButton).setOnClickListener(v -> {
++            Navigation.findNavController(v).navigate(R.id.action_login_Fragment_to_signup_Fragment);
++        });
++    }
++}
+Index: app/src/main/res/drawable/rectangle_with_red_background.xml
+===================================================================
+diff --git a/app/src/main/res/drawable/rectangle_with_red_background.xml b/app/src/main/res/drawable/rectangle_with_red_background.xml
+new file mode 100644
+--- /dev/null	(date 1754411356160)
++++ b/app/src/main/res/drawable/rectangle_with_red_background.xml	(date 1754411356160)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="utf-8"?>
++<shape xmlns:android="http://schemas.android.com/apk/res/android">
++   <corners android:radius="15dp" />
++    <stroke android:width="3dp" android:color="#DC5A27"/>
++    <solid android:color="#D6D0D0"/>
++</shape>
+\ No newline at end of file
+Index: app/src/main/res/drawable/mediumsizedcontainer.xml
+===================================================================
+diff --git a/app/src/main/res/drawable/mediumsizedcontainer.xml b/app/src/main/res/drawable/mediumsizedcontainer.xml
+new file mode 100644
+--- /dev/null	(date 1754411356160)
++++ b/app/src/main/res/drawable/mediumsizedcontainer.xml	(date 1754411356160)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="utf-8"?>
++<shape xmlns:android="http://schemas.android.com/apk/res/android">
++     <corners android:radius="15dp" />
++     <solid android:color="@color/ColorSecondary"/>
++
++</shape>
+\ No newline at end of file
+Index: app/src/main/res/drawable/line.xml
+===================================================================
+diff --git a/app/src/main/res/drawable/line.xml b/app/src/main/res/drawable/line.xml
+new file mode 100644
+--- /dev/null	(date 1754411356158)
++++ b/app/src/main/res/drawable/line.xml	(date 1754411356158)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="utf-8"?>
++<shape xmlns:android="http://schemas.android.com/apk/res/android"
++    android:shape="rectangle">
++
++    <solid android:color="@color/white" />
++    <stroke android:color="@color/white" android:width="2dp" />
++
++</shape>
+\ No newline at end of file
+Index: app/src/main/res/drawable/capsule.xml
+===================================================================
+diff --git a/app/src/main/res/drawable/capsule.xml b/app/src/main/res/drawable/capsule.xml
+new file mode 100644
+--- /dev/null	(date 1754411356156)
++++ b/app/src/main/res/drawable/capsule.xml	(date 1754411356156)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="utf-8"?>
++<shape xmlns:android="http://schemas.android.com/apk/res/android">
++     <corners android:radius="25dp" />
++     <stroke android:color="@color/white" />
++     <solid  android:color="@color/white"/>
++     <size android:height="30dp" android:width="100dp"  />
++
++</shape>
+\ No newline at end of file
+Index: app/src/main/res/drawable/mediumcurvedrectangle.xml
+===================================================================
+diff --git a/app/src/main/res/drawable/mediumcurvedrectangle.xml b/app/src/main/res/drawable/mediumcurvedrectangle.xml
+new file mode 100644
+--- /dev/null	(date 1754411356159)
++++ b/app/src/main/res/drawable/mediumcurvedrectangle.xml	(date 1754411356159)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="utf-8"?>
++<shape xmlns:android="http://schemas.android.com/apk/res/android">
++   <corners android:radius="15dp" />
++    <solid
++        android:color="#FFC400"/>
++</shape>
+\ No newline at end of file
+Index: app/src/main/java/com/example/rtsoftsolutions/Fragment_feesReport.java
+===================================================================
+diff --git a/app/src/main/java/com/example/rtsoftsolutions/Fragment_feesReport.java b/app/src/main/java/com/example/rtsoftsolutions/Fragment_feesReport.java
+new file mode 100644
+--- /dev/null	(date 1754411356150)
++++ b/app/src/main/java/com/example/rtsoftsolutions/Fragment_feesReport.java	(date 1754411356150)
+@@ -0,0 +1,24 @@
++package com.example.rtsoftsolutions;
++
++import android.os.Bundle;
++import android.view.LayoutInflater;
++import android.view.View;
++import android.view.ViewGroup;
++
++import androidx.annotation.NonNull;
++import androidx.annotation.Nullable;
++import androidx.fragment.app.Fragment;
++
++public class Fragment_feesReport extends Fragment {
++
++    @Override
++    public void onCreate(@Nullable Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++    }
++
++    @Nullable
++    @Override
++    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
++        return inflater.inflate(R.layout.fragment_feesreport , container , false) ;
++    }
++}
+Index: app/src/main/java/com/example/rtsoftsolutions/Signup_Fragment.java
+===================================================================
+diff --git a/app/src/main/java/com/example/rtsoftsolutions/Signup_Fragment.java b/app/src/main/java/com/example/rtsoftsolutions/Signup_Fragment.java
+new file mode 100644
+--- /dev/null	(date 1754411356153)
++++ b/app/src/main/java/com/example/rtsoftsolutions/Signup_Fragment.java	(date 1754411356153)
+@@ -0,0 +1,21 @@
++package com.example.rtsoftsolutions;
++
++import android.os.Bundle;
++import android.view.LayoutInflater;
++import android.view.View;
++import android.view.ViewGroup;
++
++import androidx.annotation.NonNull;
++import androidx.annotation.Nullable;
++import androidx.fragment.app.Fragment;
++
++public class Signup_Fragment extends Fragment {
++
++    @Nullable
++    @Override
++    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
++        return inflater.inflate(R.layout.fragment_signup, container, false) ;
++    }
++
++
++}
+Index: app/src/main/res/values/themes.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><resources xmlns:tools=\"http://schemas.android.com/tools\">\r\n    <!-- Base application theme. -->\r\n    <style name=\"Base.Theme.RTSoftSolutions\" parent=\"Theme.Material3.DayNight.NoActionBar\">\r\n        <!-- Customize your light theme here. -->\r\n        <!-- <item name=\"colorPrimary\">@color/my_light_primary</item> -->\r\n    </style>\r\n\r\n    <style name=\"Theme.RTSoftSolutions\" parent=\"Base.Theme.RTSoftSolutions\" />\r\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/themes.xml b/app/src/main/res/values/themes.xml
+--- a/app/src/main/res/values/themes.xml	(revision 0247957a444f184deb5a141cd1d4a42f35dc609b)
++++ b/app/src/main/res/values/themes.xml	(date 1754411356176)
+@@ -6,4 +6,25 @@
+     </style>
+ 
+     <style name="Theme.RTSoftSolutions" parent="Base.Theme.RTSoftSolutions" />
++
++    <style name="heading">
++        <item name="android:textSize">35sp</item>
++        <item name="android:textAlignment">center</item>
++        <item name="android:textColor">@color/black</item>
++        <item name="android:fontWeight">5</item>
++    </style>
++
++    <style name="subheading">
++    <item name="android:textSize">20sp</item>
++        <item name="android:textAlignment">center</item>
++        <item name="android:textColor">@color/black</item>
++        <item name="android:fontWeight">3</item>
++    </style>
++
++    <style name="normal">
++        <item name="android:textSize">15sp</item>
++        <item name="android:textAlignment">center</item>
++        <item name="android:textColor">@color/black</item>
++        <item name="android:fontWeight">3</item>
++    </style>
+ </resources>
+\ No newline at end of file
+Index: app/src/main/java/com/example/rtsoftsolutions/AuthenticationActivity.java
+===================================================================
+diff --git a/app/src/main/java/com/example/rtsoftsolutions/AuthenticationActivity.java b/app/src/main/java/com/example/rtsoftsolutions/AuthenticationActivity.java
+new file mode 100644
+--- /dev/null	(date 1754411356147)
++++ b/app/src/main/java/com/example/rtsoftsolutions/AuthenticationActivity.java	(date 1754411356147)
+@@ -0,0 +1,38 @@
++package com.example.rtsoftsolutions;
++
++import android.content.Context;
++import android.os.Bundle;
++import android.util.AttributeSet;
++import android.view.LayoutInflater;
++import android.view.View;
++
++import androidx.annotation.NonNull;
++import androidx.annotation.Nullable;
++import androidx.appcompat.app.AppCompatActivity;
++import androidx.databinding.DataBindingUtil;
++import androidx.navigation.NavController;
++import androidx.navigation.Navigation;
++
++import com.example.rtsoftsolutions.databinding.ActivityAuthenticationBinding;
++
++public class AuthenticationActivity extends AppCompatActivity {
++
++    private ActivityAuthenticationBinding binding ;
++    @Override
++    protected void onCreate(@Nullable Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        binding = DataBindingUtil.setContentView(this , R.layout.activity_authentication) ;
++    }
++
++    @Nullable
++    @Override
++    public View onCreateView(@NonNull String name, @NonNull Context context, @NonNull AttributeSet attrs) {
++        return super.onCreateView(name, context, attrs);
++    }
++
++    @Override
++    protected void onStart() {
++        super.onStart();
++        NavController controller = Navigation.findNavController(AuthenticationActivity.this ,binding.fragmentContainerView.getId()) ;
++     }
++}
+Index: app/src/main/res/layout/faculty_home.xml
+===================================================================
+diff --git a/app/src/main/res/layout/faculty_home.xml b/app/src/main/res/layout/faculty_home.xml
+new file mode 100644
+--- /dev/null	(date 1754411356164)
++++ b/app/src/main/res/layout/faculty_home.xml	(date 1754411356164)
+@@ -0,0 +1,127 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout
++    xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent">
++
++    <!-- enter tasklist of teachers -->
++    <!-- padding encapsulates -->
++    <LinearLayout
++        android:id="@+id/faculty_tasklist"
++        android:layout_width="match_parent"
++        android:layout_height="0dp"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        android:layout_marginTop="20dp"
++        app:layout_constraintBottom_toTopOf="@id/batchtitle_container"
++        app:layout_constraintVertical_weight="6"
++        app:layout_constraintVertical_chainStyle="spread_inside">
++
++        <!-- padding -->
++        <View
++            android:layout_width="0dp"
++            android:layout_weight="0.07"
++            android:layout_height="match_parent" />
++      <!-- load task dynamically -->
++        <ScrollView
++            android:layout_width="0dp"
++            android:layout_weight="0.87"
++            android:layout_height="match_parent"
++            android:background="@drawable/mediumsizedcontainer">
++            <!-- populate this view dynamically -->
++            <LinearLayout
++                android:layout_width="match_parent"
++                android:layout_height="match_parent"
++                />
++
++        </ScrollView>
++      <!-- padding -->
++        <View
++            android:layout_width="0dp"
++            android:layout_weight="0.07"
++            android:layout_height="match_parent" />
++
++
++    </LinearLayout>
++
++    <!-- title bar for showing all batches -->
++
++    <!-- scrollview of batches under faculty -->
++    <LinearLayout
++        android:id="@+id/batchtitle_container"
++        android:layout_width="0dp"
++        android:layout_height="0dp"
++
++        android:orientation="horizontal"
++        app:layout_constraintBottom_toTopOf="@id/batchspinner"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.0"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@id/faculty_tasklist"
++        app:layout_constraintVertical_weight="2">
++
++        <!-- padding -->
++        <View
++            android:layout_width="0dp"
++            android:layout_height="match_parent"
++            android:layout_weight="0.07" />
++
++        <!-- content -->
++
++        <TextView
++            android:hint="All Batches"
++            style="@style/heading"
++            android:gravity="center"
++            android:id="@+id/faculty_batchtitle"
++            android:layout_width="0dp"
++            android:layout_height="44dp"
++            android:layout_gravity="center_vertical"
++            android:layout_weight="0.99"
++            android:background="@drawable/mediumcurvedrectangle"/>
++        <!-- padding -->
++        <View
++            android:layout_width="0dp"
++            android:layout_height="match_parent"
++            android:layout_weight="0.07" />
++    </LinearLayout>
++
++
++
++    <LinearLayout
++        android:orientation="horizontal"
++        android:id="@+id/batchspinner"
++        android:layout_width="match_parent"
++        android:layout_height="0dp"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@id/batchtitle_container"
++        app:layout_constraintVertical_weight="15">
++
++        <View
++            android:layout_width="0dp"
++            android:layout_weight="0.07"
++            android:layout_height="match_parent" />
++    <!-- scrollview -->
++        <ScrollView
++            android:background="@drawable/mediumroundedrectangle"
++            android:layout_width="0dp"
++            android:layout_weight="0.87"
++            android:layout_height="match_parent">
++            <!-- populate this from database -->
++        <LinearLayout
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:layout_gravity="center" />
++        </ScrollView>
++
++
++        <View
++            android:layout_width="0dp"
++            android:layout_weight="0.07"
++            android:layout_height="match_parent" />
++    </LinearLayout>
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/marking_attendance_fragment.xml
+===================================================================
+diff --git a/app/src/main/res/layout/marking_attendance_fragment.xml b/app/src/main/res/layout/marking_attendance_fragment.xml
+new file mode 100644
+--- /dev/null	(date 1754411356170)
++++ b/app/src/main/res/layout/marking_attendance_fragment.xml	(date 1754411356170)
+@@ -0,0 +1,182 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    xmlns:app="http://schemas.android.com/apk/res-auto">
++
++
++     <GridLayout
++          android:id="@+id/batchoverview"
++          app:layout_constraintTop_toTopOf="parent"
++          app:layout_constraintStart_toStartOf="parent"
++         app:layout_constraintEnd_toEndOf="parent"
++          android:layout_height="75dp"
++          android:layout_width="match_parent"
++          android:rowCount="2"
++          android:columnCount="2"
++         android:background="#C34922"
++         >
++         <LinearLayout
++             android:layout_width="200dp"
++             android:layout_height="40dp"
++             android:layout_row= "0"
++             android:layout_column="0">
++
++             <TextView
++                 android:textColor="@color/white"
++                 android:textSize="13sp"
++                 android:id="@+id/Batchnamelabel"
++                 android:layout_width="44dp"
++                 android:layout_height="match_parent"
++                 android:layout_weight="0.20"
++                 android:gravity="center_vertical"
++                 android:text="Batch Name :" />
++
++             <TextView
++                 android:id="@+id/fillBatchname"
++                 android:layout_height="match_parent"
++                 android:layout_width="0dp"
++                 android:layout_weight="0.80"/>
++         </LinearLayout>
++
++
++         <LinearLayout
++             android:layout_width="200dp"
++             android:layout_height="40dp"
++             android:layout_row= "0"
++             android:layout_column="1">
++
++             <TextView
++                 android:id="@+id/startdatelabel"
++                 android:layout_width="44dp"
++                 android:textColor="@color/white"
++                 android:layout_height="match_parent"
++                 android:layout_weight="0.20"
++                 android:gravity="center_vertical"
++                 android:text="Start Date :" />
++
++             <TextView
++                 android:id="@+id/fillstartdate"
++                 android:layout_height="match_parent"
++                 android:layout_width="0dp"
++                 android:layout_weight="0.80"/>
++         </LinearLayout>
++
++
++         <LinearLayout
++             android:layout_width="200dp"
++             android:layout_height="40dp"
++             android:layout_row= "1"
++             android:layout_column="0">
++
++             <TextView
++                 android:textColor="#FFF"
++                 android:id="@+id/noofstudentslabel"
++                 android:layout_width="44dp"
++                 android:layout_height="match_parent"
++                 android:layout_weight="0.20"
++                 android:gravity="center_vertical"
++                 android:text="no of students :" />
++
++             <TextView
++                 android:id="@+id/fillnoofstudents"
++                 android:layout_height="match_parent"
++                 android:layout_width="0dp"
++                 android:layout_weight="0.80"/>
++         </LinearLayout>
++
++
++
++         <LinearLayout
++             android:layout_width="200dp"
++             android:layout_height="40dp"
++             android:layout_row= "1"
++             android:layout_column="1"
++             android:text="Due Date : ">
++
++             <TextView
++                 android:textColor="@color/white"
++                 android:id="@+id/duedatelabel"
++                 android:layout_width="44dp"
++                 android:layout_height="match_parent"
++                 android:layout_weight="0.20"
++                 android:gravity="center_vertical"
++                 android:text="Due Dates :" />
++
++             <TextView
++                 android:id="@+id/fillduedate"
++                 android:layout_height="match_parent"
++                 android:layout_width="0dp"
++                 android:layout_weight="0.80"/>
++         </LinearLayout>
++     </GridLayout>
++
++
++    <LinearLayout
++        android:id="@+id/heading"
++        android:layout_marginTop="30dp"
++        android:orientation="horizontal"
++        android:layout_width="match_parent"
++        android:layout_height="50dp"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintTop_toBottomOf="@id/batchoverview">
++
++        <View
++            android:layout_width="0dp"
++            android:layout_weight="0.07"
++            android:layout_height="match_parent" />
++        <!-- scrollview -->
++
++            <!-- populate this from database -->
++            <TextView
++                android:hint="Mark Presentee"
++                style="@style/heading"
++                android:layout_width="0dp"
++                android:layout_weight="0.83"
++                android:layout_height="match_parent"
++                android:layout_gravity="center"
++                android:background="@drawable/mediumroundedrectangle"/>
++
++        <View
++            android:layout_width="0dp"
++            android:layout_weight="0.07"
++            android:layout_height="match_parent" />
++
++    </LinearLayout>
++
++
++    <LinearLayout
++        android:id="@+id/listview"
++        android:layout_marginTop="30dp"
++        android:orientation="horizontal"
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintTop_toBottomOf="@id/heading">
++
++        <View
++            android:layout_width="0dp"
++            android:layout_weight="0.07"
++            android:layout_height="match_parent" />
++        <!-- scrollview -->
++
++        <!-- populate this from database -->
++        <ScrollView
++            android:hint="Mark Presentee"
++            style="@style/heading"
++            android:layout_width="0dp"
++            android:layout_weight="0.83"
++            android:layout_height="match_parent"
++            android:layout_gravity="center" />
++
++        <View
++            android:layout_width="0dp"
++            android:layout_weight="0.07"
++            android:layout_height="match_parent"/>
++
++    </LinearLayout>
++
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/anim/rightswipe.xml
+===================================================================
+diff --git a/app/src/main/res/anim/rightswipe.xml b/app/src/main/res/anim/rightswipe.xml
+new file mode 100644
+--- /dev/null	(date 1754411356155)
++++ b/app/src/main/res/anim/rightswipe.xml	(date 1754411356155)
+@@ -0,0 +1,5 @@
++<?xml version="1.0" encoding="utf-8"?>
++<set xmlns:android="http://schemas.android.com/apk/res/android">
++    <translate android:fromXDelta="0dp" android:toXDelta="150dp" android:duration="2500" android:fillAfter="true"/>
++
++</set>
+\ No newline at end of file
+Index: app/src/main/res/anim/leftclick.xml
+===================================================================
+diff --git a/app/src/main/res/anim/leftclick.xml b/app/src/main/res/anim/leftclick.xml
+new file mode 100644
+--- /dev/null	(date 1754411356155)
++++ b/app/src/main/res/anim/leftclick.xml	(date 1754411356155)
+@@ -0,0 +1,4 @@
++<?xml version="1.0" encoding="utf-8"?>
++<set xmlns:android="http://schemas.android.com/apk/res/android">
++    <translate android:fromXDelta="0dp" android:toXDelta="-150dp" android:duration="2500" android:fillAfter="true" />
++</set>
+\ No newline at end of file
+Index: app/src/main/res/anim/fadeout.xml
+===================================================================
+diff --git a/app/src/main/res/anim/fadeout.xml b/app/src/main/res/anim/fadeout.xml
+new file mode 100644
+--- /dev/null	(date 1754411356154)
++++ b/app/src/main/res/anim/fadeout.xml	(date 1754411356154)
+@@ -0,0 +1,5 @@
++<?xml version="1.0" encoding="utf-8"?>
++<set xmlns:android="http://schemas.android.com/apk/res/android">
++   <alpha android:toAlpha="0.20"
++       android:fillAfter="true"/>
++</set>
+\ No newline at end of file
+Index: app/src/main/res/anim/fadein.xml
+===================================================================
+diff --git a/app/src/main/res/anim/fadein.xml b/app/src/main/res/anim/fadein.xml
+new file mode 100644
+--- /dev/null	(date 1754411356154)
++++ b/app/src/main/res/anim/fadein.xml	(date 1754411356154)
+@@ -0,0 +1,4 @@
++<?xml version="1.0" encoding="utf-8"?>
++<set xmlns:android="http://schemas.android.com/apk/res/android">
++    <alpha android:toAlpha="1" android:fromAlpha="1" android:fillAfter="true" />
++</set>
+\ No newline at end of file
+Index: app/src/main/res/navigation/authentication_nav_graph.xml
+===================================================================
+diff --git a/app/src/main/res/navigation/authentication_nav_graph.xml b/app/src/main/res/navigation/authentication_nav_graph.xml
+new file mode 100644
+--- /dev/null	(date 1754411356172)
++++ b/app/src/main/res/navigation/authentication_nav_graph.xml	(date 1754411356172)
+@@ -0,0 +1,19 @@
++<?xml version="1.0" encoding="utf-8"?>
++<navigation xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    android:id="@+id/authentication_nav_graph"
++    app:startDestination="@id/login_Fragment">
++
++    <fragment
++        android:id="@+id/login_Fragment"
++        android:name="com.example.rtsoftsolutions.Login_Fragment"
++        android:label="Login_Fragment" >
++        <action
++            android:id="@+id/action_login_Fragment_to_signup_Fragment"
++            app:destination="@id/signup_Fragment" />
++    </fragment>
++    <fragment
++        android:id="@+id/signup_Fragment"
++        android:name="com.example.rtsoftsolutions.Signup_Fragment"
++        android:label="Signup_Fragment" />
++</navigation>
+\ No newline at end of file
+Index: app/src/main/res/layout/fragment_login.xml
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_login.xml b/app/src/main/res/layout/fragment_login.xml
+new file mode 100644
+--- /dev/null	(date 1754498733884)
++++ b/app/src/main/res/layout/fragment_login.xml	(date 1754498733884)
+@@ -0,0 +1,123 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:background="@color/white"
++    tools:context=".Login_Fragment">
++
++
++    <!-- Login Card -->
++    <androidx.cardview.widget.CardView
++        android:id="@+id/loginCard"
++        android:layout_width="0dp"
++        android:layout_height="wrap_content"
++        android:minHeight="400dp"
++        android:layout_marginTop="200dp"
++        android:layout_marginHorizontal="32dp"
++        app:cardCornerRadius="16dp"
++        app:cardElevation="8dp"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintEnd_toEndOf="parent">
++
++        <androidx.constraintlayout.widget.ConstraintLayout
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:padding="24dp">
++
++            <!-- Title -->
++            <TextView
++                android:id="@+id/logintitle"
++                style="@style/heading"
++                android:layout_width="0dp"
++                android:layout_height="wrap_content"
++                android:layout_marginTop="-10dp"
++                android:gravity="center"
++                android:text="Login"
++                android:textColor="@color/ColorSecondary"
++                app:layout_constraintEnd_toEndOf="parent"
++                app:layout_constraintStart_toStartOf="parent"
++                app:layout_constraintTop_toTopOf="parent" />
++
++            <!-- Username -->
++            <EditText
++                android:id="@+id/username"
++                style="@style/normal"
++                android:layout_width="0dp"
++                android:layout_height="40dp"
++                android:layout_marginTop="24dp"
++                android:background="@drawable/rectangle_with_red_background"
++                android:backgroundTint="@color/ColorPrimary"
++                android:hint="Email or Username"
++                android:inputType="textEmailAddress"
++                android:textColor="@android:color/white"
++                android:textColorHint="@android:color/darker_gray"
++                app:layout_constraintEnd_toEndOf="parent"
++                app:layout_constraintStart_toStartOf="parent"
++                app:layout_constraintTop_toBottomOf="@id/logintitle" />
++
++            <!-- Password -->
++            <EditText
++                android:id="@+id/password"
++                style="@style/normal"
++                android:layout_width="0dp"
++                android:layout_height="40dp"
++                android:layout_marginTop="16dp"
++                android:background="@drawable/rectangle_with_red_background"
++                android:backgroundTint="@color/ColorPrimary"
++                android:hint="Password"
++                android:inputType="textPassword"
++                android:textColor="@color/white"
++                android:textColorHint="@android:color/darker_gray"
++                app:layout_constraintEnd_toEndOf="parent"
++                app:layout_constraintStart_toStartOf="parent"
++                app:layout_constraintTop_toBottomOf="@id/username" />
++
++            <!-- Forgot Password -->
++            <TextView
++                android:id="@+id/forgotPassword"
++                style="@style/normal"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:layout_marginTop="8dp"
++                android:text="Forgot Password?"
++                android:textColor="@color/ColorSecondary"
++                app:layout_constraintEnd_toEndOf="parent"
++                app:layout_constraintStart_toStartOf="parent"
++                app:layout_constraintTop_toBottomOf="@id/password" />
++
++            <!-- Login Button -->
++            <Button
++                android:id="@+id/loginButton"
++                style="@style/normal"
++                android:layout_width="0dp"
++                android:layout_height="wrap_content"
++                android:layout_marginTop="24dp"
++                android:background="@drawable/rectangle_with_red_background"
++                android:backgroundTint="@color/ColorSecondary"
++                android:backgroundTintMode="add"
++                android:text="Login"
++                android:textColor="@android:color/white"
++                app:layout_constraintEnd_toEndOf="parent"
++                app:layout_constraintStart_toStartOf="parent"
++                app:layout_constraintTop_toBottomOf="@id/forgotPassword" />
++
++            <!-- Signup Redirect -->
++            <TextView
++                android:id="@+id/signupRedirect"
++                style="@style/normal"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:layout_marginTop="16dp"
++                android:text="Don't have an account? Sign up"
++                android:textColor="@color/ColorSecondary"
++                app:layout_constraintEnd_toEndOf="parent"
++                app:layout_constraintStart_toStartOf="parent"
++                app:layout_constraintTop_toBottomOf="@id/loginButton" />
++
++        </androidx.constraintlayout.widget.ConstraintLayout>
++    </androidx.cardview.widget.CardView>
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/fragment_feesreport.xml
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_feesreport.xml b/app/src/main/res/layout/fragment_feesreport.xml
+new file mode 100644
+--- /dev/null	(date 1754411356167)
++++ b/app/src/main/res/layout/fragment_feesreport.xml	(date 1754411356167)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent">
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_authentication.xml
+===================================================================
+diff --git a/app/src/main/res/layout/activity_authentication.xml b/app/src/main/res/layout/activity_authentication.xml
+new file mode 100644
+--- /dev/null	(date 1754411356163)
++++ b/app/src/main/res/layout/activity_authentication.xml	(date 1754411356163)
+@@ -0,0 +1,70 @@
++<?xml version="1.0" encoding="utf-8"?>
++<layout>
++  <data>
++  </data>
++<androidx.constraintlayout.widget.ConstraintLayout
++    xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:background="@color/ColorBG"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    tools:context=".AuthenticationActivity"
++    >
++
++    <!--top panel -->
++    <LinearLayout
++        android:id="@+id/titleBar"
++        android:layout_width="match_parent"
++        android:layout_height="60dp"
++        app:layout_constraintTop_toTopOf="parent"
++        android:background="@color/ColorPrimary"
++        app:layout_constraintStart_toStartOf="parent">
++
++        <!--  logo here-->
++        <ImageView
++            android:id="@+id/logo"
++            android:layout_width="60dp"
++            android:layout_height="60dp"
++            android:src="@drawable/rt_logo"
++            />
++
++        <!--    name here-->
++        <TextView
++            android:layout_width="wrap_content"
++            android:layout_height="match_parent"
++            android:gravity="center"
++            android:text="RTSoftSolutions"
++            android:fontFamily="@font/itim"
++            android:layout_marginLeft="30dp"
++            android:textSize="32sp"
++            />
++
++        <!--    profile button here-->
++        <ImageButton
++            android:layout_width="50dp"
++            android:layout_height="50dp"
++            android:layout_marginLeft="30dp"
++            android:layout_marginTop="5dp"
++            android:scaleType="fitXY"
++            android:background="@color/Transperent"
++            android:src="@drawable/user_solid" />
++    </LinearLayout>
++
++
++    <!--    container here-->
++
++    <androidx.fragment.app.FragmentContainerView
++        android:id="@+id/fragmentContainerView"
++        android:name="androidx.navigation.fragment.NavHostFragment"
++        android:layout_width="match_parent"
++        android:layout_height="0dp"
++        app:layout_constraintVertical_weight="1"
++        android:layout_gravity="center_horizontal"
++        app:defaultNavHost="true"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintTop_toBottomOf="@id/titleBar"
++        app:navGraph="@navigation/authentication_nav_graph" />
++</androidx.constraintlayout.widget.ConstraintLayout>
++
++</layout>
+\ No newline at end of file
+Index: app/src/main/res/layout/attendence_view.xml
+===================================================================
+diff --git a/app/src/main/res/layout/attendence_view.xml b/app/src/main/res/layout/attendence_view.xml
+new file mode 100644
+--- /dev/null	(date 1754411356164)
++++ b/app/src/main/res/layout/attendence_view.xml	(date 1754411356164)
+@@ -0,0 +1,117 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:anrdoid="http://schemas.android.com/tools">
++
++    <LinearLayout
++        android:id="@+id/heading"
++        android:layout_marginTop="30dp"
++        android:orientation="horizontal"
++        android:layout_width="match_parent"
++        android:layout_height="60dp"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintTop_toTopOf="parent">
++       <!-- padding -->
++        <View
++            android:layout_width="0dp"
++            android:layout_weight="0.07"
++            android:layout_height="match_parent" />
++
++        <!-- put your main ui here code here -->
++        <LinearLayout
++            android:orientation="horizontal"
++            android:layout_width="0dp"
++            android:layout_weight="0.83"
++            android:layout_height="60dp"
++            android:background="@drawable/rectangle_with_red_background">
++             <!-- profile image -->
++            <ImageView
++                android:layout_width="0dp"
++                android:layout_weight="0.20"
++                android:layout_height="match_parent"/>
++
++
++            <!-- vertical bar -->
++            <View
++                android:layout_gravity="center_vertical"
++                android:layout_weight="0.01"
++                android:background="@drawable/line"
++                android:layout_width="0dp"
++                android:layout_height="50dp"/>
++
++
++            <!-- personal details -->
++            <LinearLayout
++                android:layout_marginStart="4dp"
++                android:layout_width="0dp"
++                android:layout_weight="0.58"
++                android:orientation="vertical"
++                android:layout_height="match_parent">
++
++                <TextView
++                    android:text="Name : "
++                    android:layout_weight="0.33"
++                    android:layout_width="match_parent"
++                    android:layout_height="0dp"/>
++                <TextView
++                    android:text="roll no : "
++                    android:layout_weight="0.33"
++                    android:layout_width="match_parent"
++                    android:layout_height="0dp"/>
++                <TextView
++                    android:text="email id : "
++                    android:layout_weight="0.33"
++                    android:layout_width="match_parent"
++                    android:layout_height="0dp"/>
++
++            </LinearLayout>
++
++            <!-- vertical bar -->
++            <View
++                android:background="@drawable/line"
++                android:layout_weight="0.01"
++                android:layout_width="0dp"
++                android:layout_height="50dp"
++                android:layout_gravity="center_vertical"/>
++
++            <LinearLayout
++                android:layout_marginStart="4dp"
++                android:orientation="vertical"
++                android:layout_width="0dp"
++                android:layout_weight="0.30"
++                android:layout_height="match_parent">
++
++
++                <TextView
++                    android:text="mark presentee"
++                    android:layout_width="match_parent"
++                    android:layout_height="0dp"
++                    android:layout_weight="0.30"
++                    />
++
++                <Spinner
++                    android:textAlignment="center"
++                    anrdoid:listitem="Absent"
++                    android:layout_width="match_parent"
++                    android:layout_height="0dp"
++                    android:layout_weight="0.50"
++                    />
++
++
++            </LinearLayout>
++
++        </LinearLayout>
++
++
++        <View
++            android:layout_width="0dp"
++            android:layout_weight="0.07"
++            android:layout_height="match_parent" />
++
++    </LinearLayout>
++
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/fragment_signup.xml
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_signup.xml b/app/src/main/res/layout/fragment_signup.xml
+new file mode 100644
+--- /dev/null	(date 1754411356169)
++++ b/app/src/main/res/layout/fragment_signup.xml	(date 1754411356169)
+@@ -0,0 +1,144 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:background="@color/white"
++    tools:context=".Signup_Fragment">
++
++        <!-- Signup Card -->
++        <androidx.cardview.widget.CardView
++            android:id="@+id/signupCard"
++            android:layout_width="0dp"
++            android:layout_height="wrap_content"
++            android:layout_marginHorizontal="32dp"
++            android:layout_marginTop="75dp"
++            app:cardCornerRadius="16dp"
++            app:cardElevation="8dp"
++
++            app:layout_constraintTop_toTopOf="parent"
++            app:layout_constraintStart_toStartOf="parent"
++            app:layout_constraintEnd_toEndOf="parent">
++
++            <androidx.constraintlayout.widget.ConstraintLayout
++                android:layout_width="match_parent"
++                android:layout_height="wrap_content"
++                android:padding="24dp">
++
++                <!-- Title -->
++                <TextView
++                    android:id="@+id/signupTitle"
++                    style="@style/heading"
++                    android:layout_width="0dp"
++                    android:layout_height="wrap_content"
++                    android:gravity="center"
++                    android:text="Sign Up"
++                    android:textColor="@color/ColorSecondary"
++                    app:layout_constraintEnd_toEndOf="parent"
++                    app:layout_constraintStart_toStartOf="parent"
++                    app:layout_constraintTop_toTopOf="parent" />
++
++                <!-- Name -->
++                <EditText
++                    android:id="@+id/name"
++                    style="@style/normal"
++                    android:layout_width="0dp"
++                    android:layout_height="wrap_content"
++                    android:layout_marginTop="24dp"
++                    android:background="@drawable/rectangle_with_red_background"
++                    android:backgroundTint="@color/ColorPrimary"
++                    android:hint="Full Name"
++                    android:minHeight="40dp"
++                    android:textColor="@android:color/white"
++                    android:textColorHint="@android:color/darker_gray"
++                    app:layout_constraintEnd_toEndOf="parent"
++                    app:layout_constraintStart_toStartOf="parent"
++                    app:layout_constraintTop_toBottomOf="@id/signupTitle" />
++
++                <!-- Email -->
++                <EditText
++                    android:id="@+id/email"
++                    style="@style/normal"
++                    android:layout_width="0dp"
++                    android:layout_height="wrap_content"
++                    android:layout_marginTop="16dp"
++                    android:background="@drawable/rectangle_with_red_background"
++                    android:backgroundTint="@color/ColorPrimary"
++                    android:hint="Email"
++                    android:inputType="textEmailAddress"
++                    android:minHeight="40dp"
++                    android:textColor="@android:color/white"
++                    android:textColorHint="@android:color/darker_gray"
++                    app:layout_constraintEnd_toEndOf="parent"
++                    app:layout_constraintStart_toStartOf="parent"
++                    app:layout_constraintTop_toBottomOf="@id/name" />
++
++                <!-- Password -->
++                <EditText
++                    android:id="@+id/password"
++                    style="@style/normal"
++                    android:layout_width="0dp"
++                    android:layout_height="wrap_content"
++                    android:layout_marginTop="16dp"
++                    android:background="@drawable/rectangle_with_red_background"
++                    android:backgroundTint="@color/ColorPrimary"
++                    android:hint="Password"
++                    android:inputType="textPassword"
++                    android:minHeight="40dp"
++                    android:textColor="@android:color/white"
++                    android:textColorHint="@android:color/darker_gray"
++                    app:layout_constraintEnd_toEndOf="parent"
++                    app:layout_constraintStart_toStartOf="parent"
++                    app:layout_constraintTop_toBottomOf="@id/email" />
++
++                <!-- Confirm Password -->
++                <EditText
++                    android:id="@+id/confirmPassword"
++                    style="@style/normal"
++                    android:layout_width="0dp"
++                    android:layout_height="wrap_content"
++                    android:layout_marginTop="16dp"
++                    android:background="@drawable/rectangle_with_red_background"
++                    android:backgroundTint="@color/ColorPrimary"
++                    android:hint="Confirm Password"
++                    android:inputType="textPassword"
++                    android:minHeight="40dp"
++                    android:textColor="@android:color/white"
++                    android:textColorHint="@android:color/darker_gray"
++                    app:layout_constraintEnd_toEndOf="parent"
++                    app:layout_constraintStart_toStartOf="parent"
++                    app:layout_constraintTop_toBottomOf="@id/password" />
++
++                <!-- Sign Up Button -->
++                <Button
++                    android:id="@+id/signupButton"
++                    style="@style/normal"
++                    android:layout_width="0dp"
++                    android:layout_height="wrap_content"
++
++                    android:layout_marginTop="24dp"
++                    android:background="@drawable/rectangle_with_red_background"
++                    android:text="Sign Up"
++                    android:textColor="@android:color/white"
++                    app:layout_constraintEnd_toEndOf="parent"
++                    app:layout_constraintStart_toStartOf="parent"
++                    app:layout_constraintTop_toBottomOf="@id/confirmPassword" />
++
++                <!-- Login Redirect -->
++                <TextView
++                    android:id="@+id/loginRedirect"
++                    style="@style/normal"
++                    android:layout_width="wrap_content"
++                    android:layout_height="wrap_content"
++                    android:layout_marginTop="16dp"
++                    android:text="Already have an account? Login"
++                    android:textColor="@color/ColorSecondary"
++                    app:layout_constraintEnd_toEndOf="parent"
++                    app:layout_constraintStart_toStartOf="parent"
++                    app:layout_constraintTop_toBottomOf="@id/signupButton" />
++
++            </androidx.constraintlayout.widget.ConstraintLayout>
++        </androidx.cardview.widget.CardView>
++
++    </androidx.constraintlayout.widget.ConstraintLayout>
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><project version=\"4\">\r\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_21\" default=\"true\" project-jdk-name=\"jbr-21\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\r\n  </component>\r\n  <component name=\"ProjectType\">\r\n    <option name=\"id\" value=\"Android\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 0247957a444f184deb5a141cd1d4a42f35dc609b)
++++ b/.idea/misc.xml	(date 1754411356143)
+@@ -6,4 +6,11 @@
+   <component name="ProjectType">
+     <option name="id" value="Android" />
+   </component>
++  <component name="VisualizationToolProject">
++    <option name="state">
++      <ProjectState>
++        <option name="scale" value="0.176" />
++      </ProjectState>
++    </option>
++  </component>
+ </project>
+\ No newline at end of file
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\">\r\n    <uses-permission android:name=\"android.permission.INTERNET\"/>\r\n    <uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>\r\n    <uses-permission android:name=\"android.permission.REQUEST_COMPANION_START_FOREGROUND_SERVICES_FROM_BACKGROUND\"/>\r\n    <uses-permission android:name=\"android.permission.MANAGE_EXTERNAL_STORAGE\"/>\r\n    <uses-configuration android:reqTouchScreen=\"finger\"/>\r\n    <uses-split android:name=\"com.example.rtsoftsolutions.MainActivity\"/>\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:dataExtractionRules=\"@xml/data_extraction_rules\"\r\n        android:fullBackupContent=\"@xml/backup_rules\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/Theme.RTSoftSolutions\"\r\n        tools:targetApi=\"31\">\r\n        <activity\r\n            android:name=\".MainActivity\"\r\n            android:exported=\"true\"\r\n            android:theme=\"@style/Theme.RTSoftSolutions\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+--- a/app/src/main/AndroidManifest.xml	(revision 0247957a444f184deb5a141cd1d4a42f35dc609b)
++++ b/app/src/main/AndroidManifest.xml	(date 1754411356146)
+@@ -27,6 +27,15 @@
+                 <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
+         </activity>
++
++        <activity android:name=".AuthenticationActivity"
++                  android:exported="true"
++                 android:theme="@style/Theme.RTSoftSolutions">
++             <intent-filter>
++                 <action android:name="andrid.intent.action.MAIN"/>
++                 <category android:name="android.intent.category.DEFAULT"/>
++             </intent-filter>
++        </activity>
+     </application>
+ 
+ </manifest>
+\ No newline at end of file
+Index: app/build.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\r\n    alias(libs.plugins.android.application)\r\n    alias(libs.plugins.google.gms.google.services)\r\n}\r\n\r\nandroid {\r\n    namespace = \"com.example.rtsoftsolutions\"\r\n    compileSdk = 35\r\n\r\n    defaultConfig {\r\n        applicationId = \"com.example.rtsoftsolutions\"\r\n        minSdk = 27\r\n        targetSdk = 35\r\n        versionCode = 1\r\n        versionName = \"1.0\"\r\n        testInstrumentationRunner = \"androidx.test.runner.AndroidJUnitRunner\"\r\n    }\r\n\r\n    buildTypes {\r\n        release {\r\n            isMinifyEnabled = false\r\n            proguardFiles(\r\n                getDefaultProguardFile(\"proguard-android-optimize.txt\"),\r\n                \"proguard-rules.pro\"\r\n            )\r\n        }\r\n    }\r\n    compileOptions {\r\n        sourceCompatibility = JavaVersion.VERSION_11\r\n        targetCompatibility = JavaVersion.VERSION_11\r\n    }\r\n    buildFeatures {\r\n        viewBinding = true\r\n    }\r\n}\r\n\r\ndependencies {\r\n    implementation(platform(\"com.google.firebase:firebase-bom:34.0.0\"))\r\n    implementation(\"com.google.firebase:firebase-analytics\")\r\n    implementation(libs.appcompat)\r\n    implementation(libs.material)\r\n    implementation(libs.constraintlayout)\r\n    implementation(libs.navigation.fragment)\r\n    implementation(libs.navigation.ui)\r\n    implementation(libs.firebase.auth)\r\n    implementation(libs.credentials)\r\n    implementation(libs.credentials.play.services.auth)\r\n    implementation(libs.googleid)\r\n    implementation(libs.firebase.database)\r\n    testImplementation(libs.junit)\r\n    androidTestImplementation(libs.ext.junit)\r\n    androidTestImplementation(libs.espresso.core)\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/build.gradle.kts b/app/build.gradle.kts
+--- a/app/build.gradle.kts	(revision 0247957a444f184deb5a141cd1d4a42f35dc609b)
++++ b/app/build.gradle.kts	(date 1754411356144)
+@@ -16,6 +16,7 @@
+         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+     }
+ 
++
+     buildTypes {
+         release {
+             isMinifyEnabled = false
+@@ -30,7 +31,7 @@
+         targetCompatibility = JavaVersion.VERSION_11
+     }
+     buildFeatures {
+-        viewBinding = true
++       dataBinding = true ;
+     }
+ }
+ 

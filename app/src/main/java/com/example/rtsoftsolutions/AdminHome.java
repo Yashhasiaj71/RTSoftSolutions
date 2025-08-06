@@ -14,11 +14,13 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -33,6 +35,16 @@ import com.google.firebase.database.ValueEventListener;
  * create an instance of this fragment.
  */
 public class AdminHome extends Fragment {
+
+//    course images id's array '
+private int[] imageId= {
+        R.drawable.java,
+        R.drawable.mern
+};
+
+private Runnable ImageSwitch;
+private Handler handler = new Handler();
+private int CurrentIndex =0;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -71,6 +83,20 @@ public class AdminHome extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.admin_home,container,false);
         // Inflate the layout for this fragment
+
+//        change course image
+        ImageView courseImg = view.findViewById(R.id.CourseImage);
+  ImageSwitch = new Runnable() {
+      @Override
+      public void run() {
+          courseImg.setImageResource(imageId[CurrentIndex]);
+//          set index to 0 after the index reaches end
+          CurrentIndex = (CurrentIndex+1) % imageId.length;
+          handler.postDelayed(this,3000);
+      }
+  };
+
+  handler.post(ImageSwitch);
 
 //        Fees Button ClickListner
         ImageButton fees = view.findViewById(R.id.FeesButton);

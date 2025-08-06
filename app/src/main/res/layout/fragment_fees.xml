@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".FeesFragment"
-    android:background="@color/ColorSecondary">
+   >
 
     <!-- TODO: Update blank fragment layout -->
     <Button
@@ -15,7 +15,7 @@
         android:layout_height="50dp"
         android:text="Back"
         android:textColor="@color/black"
-        android:backgroundTint="@color/Accent_green"
+        android:backgroundTint="@color/white"
         />
 
     <EditText
@@ -103,7 +103,7 @@
         android:layout_height="80dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="450dp"
-        android:background="@drawable/rounded_rectangle"
+
         >
    
 <!--        upi payment mode section-->
@@ -118,8 +118,8 @@
             <ImageButton
                 android:id="@+id/Upi_mode"
                 android:layout_gravity="center_horizontal"
-                android:layout_width="60dp"
-                android:layout_height="50dp"
+                android:layout_width="35dp"
+                android:layout_height="30dp"
                 android:layout_marginTop="5dp"
                 android:background="@color/Transperent"
                 android:scaleType="fitXY"
@@ -148,8 +148,8 @@
             <ImageButton
                 android:id="@+id/cash_mode"
                 android:layout_gravity="center_horizontal"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="35dp"
+                android:layout_height="30dp"
                 android:layout_marginTop="5dp"
                 android:background="@color/Transperent"
                 android:scaleType="fitXY"
@@ -177,8 +177,8 @@
             <ImageButton
                 android:id="@+id/bank_mode"
                 android:layout_gravity="center_horizontal"
-                android:layout_width="60dp"
-                android:layout_height="50dp"
+                android:layout_width="35dp"
+                android:layout_height="30dp"
                 android:layout_marginTop="5dp"
                 android:background="@color/Transperent"
                 android:scaleType="fitXY"
@@ -201,7 +201,7 @@
         android:layout_height="wrap_content"
         android:text="OR"
         android:textSize="32sp"
-        android:layout_marginTop="560dp"
+        android:layout_marginTop="530dp"
         android:layout_gravity="center_horizontal"
         />
 

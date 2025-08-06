@@ -18,3 +18,4 @@ public class FragmentOrdinaryReport extends Fragment {
     }
 
 }
+

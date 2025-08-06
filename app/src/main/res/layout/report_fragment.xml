@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,6 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="20dp">
+
 
         <LinearLayout
             android:layoutDirection="rtl"
@@ -89,8 +89,7 @@
             android:layout_height="39dp"
             android:background="@drawable/righthalf"
             android:text="ToggleButton"
-
-            app:layout_constraintStart_toEndOf="@id/ordinarybutton"
+              app:layout_constraintStart_toEndOf="@id/ordinarybutton"
 
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -99,12 +98,12 @@
     <!-- container to switchs between ordinary fragment and fees report -->
     <androidx.fragment.app.FragmentContainerView
 
-
         android:id="@+id/fragmentContainerView"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:defaultNavHost="true"
+
+    app:defaultNavHost="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
