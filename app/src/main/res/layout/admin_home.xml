@@ -90,7 +90,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/FeesCox"
         android:layout_width="150dp"
-        android:layout_height="130dp"
+        android:layout_height="240dp"
         android:layout_marginTop="380dp"
         app:cardCornerRadius="24dp"
         android:backgroundTint="@color/ColorSecondary"
@@ -112,7 +112,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="Manage Fees" />
+            android:text="Manage Fees"/>
+
+
+    </androidx.cardview.widget.CardView>
+
+<androidx.cardview.widget.CardView
+        android:id="@+id/showmessages"
+    android:layout_gravity="left"
+        android:layout_width="203dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="525dp"
+        android:backgroundTint="@color/ColorSecondary"
+        app:cardCornerRadius="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="please set the message"/>
     </androidx.cardview.widget.CardView>
 
 <!--    birthday info grid-->
@@ -130,12 +149,11 @@
             android:layout_height="match_parent"
             android:src="@drawable/cake_anim" />
 
-<!--        wish msg and whatsapp button-->
+<!--      wish msg and whatsapp button-->
       <LinearLayout
           android:layout_height="match_parent"
           android:layout_width="200dp"
-          android:orientation="vertical"
-          >
+          android:orientation="vertical">
           <TextView
               android:id="@+id/BirthdayText"
               android:layout_width="190dp"

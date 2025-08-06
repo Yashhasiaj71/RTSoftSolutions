@@ -7,5 +7,6 @@
     <color name="Accent_green">#A8E6CF</color>
     <color name="ColorBG">#F8F9FA</color>
     <color name="Transperent">#00F8F9FA</color>
-
+    <color name="corlor">#26D5D5D5</color>
+    <color name="colorcommonbackground">#A0A0A0</color>
 </resources>

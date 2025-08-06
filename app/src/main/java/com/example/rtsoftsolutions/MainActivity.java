@@ -1,5 +1,6 @@
 package com.example.rtsoftsolutions;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -42,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); // Your layout
-        Fragment AdminHome = new AdminHome(); // your target fragment
 
     }
 
@@ -51,8 +51,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         NavController navController = Navigation.findNavController(this , R.id.ContainerView);
-
-
        ImageButton homeB = findViewById(R.id.HomeButton);
        ImageButton studentB = findViewById(R.id.StudentButton);
        ImageButton reportB = findViewById(R.id.ReportButton);
@@ -63,6 +61,18 @@ public class MainActivity extends AppCompatActivity {
 
        studentB.setOnClickListener(v->{
            navController.navigate(R.id.action_global_studentmanager);
+           new Thread(new Runnable() {
+               @Override
+               public void run() {
+                   studentB.setBackgroundColor(Color.BLUE);
+                   try {
+                       Thread.sleep(1000) ;
+                   }catch (Exception e) {
+                        e.printStackTrace() ;
+                   }
+                   studentB.setBackgroundColor(Color.BLACK) ;
+               }
+           });
        });
 
        reportB.setOnClickListener(v->{

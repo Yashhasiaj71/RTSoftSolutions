@@ -19,6 +19,7 @@
         />
 
     <EditText
+
         android:id="@+id/StudentSearch"
         android:inputType="text"
         android:layout_width="370dp"

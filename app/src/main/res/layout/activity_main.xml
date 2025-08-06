@@ -49,6 +49,7 @@
 
 <!--    container here-->
     <androidx.fragment.app.FragmentContainerView
+        android:background="#3B999191"
         android:id="@+id/ContainerView"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
@@ -114,7 +115,6 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
-
                 android:src="@drawable/users_solid_full"
                 android:scaleType="fitXY"
                 android:background="@color/Transperent"
