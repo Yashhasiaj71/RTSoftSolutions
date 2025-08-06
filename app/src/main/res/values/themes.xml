@@ -6,4 +6,25 @@
     </style>
 
     <style name="Theme.RTSoftSolutions" parent="Base.Theme.RTSoftSolutions" />
+
+    <style name="heading">
+        <item name="android:textSize">35sp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontWeight">5</item>
+    </style>
+
+    <style name="subheading">
+    <item name="android:textSize">20sp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontWeight">3</item>
+    </style>
+
+    <style name="normal">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontWeight">3</item>
+    </style>
 </resources>

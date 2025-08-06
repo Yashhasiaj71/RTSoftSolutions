@@ -60,9 +60,6 @@
         app:layout_constraintTop_toBottomOf="@id/titleBar"
         app:navGraph="@navigation/nav_graph" />
 
-
-
-
 <!--bottom navigation-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/BottomNavigation"
