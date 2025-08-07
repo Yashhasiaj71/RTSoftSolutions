@@ -60,6 +60,13 @@
         app:layout_constraintTop_toBottomOf="@id/titleBar"
         app:navGraph="@navigation/nav_graph" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/black"
+        app:layout_constraintBottom_toTopOf="@id/BottomNavigation"
+        />
 <!--bottom navigation-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/BottomNavigation"

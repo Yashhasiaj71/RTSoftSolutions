@@ -45,7 +45,7 @@ public class FragmentReport extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-         return inflater.inflate(R.layout.report_fragment , container , false) ;
+        return inflater.inflate(R.layout.report_fragment , container , false) ;
 
     }
 
@@ -70,7 +70,7 @@ public class FragmentReport extends Fragment {
         buttonordinaryreport.setTextOn("Ordinary Report");
         buttonordinaryreport.setTextOff("") ;
         state[0] = true ;
-       int width =  active.findViewById(R.id.togglebuttonview).getWidth() ;
+        int width =  active.findViewById(R.id.togglebuttonview).getWidth() ;
         active.findViewById(R.id.togglebuttonview).setMinimumWidth(width + 30);
         if(!buttonordinaryreport.isChecked() && !buttonfeesreport.isChecked()) {
             buttonordinaryreport.setChecked(true);
@@ -85,48 +85,48 @@ public class FragmentReport extends Fragment {
 
 
         buttonordinaryreport.setOnCheckedChangeListener((buttonView, isChecked) -> {
-              if(state[0]) {
-                   buttonordinaryreport.setChecked(true);
-              }else {
-                  if(isChecked) {
-                      state[0] = true ;
-                      Fragment fragmentB = new FragmentOrdinaryReport() ;
-                      requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView , fragmentB).commit() ;
-                      buttonfeesreport.setChecked(false);
-                      buttonordinaryreport.setChecked(true);
+            if(state[0]) {
+                buttonordinaryreport.setChecked(true);
+            }else {
+                if(isChecked) {
+                    state[0] = true ;
+                    Fragment fragmentB = new FragmentOrdinaryReport() ;
+                    requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView , fragmentB).commit() ;
+                    buttonfeesreport.setChecked(false);
+                    buttonordinaryreport.setChecked(true);
                     //  buttonfeesreport.setForeground(drawable);
-                     // buttonordinaryreport.setForeground(null);
-                       blockanimator(getContext() , arr);
-                  }
-              }
+                    // buttonordinaryreport.setForeground(null);
+                    blockanimator(getContext() , arr);
+                }
+            }
         });
 
         buttonfeesreport.setOnCheckedChangeListener((buttonView, isChecked) -> {
-              if(!state[0]) {
-                  buttonfeesreport.setChecked(true);
-              }else {
-                  if(isChecked) {
-                      state[0] = false ;
-                       Fragment fragmentB = new Fragment_feesReport() ;
-                       requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView , fragmentB).commit() ;
-                       buttonordinaryreport.setChecked(false);
-                       buttonfeesreport.setChecked(true);
-                       //buttonordinaryreport.setForeground(drawable);
-                 // buttonfeesreport.setForeground(null);
-                      Animation Rightmovement= AnimationUtils.loadAnimation(getContext() , R.anim.rightswipe) ;
-                      Animation fadein = AnimationUtils.loadAnimation(getContext() , R.anim.fadein);
-                      blockanimator(getContext() , arr);
+            if(!state[0]) {
+                buttonfeesreport.setChecked(true);
+            }else {
+                if(isChecked) {
+                    state[0] = false ;
+                    Fragment fragmentB = new Fragment_feesReport() ;
+                    requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView , fragmentB).commit() ;
+                    buttonordinaryreport.setChecked(false);
+                    buttonfeesreport.setChecked(true);
+                    //buttonordinaryreport.setForeground(drawable);
+                    // buttonfeesreport.setForeground(null);
+                    Animation Rightmovement= AnimationUtils.loadAnimation(getContext() , R.anim.rightswipe) ;
+                    Animation fadein = AnimationUtils.loadAnimation(getContext() , R.anim.fadein);
+                    blockanimator(getContext() , arr);
 
 
-                  }
-              }
+                }
+            }
         });
 
     }
 
 
     private void animateBlockOnUIThreadrtl(TextView block) {
-         getActivity().runOnUiThread(() -> {
+        getActivity().runOnUiThread(() -> {
             ObjectAnimator animator = ObjectAnimator.ofFloat(block, "translationX", 0f, -400f);
             animator.setDuration(700);
             animator.start();
@@ -145,23 +145,23 @@ public class FragmentReport extends Fragment {
 
 
     private void blockanimator(Context context ,TextView[] arr) {
-         new Thread(new Runnable() {
-             @Override
-             public void run() {
-                 for(int i = 0 ; i < arr.length ; i++) {
-                     if(state[0]) {
-                         animateBlockOnUIThreadltr(arr[i]);
-                     }else {
-                          animateBlockOnUIThreadrtl(arr[(arr.length - 1) - i]);
-                     }
-                      try {
-                           Thread.sleep(50) ;
-                     } catch (InterruptedException e) {
-                          throw new RuntimeException(e);
-                      }
-                 }
-             }
-         }).start();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for(int i = 0 ; i < arr.length ; i++) {
+                    if(state[0]) {
+                        animateBlockOnUIThreadltr(arr[i]);
+                    }else {
+                        animateBlockOnUIThreadrtl(arr[(arr.length - 1) - i]);
+                    }
+                    try {
+                        Thread.sleep(50) ;
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+        }).start();
 
     }
 }
