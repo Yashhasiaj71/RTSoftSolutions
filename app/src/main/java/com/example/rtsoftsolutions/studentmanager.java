@@ -54,6 +54,7 @@ public class studentmanager extends Fragment {
             requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView3 , formfragment).commit() ;
         }) ;
 
+
 }
 
     @Override
@@ -62,5 +63,6 @@ public class studentmanager extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_studentmanager, container, false);
     }
+
 
 }

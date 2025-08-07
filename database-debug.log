@@ -1,3 +1,8 @@
-13:06:50.910 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
-13:06:51.330 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000
-13:07:44.690 [NamespaceSystem-akka.actor.default-dispatcher-7] INFO com.firebase.core.namespace.NamespaceActor - rtsoftsolutions-fc2cf successfully activated FBKV (SurveyIdle(0)) wait: 789ms, init: 0ms
+12:39:47.251 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+12:39:48.080 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000
+12:40:02.274 [NamespaceSystem-akka.actor.default-dispatcher-8] INFO com.firebase.core.namespace.NamespaceActor - rtsoftsolutions-fc2cf successfully activated FBKV (SurveyIdle(0)) wait: 882ms, init: 0ms
+12:41:26.751 [FirebaseWorkerPool-1-2] WARN com.firebase.core.persistence.backend.dummy.EmulatorMetadataPersistence - Multiple projectIds are not recommended in single project mode. Requested 
+namespace rtsoftsolutions-a4f5d-default-rtdb, but the emulator is configured for rtsoftsolutions-fc2cf. To 
+opt-out of single project mode add/set the singleProjectMode: false property in 
+the firebase.json emulators config. 
+12:41:26.767 [NamespaceSystem-akka.actor.default-dispatcher-7] INFO com.firebase.core.namespace.NamespaceActor - rtsoftsolutions-a4f5d-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 7ms, init: 0ms
