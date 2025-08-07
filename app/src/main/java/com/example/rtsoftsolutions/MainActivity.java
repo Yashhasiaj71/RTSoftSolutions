@@ -44,19 +44,7 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         NavController navController = Navigation.findNavController(this , R.id.ContainerView);
 
-       FirebaseDatabase database = FirebaseDatabase.getInstance("http://10.0.2.2:9000/?ns=rtsoftsolutions-fc2cf");
-       database.useEmulator("10.0.2.2", 9000);
-       DatabaseReference ref = database.getReference("testNode");
-       ref.setValue("Hello from Emulator")
-               .addOnCompleteListener(task -> {
-                   if (task.isSuccessful()) {
-                       Log.d("FirebaseTest", "Data written successfully.");
-                   } else {
-                       Log.e("FirebaseTest", "Write failed.", task.getException());
-                   }
-               });
-
-
+       FirebaseDatabase database =  AccessDatabase.getDB() ;
        ImageButton homeB = findViewById(R.id.HomeButton);
        ImageButton studentB = findViewById(R.id.StudentButton);
        ImageButton reportB = findViewById(R.id.ReportButton);
