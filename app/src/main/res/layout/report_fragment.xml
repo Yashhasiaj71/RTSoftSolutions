@@ -3,19 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/ColorBG"
-    >
+    android:layout_height="match_parent">
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
-
         android:background="@drawable/capsule"
+        android:backgroundTint="#00FFFFFF"
         android:id="@+id/togglebuttonview"
         android:layout_width="wrap_content"
         android:elevation="20dp"
         android:layout_height="wrap_content"
-        android:padding="5dp"
-
+        android:padding="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,8 +23,8 @@
         <LinearLayout
             android:layoutDirection="rtl"
             android:orientation="horizontal"
-            android:layout_width="294dp"
-            android:layout_height="43dp"
+            android:layout_width="300dp"
+            android:layout_height="41dp"
             android:elevation="30dp"
             android:animateLayoutChanges="true"
             android:background="#01000000"
@@ -35,72 +33,50 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:elevation="35dp"
+                android:translationZ="20dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:text="SWITCH"
+                android:elevation="10dp"
                 android:id="@+id/slider1"
-                android:layout_width="30dp"
-                android:layout_height="39dp"
-                android:background="#D6039FE7"
-                />
-            <TextView
-                android:elevation="34dp"
-                android:id="@+id/slider2"
-                android:layout_width="30dp"
-                android:layout_height="39dp"
-                android:background="#AD03E703"
-                />
-            <TextView
-                android:elevation="33dp"
-                android:id="@+id/slider3"
-                android:layout_width="30dp"
-                android:layout_height="39dp"
-                android:background="#AD8803E7"/>
+                android:layout_width="156dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/capsule"
+                android:backgroundTint="@color/ColorSecondary"
 
-                <TextView
-                    android:elevation="32dp"
-                    android:id="@+id/slider4"
-                    android:layout_width="30dp"
-                android:layout_height="39dp"
-                    android:background="#ADE7DC03"
-                />
-            <TextView
-                android:elevation="32dp"
-                android:id="@+id/slider5"
-                android:layout_width="30dp"
-                android:layout_height="39dp"
-                android:background="#ADCE083F"
                 />
         </LinearLayout>
 
 
         <ToggleButton
+            android:translationZ="10dp"
             android:id="@+id/ordinarybutton"
             android:layout_width="150dp"
-            android:layout_height="39dp"
+            android:layout_height="40dp"
             android:background="@drawable/lefthalf"
+            android:backgroundTint="@color/white"
             android:text="ToggleButton"
             app:layout_constraintBottom_toBottomOf="@id/feesbutton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/feesbutton"
-            app:layout_constraintVertical_bias="1.0" />
+            />
 
         <ToggleButton
             android:id="@+id/feesbutton"
-
+            android:translationZ="5dp"
+            android:backgroundTint="@color/white"
             android:layout_width="150dp"
-            android:layout_height="39dp"
+            android:layout_height="40dp"
             android:background="@drawable/righthalf"
             android:text="ToggleButton"
-
             app:layout_constraintStart_toEndOf="@id/ordinarybutton"
-
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <!-- container to switchs between ordinary fragment and fees report -->
     <androidx.fragment.app.FragmentContainerView
-
-
         android:id="@+id/fragmentContainerView"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
@@ -108,10 +84,10 @@
         app:defaultNavHost="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/togglebuttonview"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="1.0"
         app:layout_constraintVertical_weight="1"
         app:navGraph="@navigation/subnavgraph" />
 

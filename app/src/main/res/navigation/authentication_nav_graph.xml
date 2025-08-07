@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/authentication_nav_graph"
+    app:startDestination="@id/login_Fragment">
+
+    <fragment
+        android:id="@+id/login_Fragment"
+        android:name="com.example.rtsoftsolutions.Login_Fragment"
+        android:label="Login_Fragment" >
+        <action
+            android:id="@+id/action_login_Fragment_to_signup_Fragment"
+            app:destination="@id/signup_Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signup_Fragment"
+        android:name="com.example.rtsoftsolutions.Signup_Fragment"
+        android:label="Signup_Fragment" />
+</navigation>

@@ -9,13 +9,16 @@
     tools:context=".AdminHome">
 
 <!--    course info -->
+
     <LinearLayout
         android:layout_width="400dp"
+
         android:layout_height="200dp"
   android:layout_gravity="top|center_horizontal"
        android:background="@drawable/border_rectangle"
         android:padding="5dp"
         >
+
 
 <!--course image here -->
         <ImageView
@@ -71,6 +74,7 @@
             android:scaleType="fitXY"
             android:src="@drawable/plus_solid" />
     </LinearLayout>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -134,8 +138,6 @@
         </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
 <!--    birthday info grid-->
     <GridLayout

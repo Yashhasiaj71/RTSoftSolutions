@@ -24,6 +24,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:translationZ="20dp"
                 android:padding="24dp">
 
                 <!-- Title -->
@@ -44,14 +45,15 @@
                     android:id="@+id/name"
                     style="@style/normal"
                     android:layout_width="0dp"
+
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:background="@drawable/rectangle_with_red_background"
-                    android:backgroundTint="@color/ColorPrimary"
+                    android:backgroundTint="#F2007BFF"
                     android:hint="Full Name"
                     android:minHeight="40dp"
                     android:textColor="@android:color/white"
-                    android:textColorHint="@android:color/darker_gray"
+                    android:textColorHint="@color/ColorBG"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/signupTitle" />
@@ -69,7 +71,7 @@
                     android:inputType="textEmailAddress"
                     android:minHeight="40dp"
                     android:textColor="@android:color/white"
-                    android:textColorHint="@android:color/darker_gray"
+                    android:textColorHint="#FFFFFF"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/name" />
@@ -87,7 +89,7 @@
                     android:inputType="textPassword"
                     android:minHeight="40dp"
                     android:textColor="@android:color/white"
-                    android:textColorHint="@android:color/darker_gray"
+                    android:textColorHint="#FFFFFF"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/email" />
@@ -105,7 +107,7 @@
                     android:inputType="textPassword"
                     android:minHeight="40dp"
                     android:textColor="@android:color/white"
-                    android:textColorHint="@android:color/darker_gray"
+                    android:textColorHint="@color/ColorBG"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/password" />
