@@ -12,7 +12,12 @@
     tools:context=".AddStudent_Fragment">
 
     <!-- TODO: Update blank fragment layout -->
-
+    <!-- fees -->
+    <!-- date of birth -->
+    <!-- date of joining -->
+    <!-- date of leaving -->
+    <!-- course -->
+    <!-- batch -->
 
     <TextView
         android:id="@+id/titlecard"
@@ -199,6 +204,8 @@
 
 
     <Button
+        app:layout_constraintTop_toTopOf="@id/titlecard"
+        app:layout_constraintBottom_toBottomOf="@id/titlecard"
         android:id="@+id/savedetails"
         android:layout_width="235dp"
         android:layout_height="55dp"
