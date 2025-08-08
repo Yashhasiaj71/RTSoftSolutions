@@ -94,13 +94,13 @@
             app:layout_constraintBottom_toBottomOf="parent"
             >
 
-            <TextView
+            <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/Transperent"
                 android:layout_gravity="center"
-                android:text="Add a note , messege"
-                android:textColor="#81B43E"
+                android:hint="Add a note , messege"
+                android:textColorHint="#81B43E"
                 />
         </androidx.cardview.widget.CardView>
 
