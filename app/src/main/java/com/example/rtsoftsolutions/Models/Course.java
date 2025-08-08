@@ -61,6 +61,6 @@ public class Course {
     }
 
     public void setCourse_fees(long coursefees) {
-       co this.course_fees = coursefees ;
+        this.course_fees = coursefees ;
     }
 }
