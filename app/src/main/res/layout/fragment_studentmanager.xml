@@ -74,10 +74,10 @@
         app:layout_constraintTop_toBottomOf="@+id/showcount" />
 
     <Button
+        android:id="@+id/viewstudent"
         android:hint="view student"
         android:textColorHint="#FFF"
         app:layout_constraintTop_toBottomOf="@id/showcount"
-        android:id="@+id/viewstudent"
         android:layout_width="150dp"
         android:layout_height="40dp"
         android:background="@color/ColorPrimary"

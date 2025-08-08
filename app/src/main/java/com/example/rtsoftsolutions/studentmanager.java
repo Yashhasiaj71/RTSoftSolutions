@@ -29,6 +29,9 @@ public class studentmanager extends Fragment {
 
     // TODO: Rename and change types of parameters
     private Button addnewstudent ;
+
+    private Button ViewStudent;
+
     private Button std_mgr_view ;
     private FrameLayout frame ;
     private FragmentContainerView std_mgr;
@@ -53,6 +56,13 @@ public class studentmanager extends Fragment {
             Fragment formfragment = new AddStudent_Fragment() ;
             requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView3 , formfragment).commit() ;
         }) ;
+
+
+        ViewStudent = getActivity().findViewById(R.id.viewstudent);
+        ViewStudent.setOnClickListener(v->{
+            NavController controller = findNavController(studentmanager.this);
+            controller.navigate(R.id.action_studentmanager_to_viewStudent_Fragment3);
+        });
 
 
 }
