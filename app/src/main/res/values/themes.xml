@@ -12,7 +12,7 @@
         <item name="android:textAlignment">center</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:fontWeight">5</item>
-        <item name="android:fontFamily">@font/itim</item>
+        <item name="android:fontFamily">@font/lexend</item>
     </style>
 
     <style name="subheading">
@@ -24,6 +24,7 @@
     </style>
 
     <style name="normal">
+        <item name="fontFamily">@font/lexend</item>
         <item name="android:textSize">15sp</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textColor">@color/black</item>

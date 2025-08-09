@@ -64,8 +64,8 @@ public class AddStudent_Fragment extends Fragment {
         phoneinput = view.findViewById(R.id.phoneinput);
         addressinput = view.findViewById(R.id.addressinput);
         aadharinput = view.findViewById(R.id.aadharinput);
-        fathernameinput = view.findViewById(R.id.fathernameinput);
-        mothernameinput = view.findViewById(R.id.mothernameinput);
+        fathernameinput = view.findViewById(R.id.roleinput);
+        mothernameinput = view.findViewById(R.id.salaryinput);
         tpainput = view.findViewById(R.id.tpainput);
         Button save = view.findViewById(R.id.savedetails);
         imageholder = view.findViewById(R.id.imageholder) ;

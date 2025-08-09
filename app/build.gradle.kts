@@ -32,7 +32,9 @@ android {
     }
     buildFeatures {
        dataBinding = true ;
+        viewBinding = true ;
     }
+
 }
 
 dependencies {
@@ -51,4 +53,5 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    implementation("com.firebaseui:firebase-ui-auth:9.0.0")
 }

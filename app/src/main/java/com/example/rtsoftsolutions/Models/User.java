@@ -1,60 +1,79 @@
 package com.example.rtsoftsolutions.Models;
 
-public class User {
+import android.net.Uri;
 
-    private String user_name ;
-    private String user_role ;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import com.google.firebase.auth.UserInfo;
+
+public class User implements UserInfo {
+
+    private String user_display_name ;
+    private String user_email ;
     private String user_id ;
-    private String user_course ;
-    private String user_batch ;
-    private long user_phoneno ;
+    private String user_phoneno ;
+    private String user_photo_url ;
 
 
 public User() {
+}
 
-    }
-
-public User(String name , String role , String id , String course , String batch , long phoneno) {
-         user_name = name ;
-         user_role = role ;
+public User(String name , String email , String role , String id , String course , String batch , String phoneno , String photo_url) {
+         user_display_name = name ;
          user_id = id ;
-         user_course = course ;
-         user_batch = batch;
+         user_email = email ;
          user_phoneno = phoneno ;
-    }
-   // all getters
-    public String getUser_name() {
-         return this.user_name ;
-    }
-    public String getUser_role() {
-         return this.user_role ;
-    }
-    public String getUser_id() {
-         return this.user_id ;
-    }
-    public String getUser_course() {
-         return this.user_course ;
-    }
-    public String getUser_batch() {
-         return this.user_batch ;
+         user_photo_url = photo_url ;
     }
 
 
     // all setters
     public void setUserName(String username) {
-    user_name = username ;
-    }
-    public void setUserRole(String userrole) {
-    user_role = userrole ;
+    user_display_name = username ;
     }
     public void setUser_id(String userid) {
     user_id = userid ;
     }
-    public void setUser_course(String usercourse){
-    user_course = usercourse ;
-    }
-    public void setUser_batch(String userbatch){
-    user_batch = userbatch ;
+
+    @Nullable
+    @Override
+    public Uri getPhotoUrl() {
+        return Uri.parse(user_photo_url) ;
     }
 
+    @Nullable
+    @Override
+    public String getDisplayName() {
+        return user_display_name ;
+    }
+
+    @Nullable
+    @Override
+    public String getEmail() {
+        return user_email ;
+    }
+
+    @Nullable
+    @Override
+    public String getPhoneNumber() {
+     return user_phoneno;
+    }
+
+    @NonNull
+    @Override
+    public String getProviderId() {
+        return "";
+    }
+
+    @NonNull
+    @Override
+    public String getUid() {
+        return user_id;
+    }
+
+    @Override
+    public boolean isEmailVerified() {
+        return false;
+    }
 }

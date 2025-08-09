@@ -190,6 +190,11 @@ public class AdminHome extends Fragment {
                  }
             }
         }));
+
+
+       // todo: database logic implementation
+
+
         return view;
     }
 }
