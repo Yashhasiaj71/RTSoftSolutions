@@ -58,8 +58,7 @@ public class AddStudent_Fragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-          //Initialize all datatypes============================
-
+          //====================Initialize all datatypes============================
 
         //        get all the input fields
         nameinput = view.findViewById(R.id.nameinput);
@@ -71,7 +70,6 @@ public class AddStudent_Fragment extends Fragment {
         mothernameinput = view.findViewById(R.id.mothernameinput);
         tpainput = view.findViewById(R.id.tpainput);
         imageholder = view.findViewById(R.id.imageholder);
-
 
 //        ======== handle save button put data to databse =======
        Button save = view.findViewById(R.id.savedetails);
