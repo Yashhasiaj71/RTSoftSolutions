@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/studentmanagerroot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".AddStudent_Fragment"
     android:layout_marginTop="10dp"
-    android:id="@+id/studentmanagerroot"
     android:background="@color/ColorSecondary"
-    >
+    android:backgroundTint="#F0F0F0"
+    android:translationZ="3dp"
+    tools:context=".AddStudent_Fragment">
 
     <!-- TODO: Update blank fragment layout -->
-
+    <!-- fees -->
+    <!-- date of birth -->
+    <!-- date of joining -->
+    <!-- date of leaving -->
+    <!-- course -->
+    <!-- batch -->
 
     <TextView
         android:id="@+id/titlecard"
@@ -29,66 +35,69 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:backgroundTint="#E4DEDE"
-        android:background="@drawable/rounded_rectangle"
         android:id="@+id/imageview"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
+        android:layout_width="114dp"
+        android:layout_height="105dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:background="@drawable/mediumsizedcontainer"
+        android:backgroundTint="#F8F7F7"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/titlecard"
-        android:orientation="vertical">
+        app:layout_constraintTop_toBottomOf="@id/titlecard">
 
-        <TextView android:layout_width="100dp"
-            android:layout_marginTop="10dp"
+        <TextView
+            android:layout_width="100dp"
             android:layout_height="20dp"
-            android:text="Select an Image"
-            android:gravity="center"
             android:layout_gravity="center_horizontal"
-            />
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="Select an Image" />
 
-        <ImageView
+        <ImageButton
             android:id="@+id/imageholder"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginTop="10dp"
             android:layout_gravity="center_horizontal|bottom"
-            android:background="@drawable/plus_solid" />
+            android:layout_marginTop="10dp"
+            android:background="@drawable/plus_solid"
+            android:backgroundTint="@color/black" />
     </LinearLayout>
+
+<!--    :TODO add input fields Birth Date , course , batch-->
 
     <EditText
         android:id="@+id/emailinput"
         android:layout_width="250dp"
         android:layout_height="35dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="10dp"
+
+        android:layout_marginStart="24dp"
         android:background="@color/Accent_green"
+        android:backgroundTint="@color/white"
         android:hint="Enter Email"
         android:padding="0dp"
         android:paddingStart="10dp"
         android:textColorHint="#020000"
+        android:translationZ="3dp"
         app:layout_constraintBottom_toBottomOf="@id/imageview"
-        app:layout_constraintEnd_toStartOf="@id/imageview"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/imageview"
         app:layout_constraintVertical_bias="0.866" />
 
     <EditText
-        android:paddingStart="10dp"
-        android:background="@color/Accent_green"
-        app:layout_constraintEnd_toStartOf="@id/imageview"
         android:id="@+id/nameinput"
         android:layout_width="250dp"
         android:layout_height="35dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
+        android:background="@color/Accent_green"
+        android:backgroundTint="@color/white"
         android:hint="Enter name"
         android:inputType="textEmailAddress"
-        android:padding="0dp"
-
+        android:padding="7dp"
         android:textColorHint="#01111F"
+        android:translationZ="3dp"
         app:layout_constraintBottom_toBottomOf="@id/imageview"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailinput"
@@ -96,155 +105,120 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:paddingStart="10dp"
-        android:background="@color/Accent_green"
         android:id="@+id/phoneinput"
         android:layout_width="350dp"
         android:layout_height="35dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="20dp"
+        android:background="@color/ColorBG"
         android:hint="Enter Phone no"
         android:inputType="number"
         android:padding="0dp"
+        android:paddingStart="10dp"
         android:textColorHint="#01111F"
 
 
+        android:translationZ="3dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/emailinput" />
 
     <EditText
-        android:paddingStart="10dp"
-        android:background="@color/Accent_green"
         android:id="@+id/addressinput"
         android:layout_width="350dp"
         android:layout_height="35dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
+        android:background="@color/ColorBG"
         android:hint="enter Address"
         android:padding="0dp"
+        android:paddingStart="10dp"
         android:textColorHint="#01111F"
+        android:translationZ="3dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phoneinput" />
 
 
     <EditText
-        android:paddingStart="10dp"
-        android:background="@color/Accent_green"
         android:id="@+id/aadharinput"
         android:layout_width="350dp"
         android:layout_height="35dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="12dp"
+        android:background="@color/ColorBG"
         android:hint="Enter Aadhar no."
         android:padding="0dp"
+        android:paddingStart="10dp"
         android:textColorHint="#01111F"
+        android:translationZ="3dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addressinput" />
 
+
     <EditText
-        android:paddingStart="10dp"
-        android:background="@color/Accent_green"
-        android:id="@+id/fathernameinput"
+        android:id="@+id/roleinput"
         android:layout_width="350dp"
         android:layout_height="35dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
+        android:background="@color/ColorBG"
         android:hint="Enter Father's name"
         android:padding="0dp"
+        android:paddingStart="10dp"
         android:textColorHint="#01111F"
+        android:translationZ="3dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/aadharinput" />
 
-
     <EditText
-        android:paddingStart="10dp "
-        android:background="@color/Accent_green"
-        android:id="@+id/mothernameinput"
+        android:id="@+id/salaryinput"
         android:layout_width="350dp"
         android:layout_height="35dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
+        android:background="@color/ColorBG"
         android:hint="Enter Mother's name"
         android:padding="0dp"
+        android:paddingStart="10dp"
         android:textColorHint="#01111F"
+        android:translationZ="3dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fathernameinput" />
+        app:layout_constraintTop_toBottomOf="@+id/roleinput" />
 
     <EditText
-        android:paddingStart="10dp"
-        android:background="@color/Accent_green"
         android:id="@+id/tpainput"
         android:layout_width="350dp"
         android:layout_height="35dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
+        android:background="@color/ColorBG"
         android:hint="Total Payable Fees"
         android:inputType="number"
         android:padding="0dp"
-        android:textColorHint="#01111F"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mothernameinput" />
-   <!-- input total payable fees -->
-
-    <EditText
-        android:id="@+id/amountfilled"
-        android:layout_width="350dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/Accent_green"
-        android:hint="Fees paid"
-        android:inputType="number"
-        android:padding="0dp"
         android:paddingStart="10dp"
+        android:shadowColor="#9B2424"
+        android:shadowDx="56"
+        android:shadowDy="44"
         android:textColorHint="#01111F"
+        android:translationZ="3dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tpainput" />
-
-    <EditText
-        android:id="@+id/Batchname"
-        android:layout_width="350dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/Accent_green"
-        android:hint="Fees paid"
-        android:inputType="number"
-        android:padding="0dp"
-        android:paddingStart="10dp"
-        android:textColorHint="#01111F"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/amountfilled" />
-
-    <EditText
-        android:id="@+id/Coursename"
-        android:layout_width="350dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/Accent_green"
-        android:hint="Fees paid"
-        android:inputType="number"
-        android:padding="0dp"
-        android:paddingStart="10dp"
-        android:textColorHint="#01111F"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Batchname" />
+        app:layout_constraintTop_toBottomOf="@+id/salaryinput" />
+    <!-- input total payable fees -->
 
 
     <Button
+        app:layout_constraintTop_toTopOf="@id/titlecard"
+        app:layout_constraintBottom_toBottomOf="@id/titlecard"
         android:id="@+id/savedetails"
         android:layout_width="235dp"
         android:layout_height="55dp"
-        android:layout_marginTop="12dp"
         android:backgroundTint="@color/white"
         android:elevation="20dp"
         android:hint="Save Details"
         android:padding="0dp"
         android:textColorHint="#000"
+        android:translationZ="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Coursename" />
+        tools:layout_editor_absoluteY="-1dp" />
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FFFFFF"
+    android:backgroundTint="#EDDEDE"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- enter tasklist of teachers -->
+    <!-- padding encapsulates -->
+    <LinearLayout
+        android:id="@+id/faculty_tasklist"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toTopOf="@id/batchtitle_container"
+        app:layout_constraintVertical_weight="6"
+        app:layout_constraintVertical_chainStyle="spread_inside">
+
+        <!-- padding -->
+        <View
+            android:layout_width="0dp"
+            android:layout_weight="0.04"
+            android:layout_height="match_parent" />
+      <!-- load task dynamically -->
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.87"
+            android:background="@drawable/mediumsizedcontainer"
+            android:elevation="10dp"
+            android:translationZ="20dp">
+            <!-- populate this view dynamically -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </ScrollView>
+      <!-- padding -->
+        <View
+            android:layout_width="0dp"
+            android:layout_weight="0.04"
+            android:layout_height="match_parent" />
+
+
+    </LinearLayout>
+
+    <!-- title bar for showing all batches -->
+
+    <!-- scrollview of batches under faculty -->
+    <LinearLayout
+        android:id="@+id/batchtitle_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        android:orientation="horizontal"
+        android:translationZ="1dp"
+        app:layout_constraintBottom_toTopOf="@id/batchspinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/faculty_tasklist"
+        app:layout_constraintVertical_weight="2">
+
+        <!-- padding -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.07"
+            />
+
+        <!-- content -->
+
+        <TextView
+            android:id="@+id/faculty_batchtitle"
+            style="@style/heading"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.99"
+            android:background="@drawable/mediumcurvedrectangle"
+            android:gravity="center"
+            android:hint="All Batches"
+            android:translationZ="30dp" />
+        <!-- padding -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.07" />
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/batchspinner"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/batchtitle_container"
+        app:layout_constraintVertical_weight="15">
+
+        <!-- scrollview -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.04"
+            android:translationZ="30dp" />
+
+        <ScrollView
+            android:background="@drawable/mediumroundedrectangle"
+            android:layout_width="0dp"
+            android:layout_weight="0.87"
+            android:layout_height="match_parent">
+            <!-- populate this from database -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+        </ScrollView>
+
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.04"
+            android:translationZ="30dp"/>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -44,12 +44,10 @@
         android:layout_marginTop="5dp"
         android:scaleType="fitXY"
         android:background="@color/Transperent"
-        android:src="@drawable/user_solid" />
+        android:src="@drawable/user_regular_full" />
 </LinearLayout>
 
-
 <!--    container here-->
-
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/ContainerView"
         android:name="androidx.navigation.fragment.NavHostFragment"
@@ -62,39 +60,47 @@
         app:layout_constraintTop_toBottomOf="@id/titleBar"
         app:navGraph="@navigation/nav_graph" />
 
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/black"
+        app:layout_constraintBottom_toTopOf="@id/BottomNavigation"
+        />
+<!--bottom navigation-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/BottomNavigation"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
+        android:background="@drawable/top_rounded"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@drawable/top_rounded">
+        tools:layout_editor_absoluteX="-16dp">
 
 
-<!--        Layout for Home button and text-->
+        <!--        Layout for Home button and text-->
         <LinearLayout
             android:id="@+id/HomeLayout"
             android:layout_width="60dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
-           app:layout_constraintStart_toStartOf="parent"
-            >
+            app:layout_constraintStart_toStartOf="parent">
             <!-- home icon-->
             <ImageButton
                 android:id="@+id/HomeButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_gravity="center"
-                android:src="@drawable/house_solid"
-                android:scaleType="fitXY"
                 android:background="@color/Transperent"
+                android:scaleType="fitXY"
+                android:src="@drawable/house_regular_full"
                 />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Home"
-                android:textColor="@color/white"
                 android:gravity="center"
+                android:text="Home"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -103,32 +109,31 @@
         <!-- Layout for Student button and text-->
         <LinearLayout
             android:id="@+id/StudentLayout"
-            android:layout_width="60dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            app:layout_constraintStart_toEndOf="@id/HomeLayout"
             app:layout_constraintEnd_toStartOf="@+id/ReportLayout"
+            app:layout_constraintStart_toEndOf="@id/HomeLayout"
 
             >
-<!--            student icon-->
+            <!--            student icon-->
             <ImageButton
                 android:id="@+id/StudentButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_gravity="center"
 
-                android:src="@drawable/users_solid_full"
-                android:scaleType="fitXY"
                 android:background="@color/Transperent"
-                />
+                android:scaleType="fitXY"
+                android:src="@drawable/user_regular_full" />
 
-<!--            report icon here-->
+            <!--            report icon here-->
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Students"
-                android:textColor="@color/white"
                 android:gravity="center"
+                android:text="Students"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -140,28 +145,27 @@
             android:layout_width="60dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            >
+            app:layout_constraintEnd_toEndOf="parent">
+
             <ImageButton
                 android:id="@+id/ReportButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_gravity="center"
-                android:src="@drawable/chart_simple_solid"
-                android:scaleType="fitXY"
                 android:background="@color/Transperent"
-                />
+                android:scaleType="fitXY"
+                android:src="@drawable/chart_bar_regular_full" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Report"
-                android:textColor="@color/white"
                 android:gravity="center"
+                android:text="Report"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

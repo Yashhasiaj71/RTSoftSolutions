@@ -1,5 +1,8 @@
 package com.example.rtsoftsolutions;
 
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +10,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,6 +65,26 @@ public class FeesFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fees, container, false);
+        View view =  inflater.inflate(R.layout.fragment_fees, container, false);
+
+        //        Whatsapp icon click listner
+        ImageButton whatsapp = view.findViewById(R.id.WhatsappButton);
+        whatsapp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String PhoneNo = "+916266381188";
+                String Message = "Dear Student, your fees ($ xxx) is pending, Kindly pay it by the due date team Interns";
+
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("https://wa.me/"+PhoneNo+"?text="+Uri.encode(Message)));
+
+                try{
+                    startActivity(intent);
+                }catch(ActivityNotFoundException e){
+                    Toast.makeText(requireContext(),"Whatsapp not installed",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+   return view ;
     }
 }

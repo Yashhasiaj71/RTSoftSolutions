@@ -1,15 +1,10 @@
 package com.example.rtsoftsolutions;
-
 import android.os.Bundle;
-
 import com.google.android.material.snackbar.Snackbar;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.view.View;
-
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
@@ -21,12 +16,8 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.rtsoftsolutions.databinding.ActivityMainBinding;
-
 import android.view.Menu;
 import android.view.MenuItem;
-// In your Activity or Fragment (e.g., in onCreate or onStart)
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -53,41 +44,41 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         NavController navController = Navigation.findNavController(this , R.id.ContainerView);
 
-
+       FirebaseDatabase database =  AccessDatabase.getDB() ;
        ImageButton homeB = findViewById(R.id.HomeButton);
        ImageButton studentB = findViewById(R.id.StudentButton);
        ImageButton reportB = findViewById(R.id.ReportButton);
 
        homeB.setOnClickListener(v->{
            navController.navigate(R.id.action_global_AdminHome);
+
+           homeB.setImageResource(R.drawable.house_regular_full_green);
+           studentB.setImageResource(R.drawable.user_regular_full);
+           reportB.setImageResource(R.drawable.chart_bar_regular_full);
        });
 
        studentB.setOnClickListener(v->{
            navController.navigate(R.id.action_global_studentmanager);
+           homeB.setImageResource(R.drawable.house_regular_full);
+           studentB.setImageResource(R.drawable.user_regular_full_green);
+           reportB.setImageResource(R.drawable.chart_bar_regular_full);
        });
 
        reportB.setOnClickListener(v->{
+
            navController.navigate(R.id.action_global_fragmentReport);
+
+
+           homeB.setImageResource(R.drawable.house_regular_full);
+           studentB.setImageResource(R.drawable.user_regular_full);
+           reportB.setImageResource(R.drawable.chart_bar_regular_full_green);
        });
 
-        ImageButton homeB = findViewById(R.id.HomeButton);
-        ImageButton studentB = findViewById(R.id.StudentButton);
-        ImageButton reportB = findViewById(R.id.ReportButton);
-
-        homeB.setOnClickListener(v->{
-            navController.navigate(R.id.action_global_AdminHome);
-        });
-
-        studentB.setOnClickListener(v->{
-            navController.navigate(R.id.action_global_studentmanager);
-        });
+       };
 
 
 //      ========= :TODO report fragment button ========
 //       reportB.setOnClickListener(v->{
 //           navController.navigate(R.id.action_global_AdminHome);
 //       });
-
-
     }
-}

@@ -1,0 +1,8 @@
+10:45:20.391 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+10:45:20.785 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000
+10:45:43.059 [FirebaseWorkerPool-1-3] WARN com.firebase.core.persistence.backend.dummy.EmulatorMetadataPersistence - Multiple projectIds are not recommended in single project mode. Requested 
+namespace rtsoftsolutions-a4f5d-default-rtdb, but the emulator is configured for sample-firebase-ai-app-33388. To 
+opt-out of single project mode add/set the singleProjectMode: false property in 
+the firebase.json emulators config. 
+10:45:43.618 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO com.firebase.core.namespace.NamespaceActor - rtsoftsolutions-a4f5d-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 463ms, init: 0ms
+10:45:43.618 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO com.firebase.core.namespace.NamespaceActor - sample-firebase-ai-app-33388 successfully activated FBKV (SurveyIdle(0)) wait: 463ms, init: 0ms

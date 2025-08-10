@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/ColorBG"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".studentmanager">
 
@@ -73,10 +74,10 @@
         app:layout_constraintTop_toBottomOf="@+id/showcount" />
 
     <Button
+        android:id="@+id/viewstudent"
         android:hint="view student"
         android:textColorHint="#FFF"
         app:layout_constraintTop_toBottomOf="@id/showcount"
-        android:id="@+id/viewstudent"
         android:layout_width="150dp"
         android:layout_height="40dp"
         android:background="@color/ColorPrimary"
@@ -86,20 +87,16 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
 
-<!--    <androidx.fragment.app.FragmentContainerView
-        android:visibility="gone"
-        android:layout_marginTop="10dp"
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView3"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
         app:defaultNavHost="true"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewstudent"
-        app:navGraph="@navigation/nav_graphstudentmanager"
-        />
-        -->
+        app:layout_constraintTop_toBottomOf="@+id/viewstudent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,113 +1,198 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/ColorBG"
+    android:background="#9193A0"
     tools:context=".AdminHome">
 
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="300dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="30dp"
-  android:layout_gravity="top|center_horizontal"
-        android:layout_marginBottom="220dp"
-        android:backgroundTint="#8C9FA6"
-        app:cardCornerRadius="24dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Course Name"
-            android:textSize="24sp" />
-
-    </androidx.cardview.widget.CardView>
+<!--    course info -->
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@color/ColorSecondary"
-        android:layout_marginTop="250dp"
-        android:orientation="horizontal">
 
+    android:layout_height="210dp"
+  android:layout_gravity="top|center_horizontal"
+       android:background="@drawable/border_rectangle"
+        android:padding="5dp"
+        >
+
+
+<!--course image here -->
         <ImageView
-            android:layout_width="70dp"
+            android:id="@+id/CourseImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/java" />
+
+    </LinearLayout>
+
+<!--    faculty list horizontal-->
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="230dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <!--        teachers view -->
+        <ImageView
+            android:layout_width="50dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:background="@drawable/round"
+            android:padding="6dp"
             android:src="@drawable/teacher" />
 
         <ImageView
-            android:layout_width="70dp"
+            android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="40dp"
             android:background="@drawable/round"
+            android:padding="6dp"
             android:src="@drawable/teacher" />
 
         <ImageView
-            android:layout_width="70dp"
+            android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="40dp"
             android:background="@drawable/round"
+            android:padding="6dp"
             android:src="@drawable/teacher" />
 
+        <!--        add faculty button-->
         <ImageButton
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginLeft="30dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="50dp"
             android:background="@drawable/round"
+            android:padding="16dp"
             android:scaleType="fitXY"
             android:src="@drawable/plus_solid" />
     </LinearLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="370dp"
+        android:layout_marginTop="300dp">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/messegeBox"
-        android:layout_width="200dp"
-        android:layout_height="130dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="380dp"
-        android:backgroundTint="@color/ColorSecondary"
-        app:cardCornerRadius="24dp">
+        <!--add messege cardview-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/messegeBox"
+            android:elevation="10dp"
+            android:translationZ="20dp"
+            android:layout_width="195dp"
+            android:layout_height="140dp"
+            android:backgroundTint="@color/white"
+            app:cardCornerRadius="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/FeesBox"
+            app:layout_constraintTop_toTopOf="@id/FeesBox"
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Add a note , messege" />
-    </androidx.cardview.widget.CardView>
+            >
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/FeesCox"
-        android:layout_width="150dp"
-        android:layout_height="130dp"
-        android:layout_marginTop="380dp"
-        app:cardCornerRadius="24dp"
-        android:backgroundTint="@color/ColorSecondary"
-        android:layout_marginLeft="250dp"
-        >
+            <TextView
+                style="@style/subheading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/Transperent"
+                android:layout_gravity="center"
+                android:text="Add a note , messege"
+                android:textColor="#81B43E"
+                />
+        </androidx.cardview.widget.CardView>
 
-        <ImageButton
-            android:id="@+id/FeesButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/indian_rupee_sign_solid_full"
-            android:scaleType="fitXY"
+        <!--fees fragment button-->
+        <androidx.cardview.widget.CardView
+            android:elevation="10dp"
+            android:translationZ="0dp"
+            android:id="@+id/FeesBox"
+            android:layout_width="150dp"
+            android:layout_height="215dp"
+            app:cardCornerRadius="15dp"
+            android:backgroundTint="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/messegeBox"
+            app:layout_constraintEnd_toEndOf="parent"
+            >
+
+            <!--        rupee button-->
+
+            <ImageButton
+                android:id="@+id/FeesButton"
+                android:layout_width="104dp"
+                android:layout_height="124dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@color/Transperent"
+                android:scaleType="fitXY"
+                android:src="@drawable/indian_rupee_sign_solid_full" />
+
+            <TextView
+                style="@style/subheading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"
+                android:text="Manage Fees" />
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/selectmessage"
+            android:elevation="10dp"
+            android:translationZ="20dp"
+            android:layout_width="195dp"
+            android:layout_height="215dp"
             android:layout_marginTop="10dp"
-            android:background="@color/Transperent"
-            android:layout_gravity="center"/>
+            android:backgroundTint="@color/white"
+            app:cardCornerRadius="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/FeesBox"
+            app:layout_constraintTop_toBottomOf="@id/messegeBox"
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="Manage Fees" />
-    </androidx.cardview.widget.CardView>
+            >
 
+            <TextView
+                style="@style/heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/Transperent"
+                android:layout_gravity="center_horizontal"
+                android:text="Total Students"
+                android:textColor="#81B43E"
+                />
+
+            <TextView
+                style="@style/heading"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/Transperent"
+                android:layout_marginTop="100dp"
+                android:layout_gravity="center_horizontal"
+                android:text="145"
+                android:textColor="#81B43E"
+                />
+
+
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--    birthday info grid-->
     <GridLayout
+        android:clickable="true"
+        android:focusableInTouchMode="true"
         android:id="@+id/BirthdayInfo"
         android:layout_width="300dp"
         android:layout_height="150dp"
@@ -115,24 +200,29 @@
         android:layout_marginBottom="20dp"
         android:background="@drawable/rounded_rectangle">
 
+<!--        cake image-->
         <ImageView
+            android:clickable="true"
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:src="@drawable/cake_anim" />
 
+<!--        wish msg and whatsapp button-->
       <LinearLayout
+          android:clickable="true"
           android:layout_height="match_parent"
           android:layout_width="200dp"
           android:orientation="vertical"
           >
           <TextView
+              android:clickable="true"
+              android:focusable="true"
               android:id="@+id/BirthdayText"
               android:layout_width="190dp"
               android:layout_height="wrap_content"
               android:text="its student1's birthday
 Wish Them on :-"
               android:textSize="16sp" />
-
 
           <ImageButton
               android:id="@+id/WhatsappButton"
@@ -149,5 +239,6 @@ Wish Them on :-"
       </LinearLayout>
 
     </GridLayout>
+
 
 </FrameLayout>
