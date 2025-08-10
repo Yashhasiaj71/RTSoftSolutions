@@ -10,6 +10,12 @@
 .DS_Store
 /build
 /captures
+./firebase.json
+./firebase-debug.log
+./firebaserc
+./apphosting.emulator.yaml
+./firestore-debug.log
+./pubsub-debug.log
 .externalNativeBuild
 .cxx
 local.properties
