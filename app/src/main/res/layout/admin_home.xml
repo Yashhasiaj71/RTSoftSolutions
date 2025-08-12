@@ -81,10 +81,12 @@
         android:layout_height="200dp"
         android:layout_marginTop="350dp">
 
+        <!-- Student Management Button -->
+
         <!--add messege cardview-->
         <androidx.cardview.widget.CardView
             android:id="@+id/messegeBox"
-            android:layout_width="200dp"
+            android:layout_width="150dp"
             android:layout_height="130dp"
             android:backgroundTint="@color/white"
             app:cardCornerRadius="24dp"

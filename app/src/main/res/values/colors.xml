@@ -9,4 +9,5 @@
     <color name="Transperent">#00F8F9FA</color>
     <color name="corlor">#26D5D5D5</color>
     <color name="colorcommonbackground">#A0A0A0</color>
+    <color name="design_default_color_primary">#007BFF</color>
 </resources>

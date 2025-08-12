@@ -9,11 +9,16 @@ public class Student {
     public String fatherName;
     public String motherName;
     public int totalFees;
+    public String birthDate;
+    public String selectedCourseId;
+    public String selectedCourseName;
+    public String selectedBatchName;
 
     public Student() {} // Needed for Firebase
 
     public Student(String name, String email, String phoneNo, String aadharNo,
-                   String address, String fatherName, String motherName, int totalFees) {
+                   String address, String fatherName, String motherName, int totalFees,
+                   String birthDate, String selectedCourseId, String selectedCourseName, String selectedBatchName) {
         this.name = name;
         this.email = email;
         this.phoneNo = phoneNo;
@@ -22,6 +27,10 @@ public class Student {
         this.fatherName = fatherName;
         this.motherName = motherName;
         this.totalFees = totalFees;
+        this.birthDate = birthDate;
+        this.selectedCourseId = selectedCourseId;
+        this.selectedCourseName = selectedCourseName;
+        this.selectedBatchName = selectedBatchName;
     }
 }
 

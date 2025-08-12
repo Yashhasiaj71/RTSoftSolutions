@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_AdminHome_to_courseFragment"
             app:destination="@id/courseFragment" />
+        <action
+            android:id="@+id/action_AdminHome_to_addStudent_Fragment"
+            app:destination="@id/addStudent_Fragment" />
     </fragment>
 
     <fragment
@@ -66,4 +69,16 @@
         android:name="com.example.rtsoftsolutions.ViewStudent_Fragment"
         android:label="fragment_view_student_"
         tools:layout="@layout/fragment_view_student_" />
+        
+    <fragment
+        android:id="@+id/courseDetailFragment"
+        android:name="com.example.rtsoftsolutions.CourseDetailFragment"
+        android:label="Course Details"
+        tools:layout="@layout/fragment_course_detail" />
+        
+    <fragment
+        android:id="@+id/addCourseFragment"
+        android:name="com.example.rtsoftsolutions.AddCourseFragment"
+        android:label="Add Course"
+        tools:layout="@layout/fragment_add_course" />
 </navigation>
