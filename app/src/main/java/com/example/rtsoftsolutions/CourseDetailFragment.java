@@ -50,7 +50,6 @@ public class CourseDetailFragment extends Fragment {
             status = getArguments().getString(ARG_STATUS);
         }
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical">
+
+        <!-- Student Avatar -->
+        <LinearLayout
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/circular_icon_background"
+            android:gravity="center"
+            android:layout_marginEnd="16dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/user_solid"
+                android:scaleType="fitCenter"
+                app:tint="@color/Accent_green" />
+
+        </LinearLayout>
+
+        <!-- Student Information -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/StudentNameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Student Name"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginBottom="4dp" />
+
+            <TextView
+                android:id="@+id/StudentCourseText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Course Name"
+                android:textSize="14sp"
+                android:textColor="#666666"
+                android:layout_marginBottom="2dp" />
+
+            <TextView
+                android:id="@+id/StudentBatchText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Batch Name"
+                android:textSize="14sp"
+                android:textColor="#666666"
+                android:layout_marginBottom="4dp" />
+
+            <TextView
+                android:id="@+id/StudentPhoneText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone Number"
+                android:textSize="12sp"
+                android:textColor="#999999" />
+
+        </LinearLayout>
+
+        <!-- Fees Status -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="end">
+
+            <TextView
+                android:id="@+id/StudentFeesText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="₹0"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/Accent_green"
+                android:layout_marginBottom="4dp" />
+
+            <TextView
+                android:id="@+id/StudentFeesStatusText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Paid"
+                android:textSize="12sp"
+                android:textColor="#4CAF50"
+                android:background="@drawable/status_background"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="2dp" />
+
+        </LinearLayout>
+
+        <!-- Action Button -->
+        <ImageButton
+            android:id="@+id/StudentActionButton"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="12dp"
+            android:background="@drawable/circular_button_background"
+            android:src="@drawable/arrow_right_solid_full"
+            android:scaleType="fitCenter"
+            android:padding="6dp"
+            android:contentDescription="View student details" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -9,6 +9,8 @@ public class Student {
     public String fatherName;
     public String motherName;
     public int totalFees;
+    public int paidFees;
+    public int remainingFees;
     public String birthDate;
     public String selectedCourseId;
     public String selectedCourseName;
@@ -27,10 +29,31 @@ public class Student {
         this.fatherName = fatherName;
         this.motherName = motherName;
         this.totalFees = totalFees;
+        this.paidFees = 0; // Initialize paid fees to 0
+        this.remainingFees = totalFees; // Initialize remaining fees to total fees
         this.birthDate = birthDate;
         this.selectedCourseId = selectedCourseId;
         this.selectedCourseName = selectedCourseName;
         this.selectedBatchName = selectedBatchName;
+    }
+
+    // Getters and setters for fees management
+    public int getTotalFees() { return totalFees; }
+    public void setTotalFees(int totalFees) { 
+        this.totalFees = totalFees; 
+        updateRemainingFees();
+    }
+    
+    public int getPaidFees() { return paidFees; }
+    public void setPaidFees(int paidFees) { 
+        this.paidFees = paidFees; 
+        updateRemainingFees();
+    }
+    
+    public int getRemainingFees() { return remainingFees; }
+    
+    private void updateRemainingFees() {
+        this.remainingFees = this.totalFees - this.paidFees;
     }
 }
 

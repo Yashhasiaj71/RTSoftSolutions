@@ -11,7 +11,6 @@
         android:name="com.example.rtsoftsolutions.AdminHome"
         android:label="admin_home"
         tools:layout="@layout/admin_home"
-
         >
         <action
             android:id="@+id/action_AdminHome_to_feesFragment"
@@ -69,16 +68,22 @@
         android:name="com.example.rtsoftsolutions.ViewStudent_Fragment"
         android:label="fragment_view_student_"
         tools:layout="@layout/fragment_view_student_" />
-        
+
     <fragment
         android:id="@+id/courseDetailFragment"
         android:name="com.example.rtsoftsolutions.CourseDetailFragment"
         android:label="Course Details"
         tools:layout="@layout/fragment_course_detail" />
-        
+
     <fragment
         android:id="@+id/addCourseFragment"
         android:name="com.example.rtsoftsolutions.AddCourseFragment"
         android:label="Add Course"
         tools:layout="@layout/fragment_add_course" />
+
+    <fragment
+        android:id="@+id/markAttendanceFragment"
+        android:name="com.example.rtsoftsolutions.MarkAttendanceFragment"
+        android:label="Mark Attendance"
+        tools:layout="@layout/marking_attendance_fragment" />
 </navigation>

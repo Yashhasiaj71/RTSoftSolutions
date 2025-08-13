@@ -14,9 +14,10 @@ credentials = "1.5.0"
 credentialsPlayServicesAuth = "1.5.0"
 googleid = "1.1.1"
 firebaseDatabase = "20.3.0"
-
+mpandroidchart = "v3.1.0"
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
+mpandroidchart = {module = "com.github.Philjay:MPAndroidChart",version.ref = "mpandroidchart"}
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }

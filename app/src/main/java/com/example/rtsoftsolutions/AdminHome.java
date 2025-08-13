@@ -100,37 +100,40 @@ private int CurrentIndex =0;
 
         NavController controller = findNavController(AdminHome.this);
 
-        ImageView Course = view.findViewById(R.id.CourseImage);
-  Course.setOnClickListener(v->{
-      controller.navigate(R.id.action_AdminHome_to_courseFragment);
-  });
+        // Navigate to Courses when header tapped
+        courseImg.setOnClickListener(v -> controller.navigate(R.id.action_AdminHome_to_courseFragment));
 
-//        Fees Button ClickListner
+        // Student Manager
+        ImageButton studentManagerBtn = view.findViewById(R.id.StudentManagerButton);
+        studentManagerBtn.setOnClickListener(v -> controller.navigate(R.id.action_global_studentmanager));
+
+        // Fees
         ImageButton fees = view.findViewById(R.id.FeesButton);
-        fees.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                controller.navigate(R.id.action_AdminHome_to_feesFragment);
+        fees.setOnClickListener(v -> controller.navigate(R.id.action_AdminHome_to_feesFragment));
+
+        // Attendance -> open marking screen via sub graph id if available, else replace fragment directly
+        ImageButton attendanceBtn = view.findViewById(R.id.AttendanceButton);
+        attendanceBtn.setOnClickListener(v -> {
+            // Fallback: open MarkAttendanceFragment inside current container (requires nav entry)
+            try {
+                controller.navigate(R.id.markAttendanceFragment);
+            } catch (Exception e) {
+                // If nav id missing, do nothing
             }
         });
 
-//        Whatsapp icon click listner
+        // Reports placeholder
+        ImageButton reportsBtn = view.findViewById(R.id.ReportsButton);
+        reportsBtn.setOnClickListener(v -> controller.navigate(R.id.action_global_fragmentReport));
+
+        // Birthday WhatsApp quick action
         ImageButton whatsapp = view.findViewById(R.id.WhatsappButton);
-        whatsapp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String PhoneNo = "+916266381188";
-                String Message = "Wishing you A very happy birthday Student, team Interns";
-
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("https://wa.me/"+PhoneNo+"?text="+Uri.encode(Message)));
-
-                try{
-                   startActivity(intent);
-                }catch(ActivityNotFoundException e){
-                    Toast.makeText(requireContext(),"Whatsapp not installed",Toast.LENGTH_SHORT).show();
-                }
-            }
+        whatsapp.setOnClickListener(v -> {
+            String PhoneNo = "+916266381188";
+            String Message = "Wishing you a very happy birthday!";
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("https://wa.me/"+PhoneNo+"?text="+Uri.encode(Message)));
+            try{ startActivity(intent);} catch(ActivityNotFoundException e){ Toast.makeText(requireContext(),"Whatsapp not installed",Toast.LENGTH_SHORT).show(); }
         });
 
         return view;
