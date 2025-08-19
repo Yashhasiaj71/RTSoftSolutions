@@ -65,10 +65,10 @@ public class FragmentReport extends Fragment {
                 if (isChecked) {
                     state[0] = true;
                     Fragment fragmentB = new FragmentOrdinaryReport();
-                    requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, fragmentB).commit();
                     buttonfeesreport.setChecked(false);
                     buttonordinaryreport.setChecked(true);
                     blockanimator(getContext(), arr);
+                    replaceInner(fragmentB);
                 }
             }
         });
@@ -81,12 +81,12 @@ public class FragmentReport extends Fragment {
                 if (isChecked) {
                     state[0] = false;
                     Fragment fragmentB = new Fragment_feesReport();
-                    requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, fragmentB).commit();
                     buttonordinaryreport.setChecked(false);
                     buttonfeesreport.setChecked(true);
                     Animation Rightmovement = AnimationUtils.loadAnimation(getContext(), R.anim.rightswipe);
                     Animation fadein = AnimationUtils.loadAnimation(getContext(), R.anim.fadein);
                     blockanimator(getContext(), arr);
+                    replaceInner(fragmentB) ;
 
 
                 }
