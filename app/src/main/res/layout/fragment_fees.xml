@@ -83,7 +83,6 @@
                         android:paddingEnd="60dp"
                         android:background="@drawable/search_input_background"
         android:inputType="text"
-                        android:drawableStart="@drawable/serach_resized"
                         android:drawablePadding="12dp"
                         android:drawableTint="#666666" />
 

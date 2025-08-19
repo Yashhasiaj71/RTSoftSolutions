@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import com.example.rtsoftsolutions.Models.Student;
 import com.example.rtsoftsolutions.R;
@@ -32,6 +33,15 @@ import com.google.firebase.database.ValueEventListener;
 public class StudentProfile extends Fragment {
     private FirebaseDatabase database;
     private DatabaseReference studentsRef;
+    private EditText namebox ;
+    private EditText addressbox ;
+    private EditText feesbox ;
+    private EditText emailbox ;
+    private EditText phonebox ;
+    private EditText genderbox;
+    private EditText fathernamebox ;
+    private EditText mothernamebox ;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -78,7 +88,7 @@ public class StudentProfile extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_student_profile, container, false);
-
+        initializeall(view);
         SharedPreferences nameShare = getActivity().getSharedPreferences("myPref",MODE_PRIVATE);
        String name =  nameShare.getString("Name","yash");
 Log.d("Name",name);
@@ -102,6 +112,14 @@ SearchQuery = name.trim();
                     // ✅ CORRECT: Put the code that uses the student object HERE.
                     if(student != null){
                         Log.d("Student", "Name: " + student.name + ", Fees: " + student.totalFees);
+                        namebox.setText(student.name);
+                        addressbox.setText(student.address);
+                        feesbox.setText(student.totalFees) ;
+                        emailbox.setText(student.email) ;
+                        phonebox.setText(student.phoneNo) ;
+                        genderbox.setText("male") ;
+                        fathernamebox.setText(student.fatherName);
+                        mothernamebox.setText(student.motherName);
                         // Here you would update your UI elements (TextViews, etc.)
                         // e.g., studentNameTextView.setText(student.getName());
                     }
@@ -118,5 +136,16 @@ SearchQuery = name.trim();
         // if(student!=null){ ... }
 
         return view;
+    }
+
+    public void initializeall(View rootview) {
+        namebox = rootview.findViewById(R.id.nameinput) ;
+         addressbox = rootview.findViewById(R.id.studentaddressinput) ;
+         feesbox = rootview.findViewById(R.id.feesinput) ;
+        emailbox = rootview.findViewById(R.id.emailinput) ;
+     phonebox = rootview.findViewById(R.id.phoneinput) ;
+         genderbox = rootview.findViewById(R.id.studentgenderinput) ;
+       fathernamebox = rootview.findViewById(R.id.fathernameinput) ;
+         mothernamebox = rootview.findViewById(R.id.mothernameinput) ;
     }
 }
