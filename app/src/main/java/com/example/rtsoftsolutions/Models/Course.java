@@ -1,66 +1,89 @@
 package com.example.rtsoftsolutions.Models;
 
-import java.util.List;
-
 public class Course {
-    private String course_name;
-    private List<String> course_batches;
-    private String course_subject;
-    private String course_students;
-    private long course_fees ;
+    private String courseId;
+    private String courseName;
+    private String courseDescription;
+    private String instructorName;
+    private String duration;
+    private String fees;
+    private String startDate;
+    private String endDate;
+    private String maxStudents;
+    private String currentStudents;
+    private String status; // Active, Inactive, Completed
+    private String batchName; // e.g., "Morning Batch", "Evening Batch", "Weekend Batch"
+    private String batchTime; // e.g., "9:00 AM - 11:00 AM"
+    private String batchDays; // e.g., "Monday, Wednesday, Friday"
 
-    // 🔹 Empty constructor (required for Firebase)
     public Course() {
+        // Required empty constructor for Firebase
     }
 
-    // 🔹 Full constructor
-    public Course(String course_name, List<String> course_batches, String course_subject, String course_students , long course_fees) {
-        this.course_name = course_name;
-        this.course_batches = course_batches;
-        this.course_subject = course_subject;
-        this.course_students = course_students;
-        this.course_fees = course_fees ;
+    public Course(String courseId, String courseName, String courseDescription, String instructorName, 
+                  String duration, String fees, String startDate, String endDate, 
+                  String maxStudents, String currentStudents, String status, String batchName, 
+                  String batchTime, String batchDays) {
+        this.courseId = courseId;
+        this.courseName = courseName;
+        this.courseDescription = courseDescription;
+        this.instructorName = instructorName;
+        this.duration = duration;
+        this.fees = fees;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.maxStudents = maxStudents;
+        this.currentStudents = currentStudents;
+        this.status = status;
+        this.batchName = batchName;
+        this.batchTime = batchTime;
+        this.batchDays = batchDays;
     }
 
-    // 🔹 Getters
-    public String getCourse_name() {
-        return course_name;
+    public Course( String selectACourse, String s1, String s2, String s3, String s4, String s5, String s6, String s7, String s8, String s9, String s10, String s11) {
+
     }
 
-    public List<String> getCourse_batches() {
-        return course_batches;
-    }
+    // Getters and Setters
+    public String getCourseId() { return courseId; }
+    public void setCourseId(String courseId) { this.courseId = courseId; }
 
-    public String getCourse_subject() {
-        return course_subject;
-    }
+    public String getCourseName() { return courseName; }
+    public void setCourseName(String courseName) { this.courseName = courseName; }
 
-    public String getCourse_students() {
-        return course_students;
-    }
+    public String getCourseDescription() { return courseDescription; }
+    public void setCourseDescription(String courseDescription) { this.courseDescription = courseDescription; }
 
-    public long getCourse_fees() {
-        return course_fees ;
-    }
+    public String getInstructorName() { return instructorName; }
+    public void setInstructorName(String instructorName) { this.instructorName = instructorName; }
 
-    // 🔹 Setters
-    public void setCourse_name(String course_name) {
-        this.course_name = course_name;
-    }
+    public String getDuration() { return duration; }
+    public void setDuration(String duration) { this.duration = duration; }
 
-    public void setCourse_batches(List<String> course_batches) {
-        this.course_batches = course_batches;
-    }
+    public String getFees() { return fees; }
+    public void setFees(String fees) { this.fees = fees; }
 
-    public void setCourse_subject(String course_subject) {
-        this.course_subject = course_subject;
-    }
+    public String getStartDate() { return startDate; }
+    public void setStartDate(String startDate) { this.startDate = startDate; }
 
-    public void setCourse_students(String course_students) {
-        this.course_students = course_students;
-    }
+    public String getEndDate() { return endDate; }
+    public void setEndDate(String endDate) { this.endDate = endDate; }
 
-    public void setCourse_fees(long coursefees) {
-        this.course_fees = coursefees ;
-    }
-}
+    public String getMaxStudents() { return maxStudents; }
+    public void setMaxStudents(String maxStudents) { this.maxStudents = maxStudents; }
+
+    public String getCurrentStudents() { return currentStudents; }
+    public void setCurrentStudents(String currentStudents) { this.currentStudents = currentStudents; }
+
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
+
+    public String getBatchName() { return batchName; }
+    public void setBatchName(String batchName) { this.batchName = batchName; }
+
+    public String getBatchTime() { return batchTime; }
+    public void setBatchTime(String batchTime) { this.batchTime = batchTime; }
+
+    public String getBatchDays() { return batchDays; }
+    public void setBatchDays(String batchDays) { this.batchDays = batchDays; }
+} 

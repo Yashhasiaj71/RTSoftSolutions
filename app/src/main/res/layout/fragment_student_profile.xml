@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".StudentProfile"
+    tools:context=".Fragments.StudentProfile"
     android:background="#05383A">
 
 <!--    edit and delete buttons-->

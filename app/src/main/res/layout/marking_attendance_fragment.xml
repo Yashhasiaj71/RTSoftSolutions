@@ -1,191 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="#3B999191"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-
-     <GridLayout
-          android:id="@+id/batchoverview"
-          app:layout_constraintTop_toTopOf="parent"
-          app:layout_constraintStart_toStartOf="parent"
-         app:layout_constraintEnd_toEndOf="parent"
-          android:layout_height="80dp"
-          android:layout_width="match_parent"
-          android:rowCount="2"
-          android:columnCount="2"
-         android:background="#07446F"
-         >
-         <LinearLayout
-             android:layout_width="200dp"
-             android:layout_height="40dp"
-             android:layout_row= "0"
-             android:layout_column="0">
-
-             <TextView
-                 android:textColor="@color/white"
-                 android:textSize="13sp"
-                 android:id="@+id/Batchnamelabel"
-                 android:layout_width="44dp"
-                 android:layout_height="match_parent"
-                 android:layout_weight="0.20"
-                 android:gravity="center_vertical"
-                 android:text="Batch Name :" />
-
-             <TextView
-                 android:id="@+id/fillBatchname"
-                 android:layout_height="match_parent"
-                 android:layout_width="0dp"
-                 android:layout_weight="0.80"/>
-         </LinearLayout>
-
-
-         <LinearLayout
-             android:layout_width="200dp"
-             android:layout_height="40dp"
-             android:layout_row= "0"
-             android:layout_column="1">
-
-             <TextView
-                 android:id="@+id/startdatelabel"
-                 android:layout_width="44dp"
-                 android:textColor="@color/white"
-                 android:layout_height="match_parent"
-                 android:layout_weight="0.20"
-                 android:gravity="center_vertical"
-                 android:text="Start Date :" />
-
-             <TextView
-                 android:id="@+id/fillstartdate"
-                 android:layout_height="match_parent"
-                 android:layout_width="0dp"
-                 android:layout_weight="0.80"/>
-         </LinearLayout>
-
-
-         <LinearLayout
-             android:layout_width="200dp"
-             android:layout_height="40dp"
-             android:layout_row= "1"
-             android:layout_column="0">
-
-             <TextView
-                 android:textColor="#FFF"
-                 android:id="@+id/noofstudentslabel"
-                 android:layout_width="44dp"
-                 android:layout_height="match_parent"
-                 android:layout_weight="0.20"
-                 android:gravity="center_vertical"
-                 android:text="no of students :" />
-
-             <TextView
-                 android:id="@+id/fillnoofstudents"
-                 android:layout_height="match_parent"
-                 android:layout_width="0dp"
-                 android:layout_weight="0.80"/>
-         </LinearLayout>
-
-
-
-         <LinearLayout
-             android:layout_width="200dp"
-             android:layout_height="40dp"
-             android:layout_row= "1"
-             android:layout_column="1"
-             android:text="Due Date : ">
-
-             <TextView
-                 android:textColor="@color/white"
-                 android:id="@+id/duedatelabel"
-                 android:layout_width="44dp"
-                 android:layout_height="match_parent"
-                 android:layout_weight="0.20"
-                 android:gravity="center_vertical"
-                 android:text="Due Dates :" />
-
-             <TextView
-                 android:id="@+id/fillduedate"
-                 android:layout_height="match_parent"
-                 android:layout_width="0dp"
-                 android:layout_weight="0.80"/>
-         </LinearLayout>
-     </GridLayout>
-
+    android:orientation="vertical"
+    android:background="@color/white">
 
     <LinearLayout
-        android:id="@+id/heading"
-        android:layout_marginTop="30dp"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/batchoverview">
-
-        <View
-            android:background="#3B999191"
-            android:layout_width="0dp"
-            android:layout_weight="0.07"
-            android:layout_height="match_parent"
-            />
-        <!-- scrollview -->
-
-            <!-- populate this from database -->
-        <TextView
-            style="@style/heading"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="0.83"
-            android:background="@drawable/mediumroundedrectangle"
-            android:backgroundTint="#F8EEEE"
-            android:hint="Mark Attendance"
-            android:translationZ="10dp" />
-
-        <View
-            android:background="#3B999191"
-            android:layout_width="0dp"
-            android:layout_weight="0.07"
-            android:layout_height="match_parent" />
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/listview"
-        android:layout_marginTop="30dp"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/heading">
+        android:orientation="vertical"
+        android:padding="16dp">
 
-        <View
-            android:background="#3B999191"
-            android:layout_width="0dp"
-            android:layout_weight="0.07"
-            android:layout_height="match_parent" />
-        <!-- scrollview -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mark Attendance"
+            android:textStyle="bold"
+            android:textSize="22sp" />
 
-        <!-- populate this from database -->
-        <ScrollView
-            style="@style/heading"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="0.83"
-            android:hint="Mark Presentee"
-            android:translationZ="10dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp">
 
-        <View
-            android:background="#3B999191"
-            android:layout_width="0dp"
-            android:layout_weight="0.07"
-            android:layout_height="match_parent"/>
+            <Spinner
+                android:id="@+id/spCourse"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/spinner_background" />
+
+            <Spinner
+                android:id="@+id/spBatch"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/spinner_background" />
+        </LinearLayout>
+
+        <DatePicker
+            android:id="@+id/datePicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:calendarViewShown="true"
+            android:layout_marginTop="8dp" />
+
+        <Button
+            android:id="@+id/btnLoad"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Load Students"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="@color/Accent_green"
+            android:textColor="@color/white" />
 
     </LinearLayout>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvStudents"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="16dp"
+        android:clipToPadding="false" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="#FAFAFA">
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="Save Attendance"
+            android:backgroundTint="@color/Accent_green"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btnReport"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="View Reports"
+            android:backgroundTint="@color/ColorPrimary"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+</LinearLayout>

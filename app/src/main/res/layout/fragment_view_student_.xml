@@ -1,17 +1,269 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewStudent_Fragment">
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".Fragments.ViewStudent_Fragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!-- Header Section -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="View Students"
-        android:textSize="32sp"
-        android:gravity="center_horizontal"
-        />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:background="@color/white"
+        android:elevation="4dp">
 
-</FrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Student Directory"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search and manage all students"
+            android:textSize="16sp"
+            android:textColor="#666666"
+            android:alpha="0.8" />
+
+    </LinearLayout>
+
+    <!-- Search and Filter Section -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Search Input -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp">
+
+                <EditText
+                    android:id="@+id/StudentSearchInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="Search students by name, course, or batch..."
+                    android:textColorHint="#999999"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="48dp"
+                    android:background="@drawable/search_input_background"
+                    android:inputType="text"
+                    android:drawableStart="@drawable/serach_resized"
+                    android:drawablePadding="12dp"
+                    android:drawableTint="#666666" />
+
+                <ImageButton
+                    android:id="@+id/ClearSearchButton"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/circular_button_background"
+                    android:src="@drawable/trash_solid_full"
+                    android:scaleType="fitCenter"
+                    android:padding="6dp"
+                    android:visibility="gone"
+                    android:contentDescription="Clear search" />
+
+            </FrameLayout>
+
+            <!-- Filter Options -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Filter by:"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginEnd="12dp" />
+
+                <Spinner
+                    android:id="@+id/CourseFilterSpinner"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/spinner_background"
+                    android:popupBackground="@color/white" />
+
+                <Spinner
+                    android:id="@+id/BatchFilterSpinner"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/spinner_background"
+                    android:popupBackground="@color/white" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- Sort Options -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp"
+        android:paddingBottom="12dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sort by:"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginEnd="12dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/SortByNameChip"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:text="Name"
+            android:textSize="12sp"
+            app:chipBackgroundColor="@color/Accent_green"
+            android:textColor="@color/white"
+            android:layout_marginEnd="8dp"
+            app:chipStrokeWidth="0dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/SortByCourseChip"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:text="Course"
+            android:textSize="12sp"
+            app:chipBackgroundColor="#E0E0E0"
+            android:textColor="@color/black"
+            android:layout_marginEnd="8dp"
+            app:chipStrokeWidth="0dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/SortByFeesChip"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:text="Fees"
+            android:textSize="12sp"
+            app:chipBackgroundColor="#E0E0E0"
+            android:textColor="@color/black"
+            app:chipStrokeWidth="0dp" />
+
+    </LinearLayout>
+
+    <!-- Student Count -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp"
+        android:paddingBottom="12dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/StudentCountText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Total Students: 0"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#666666" />
+
+        <TextView
+            android:id="@+id/FilteredCountText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Showing: 0"
+            android:textSize="14sp"
+            android:textColor="#666666" />
+
+    </LinearLayout>
+
+    <!-- Student List -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/StudentRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingHorizontal="20dp"
+        android:clipToPadding="false"
+        android:scrollbars="vertical" />
+
+    <!-- Empty State -->
+    <LinearLayout
+        android:id="@+id/EmptyStateLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="40dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/student_anim"
+            android:scaleType="fitCenter"
+            android:alpha="0.5" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No students found"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#666666"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Try adjusting your search or filters"
+            android:textSize="14sp"
+            android:textColor="#999999"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+
+    <!-- Loading Indicator -->
+    <ProgressBar
+        android:id="@+id/LoadingProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+</LinearLayout>

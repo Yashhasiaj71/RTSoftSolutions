@@ -1,252 +1,597 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".FeesFragment"
-   >
+    android:background="@color/white"
+    tools:context=".Fragments.FeesFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <Button
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:text="Back"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Header Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginBottom="30dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fees Management"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Search and manage student fees"
+                android:textSize="16sp"
+                android:textColor="#666666"
+                android:alpha="0.8" />
+
+        </LinearLayout>
+
+        <!-- Search Section -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Search Student"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
         android:textColor="@color/black"
-        android:backgroundTint="@color/white"
-        />
+                    android:layout_marginBottom="12dp" />
+
+                <!-- Search Input -->
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp">
 
     <EditText
-
         android:id="@+id/StudentSearch"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:hint="Enter student name..."
+                        android:textColorHint="#999999"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="60dp"
+                        android:background="@drawable/search_input_background"
         android:inputType="text"
-        android:layout_width="370dp"
-        android:background="@color/white"
-        android:layout_height="50dp"
-        android:layout_marginTop="100dp"
-        android:layout_gravity="center_horizontal"
-        android:hint="Search Student Name"
-        android:textColorHint="@color/black"
-        android:padding="16dp"
-        android:drawableEnd="@drawable/magnifying_glass_solid_full"
-        />
+                        android:drawableStart="@drawable/serach_resized"
+                        android:drawablePadding="12dp"
+                        android:drawableTint="#666666" />
 
-
-<!--    invisible button for search icon-->
     <Button
         android:id="@+id/SearchButton"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginLeft="310dp"
-        android:layout_marginTop="100dp"
-        android:backgroundTint="@color/Transperent" />
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="end|center_vertical"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/circular_button_background"
+                        android:text=""
+                        android:contentDescription="Search" />
 
+                </FrameLayout>
 
-<!--    student view-->
+                <!-- Search Results Container -->
     <LinearLayout
-        android:orientation="horizontal"
+                    android:id="@+id/SearchResultsContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:background="@drawable/search_results_background"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    android:elevation="8dp">
+
+                    <ListView
+                        android:id="@+id/SearchResultsListView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:divider="@color/Accent_green"
+                        android:dividerHeight="1dp"
+                        android:padding="8dp"
+                        android:scrollbars="vertical" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Student Information Section -->
+        <androidx.cardview.widget.CardView
         android:id="@+id/StudentView"
-        android:layout_width="380dp"
-        android:layout_height="60dp"
-  android:layout_marginTop="180dp"
-        android:layout_gravity="center_horizontal"
-        android:background="@color/Accent_green"
-        />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="#F8F9FA"
+            android:visibility="gone">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
 
-<!--    remaining fees section-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Student Information"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- Student details will be added here dynamically -->
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Fees Information Section -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="#E8F5E8">
+
     <LinearLayout
-        android:layout_width="380dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="250dp"
-        android:layout_gravity="center_horizontal"
-        android:background="@color/Accent_green"
-        >
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fees Details"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="16dp" />
+
         <TextView
             android:id="@+id/RemainingFees"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Remaining fees for Student = "
+                    android:layout_height="wrap_content"
+                    android:text="Remaining fees: ₹0"
             android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#2E7D32"
             android:gravity="center"
-            />
+                    android:padding="16dp"
+                    android:background="@drawable/fees_display_background" />
+
     </LinearLayout>
 
-<!--    amount section-->
-    <EditText
-        android:id="@+id/AmountEditText"
-        android:inputType="number"
-        android:layout_width="380dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="320dp"
-        android:hint="Enter Amount Paid"
-        android:textColorHint="@color/black"
-        android:gravity="center"
-        android:layout_gravity="center_horizontal"
-        android:background="@color/Accent_green"
-        />
+        </androidx.cardview.widget.CardView>
 
-<!--    paymrnt mode text-->
+        <!-- Payment Section -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Payment Details"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- Amount Input -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:hint="Enter Amount"
+                    app:boxCornerRadiusTopStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    app:boxStrokeColor="@color/Accent_green"
+                    app:hintTextColor="@color/Accent_green">
+
+                    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/AmountEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+        android:inputType="number"
+                        android:textSize="16sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Payment Mode Selection -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Select Payment Mode"
-        android:layout_gravity="center_horizontal"
-        android:textSize="32sp"
-        android:layout_marginTop="400dp"
-        />
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="12dp" />
 
-<!--    sections for selection of payment modes-->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="380dp"
-        android:layout_height="80dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="450dp"
-
-        >
-   
-<!--        upi payment mode section-->
-        <LinearLayout
-            android:id="@+id/UPI"
-            android:layout_width="80dp"
-            android:orientation="vertical"
-            android:layout_height="match_parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            >
-            <ImageButton
-                android:id="@+id/Upi_mode"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="35dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="5dp"
-                android:background="@color/Transperent"
-                android:scaleType="fitXY"
-                android:src="@drawable/upi_logo" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:text="UPI"
-                android:textSize="20sp"
-                android:layout_gravity="center_horizontal"
-                />
-        </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginBottom="20dp">
 
 
-<!--        cash payment mode -->
+
+                    <!-- Cash Payment Mode -->
         <LinearLayout
             android:id="@+id/CASH"
-            android:layout_width="80dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
             android:orientation="vertical"
-            android:layout_height="match_parent"
-            app:layout_constraintEnd_toStartOf="@+id/BANK"
-            app:layout_constraintStart_toEndOf="@+id/UPI"
-            app:layout_constraintTop_toTopOf="parent"
-            >
+                        android:gravity="center"
+                        android:padding="12dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/payment_mode_background"
+                        android:clickable="true"
+                        android:focusable="true">
+
             <ImageButton
                 android:id="@+id/cash_mode"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="35dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="5dp"
-                android:background="@color/Transperent"
-                android:scaleType="fitXY"
-                android:src="@drawable/money_bills_solid_full" />
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/circular_icon_background"
+                            android:src="@drawable/money_bills_solid_full"
+                            android:scaleType="fitCenter"
+                            android:padding="8dp" />
 
             <TextView
+                android:id="@+id/Cash_text"
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
+                            android:layout_height="wrap_content"
                 android:text="CASH"
-                android:textSize="20sp"
-                android:layout_gravity="center_horizontal"
-                />
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:layout_marginTop="4dp" />
+
         </LinearLayout>
 
+<!--          upi payment mode-->
+                    <LinearLayout
+                        android:id="@+id/UPI"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_marginStart="4dp"
+                        android:padding="12dp"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/payment_mode_background"
+                        android:clickable="true"
+                        android:focusable="true">
 
-<!--        Bank Transfer Section-->
+                        <ImageButton
+                            android:id="@+id/Upi_mode"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/circular_icon_background"
+                            android:src="@drawable/upi_logo"
+                            android:scaleType="fitCenter"
+                            android:padding="8dp" />
+
+                        <TextView
+                            android:id="@+id/Upi_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="UPI"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:layout_marginTop="4dp" />
+
+                    </LinearLayout>
+
+
+
+                    <!-- Bank Payment Mode -->
         <LinearLayout
             android:id="@+id/BANK"
-            android:layout_width="80dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
             android:orientation="vertical"
-            android:layout_height="match_parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            >
+                        android:gravity="center"
+                        android:padding="12dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/payment_mode_background"
+                        android:clickable="true"
+                        android:focusable="true">
+
             <ImageButton
                 android:id="@+id/bank_mode"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="35dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="5dp"
-                android:background="@color/Transperent"
-                android:scaleType="fitXY"
-                android:src="@drawable/building_columns_solid_full" />
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/circular_icon_background"
+                            android:src="@drawable/building_columns_solid_full"
+                            android:scaleType="fitCenter"
+                            android:padding="8dp" />
 
             <TextView
+                android:id="@+id/Bank_text"
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
+                            android:layout_height="wrap_content"
                 android:text="BANK"
-                android:textSize="20sp"
-                android:layout_gravity="center_horizontal"
-                />
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:layout_marginTop="4dp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Process Payment Button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/ProcessPaymentButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:text="Process Payment"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    app:cornerRadius="12dp"
+                    app:backgroundTint="@color/Accent_green"
+                    android:layout_marginTop="8dp" />
+
         </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
 
+        <!-- Generate Receipt Section -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="#E8F5E8"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="20dp"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Generate Receipt"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Generate PDF receipt for payment"
+                        android:textSize="14sp"
+                        android:textColor="#666666"
+                        android:layout_marginTop="4dp" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/GenerateReceiptButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="Generate Receipt"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/Accent_green"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- View Students Section -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="#FFF3E0">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="16dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="View All Students"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="View remaining fees for all students"
+                            android:textSize="14sp"
+                            android:textColor="#666666"
+                            android:layout_marginTop="4dp" />
+
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/ViewStudentsButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:text="View Students"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:backgroundTint="@color/ColorPrimary"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp" />
+
+                </LinearLayout>
+
+                <!-- Students List Container -->
+                <LinearLayout
+                    android:id="@+id/ViewStudentsContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Students with Remaining Fees"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="8dp" />
+
+                    <ListView
+                        android:id="@+id/StudentsListView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:divider="@color/Accent_green"
+                        android:dividerHeight="1dp"
+                        android:padding="8dp"
+                        android:scrollbars="vertical"
+                        android:background="@drawable/search_results_background" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- WhatsApp Reminder Section -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="#E3F2FD">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="20dp"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="OR"
-        android:textSize="32sp"
-        android:layout_marginTop="530dp"
-        android:layout_gravity="center_horizontal"
-        />
+                        android:text="Send Fee Reminder"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black" />
 
-
-<!--    whatsapp reminder layout-->
-    <GridLayout
-        android:id="@+id/BirthdayInfo"
-        android:layout_width="380dp"
-        android:layout_height="100dp"
-        android:layout_gravity="bottom|center_horizontal"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/rounded_rectangle">
-
-
-        <LinearLayout
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            >
             <TextView
-                android:layout_width="190dp"
-                android:layout_marginLeft="20dp"
-                android:layout_gravity="center_vertical"
+                        android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Send Fees reminder on :-"
-                android:textSize="20sp" />
+                        android:text="Send WhatsApp reminder to student"
+                        android:textSize="14sp"
+                        android:textColor="#666666"
+                        android:layout_marginTop="4dp" />
 
+                </LinearLayout>
 
             <ImageButton
                 android:id="@+id/WhatsappButton"
-                android:layout_height="80dp"
-                android:layout_width="80dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginBottom="10dp"
-                android:scaleType="fitXY"
-                android:layout_marginTop="10dp"
-                android:background="@color/Transperent"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:background="@drawable/whatsapp_button_background"
                 android:src="@drawable/whatsapp_logo"
-                android:layout_marginStart="50dp"
+                    android:scaleType="fitCenter"
+                    android:padding="12dp"
+                    android:contentDescription="Send WhatsApp reminder" />
 
-                />
         </LinearLayout>
 
-    </GridLayout>
+        </androidx.cardview.widget.CardView>
 
+    </LinearLayout>
 
-</FrameLayout>
+</ScrollView>

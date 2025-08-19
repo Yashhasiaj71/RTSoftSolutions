@@ -43,11 +43,8 @@
                 android:layout_width="156dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/capsule"
-                android:backgroundTint="@color/ColorSecondary"
-
-                />
+                android:backgroundTint="@color/ColorSecondary" />
         </LinearLayout>
-
 
         <ToggleButton
             android:translationZ="10dp"
@@ -59,8 +56,7 @@
             android:text="ToggleButton"
             app:layout_constraintBottom_toBottomOf="@id/feesbutton"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/feesbutton"
-            />
+            app:layout_constraintTop_toTopOf="@id/feesbutton" />
 
         <ToggleButton
             android:id="@+id/feesbutton"
@@ -74,22 +70,14 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-    <!-- container to switchs between ordinary fragment and fees report -->
-    <androidx.fragment.app.FragmentContainerView
+    <!-- container to switch between ordinary fragment and fees report -->
+    <FrameLayout
         android:id="@+id/fragmentContainerView"
-        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:defaultNavHost="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/togglebuttonview"
-        app:layout_constraintVertical_bias="1.0"
-        app:layout_constraintVertical_weight="1"
-        app:navGraph="@navigation/subnavgraph" />
-
+        app:layout_constraintTop_toBottomOf="@id/togglebuttonview" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
