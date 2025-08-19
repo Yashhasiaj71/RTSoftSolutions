@@ -1,4 +1,4 @@
-package com.example.rtsoftsolutions;
+package com.example.rtsoftsolutions.Adapters;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -12,6 +12,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.rtsoftsolutions.Models.AttendanceRecord;
+import com.example.rtsoftsolutions.Models.Student;
+import com.example.rtsoftsolutions.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;

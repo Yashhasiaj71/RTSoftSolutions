@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".FeesFragment">
+    tools:context=".Fragments.FeesFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -83,7 +83,7 @@
                         android:paddingEnd="60dp"
                         android:background="@drawable/search_input_background"
         android:inputType="text"
-                        android:drawableStart="@drawable/magnifying_glass_solid_full"
+                        android:drawableStart="@drawable/serach_resized"
                         android:drawablePadding="12dp"
                         android:drawableTint="#666666" />
 
@@ -259,39 +259,7 @@
                     android:gravity="center"
                     android:layout_marginBottom="20dp">
 
-                    <!-- UPI Payment Mode -->
-        <LinearLayout
-            android:id="@+id/UPI"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-            android:orientation="vertical"
-                        android:gravity="center"
-                        android:padding="12dp"
-                        android:layout_marginEnd="8dp"
-                        android:background="@drawable/payment_mode_background"
-                        android:clickable="true"
-                        android:focusable="true">
 
-            <ImageButton
-                android:id="@+id/Upi_mode"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:background="@drawable/circular_icon_background"
-                            android:src="@drawable/upi_logo"
-                            android:scaleType="fitCenter"
-                            android:padding="8dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                android:text="UPI"
-                            android:textSize="14sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/black"
-                            android:layout_marginTop="4dp" />
-
-        </LinearLayout>
 
                     <!-- Cash Payment Mode -->
         <LinearLayout
@@ -302,8 +270,7 @@
             android:orientation="vertical"
                         android:gravity="center"
                         android:padding="12dp"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginEnd="4dp"
+                        android:layout_marginEnd="8dp"
                         android:background="@drawable/payment_mode_background"
                         android:clickable="true"
                         android:focusable="true">
@@ -318,6 +285,7 @@
                             android:padding="8dp" />
 
             <TextView
+                android:id="@+id/Cash_text"
                 android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                 android:text="CASH"
@@ -327,6 +295,44 @@
                             android:layout_marginTop="4dp" />
 
         </LinearLayout>
+
+<!--          upi payment mode-->
+                    <LinearLayout
+                        android:id="@+id/UPI"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_marginStart="4dp"
+                        android:padding="12dp"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/payment_mode_background"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <ImageButton
+                            android:id="@+id/Upi_mode"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/circular_icon_background"
+                            android:src="@drawable/upi_logo"
+                            android:scaleType="fitCenter"
+                            android:padding="8dp" />
+
+                        <TextView
+                            android:id="@+id/Upi_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="UPI"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:layout_marginTop="4dp" />
+
+                    </LinearLayout>
+
+
 
                     <!-- Bank Payment Mode -->
         <LinearLayout
@@ -352,6 +358,7 @@
                             android:padding="8dp" />
 
             <TextView
+                android:id="@+id/Bank_text"
                 android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                 android:text="BANK"
@@ -378,6 +385,156 @@
                     android:layout_marginTop="8dp" />
 
         </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Generate Receipt Section -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="#E8F5E8"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="20dp"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Generate Receipt"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Generate PDF receipt for payment"
+                        android:textSize="14sp"
+                        android:textColor="#666666"
+                        android:layout_marginTop="4dp" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/GenerateReceiptButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="Generate Receipt"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/Accent_green"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- View Students Section -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="#FFF3E0">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="16dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="View All Students"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="View remaining fees for all students"
+                            android:textSize="14sp"
+                            android:textColor="#666666"
+                            android:layout_marginTop="4dp" />
+
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/ViewStudentsButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:text="View Students"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:backgroundTint="@color/ColorPrimary"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp" />
+
+                </LinearLayout>
+
+                <!-- Students List Container -->
+                <LinearLayout
+                    android:id="@+id/ViewStudentsContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Students with Remaining Fees"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="8dp" />
+
+                    <ListView
+                        android:id="@+id/StudentsListView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:divider="@color/Accent_green"
+                        android:dividerHeight="1dp"
+                        android:padding="8dp"
+                        android:scrollbars="vertical"
+                        android:background="@drawable/search_results_background" />
+
+                </LinearLayout>
+
+            </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 

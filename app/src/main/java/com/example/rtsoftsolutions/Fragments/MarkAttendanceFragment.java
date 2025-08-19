@@ -1,4 +1,4 @@
-package com.example.rtsoftsolutions;
+package com.example.rtsoftsolutions.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,6 +16,10 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.rtsoftsolutions.Adapters.AttendanceAdapter;
+import com.example.rtsoftsolutions.Models.AttendanceRecord;
+import com.example.rtsoftsolutions.Models.Student;
+import com.example.rtsoftsolutions.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

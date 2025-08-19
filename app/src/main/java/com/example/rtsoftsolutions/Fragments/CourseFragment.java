@@ -1,4 +1,4 @@
-package com.example.rtsoftsolutions;
+package com.example.rtsoftsolutions.Fragments;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
@@ -8,6 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import com.example.rtsoftsolutions.Adapters.CourseAdapter;
+import com.example.rtsoftsolutions.Models.Course;
+import com.example.rtsoftsolutions.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

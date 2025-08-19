@@ -1,4 +1,4 @@
-package com.example.rtsoftsolutions;
+package com.example.rtsoftsolutions.Fragments;
 
 import static androidx.navigation.fragment.FragmentKt.findNavController;
 
@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentContainerView;
 import androidx.navigation.NavController;
 
+import com.example.rtsoftsolutions.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -114,7 +115,6 @@ public class studentmanager extends Fragment {
                 int studentCount = (int) dataSnapshot.getChildrenCount();
                 updateStudentCountDisplay(studentCount);
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Log.e(TAG, "Failed to load student count", databaseError.toException());

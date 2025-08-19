@@ -1,4 +1,4 @@
-package com.example.rtsoftsolutions;
+package com.example.rtsoftsolutions.Fragments;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -15,6 +15,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.rtsoftsolutions.Models.AttendanceRecord;
+import com.example.rtsoftsolutions.Models.Student;
+import com.example.rtsoftsolutions.PdfExporter;
+import com.example.rtsoftsolutions.R;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.data.BarData;
@@ -118,9 +122,9 @@ public class FragmentOrdinaryReport extends Fragment {
                     boolean okBatch = batch.equals("All Batches") || batch.equals(r.batchName);
                     if (okCourse && okBatch) {
                         switch (r.status) {
-                            case "Present": present++; break;
-                            case "Absent": absent++; break;
-                            case "Leave": leave++; break;
+                            case "Present": ++present; break;
+                            case "Absent": ++absent; break;
+                            case "Leave": ++leave; break;
                         }
                     }
                 }

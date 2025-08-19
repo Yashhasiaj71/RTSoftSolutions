@@ -1,4 +1,4 @@
-package com.example.rtsoftsolutions;
+package com.example.rtsoftsolutions.Models;
 
 public class AttendanceRecord {
     public String studentId;

@@ -1,4 +1,4 @@
-package com.example.rtsoftsolutions;
+package com.example.rtsoftsolutions.Fragments;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
@@ -12,6 +12,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.example.rtsoftsolutions.Models.Course;
+import com.example.rtsoftsolutions.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import java.util.UUID;

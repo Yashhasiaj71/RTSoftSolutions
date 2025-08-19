@@ -14,7 +14,7 @@
         android:layout_marginTop="10dp"
         android:backgroundTint="#F0F0F0"
         android:translationZ="3dp"
-        tools:context=".AddStudent_Fragment">
+        tools:context=".Fragments.AddStudent_Fragment">
 
         <!-- Title Card -->
         <TextView
@@ -100,6 +100,35 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/nameinput" />
 
+        <!-- Birth Date (moved here, after email) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/birthDateLayout"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="16dp"
+            android:hint="Birth Date"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:endIconMode="custom"
+            app:endIconDrawable="@drawable/calendar_days_solid_full"
+            app:endIconTint="@color/black"
+            app:endIconScaleType="fitEnd"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/imageinputlayout"
+            app:layout_constraintTop_toBottomOf="@id/emailinput">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etBirthDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Birth Date"
+                android:focusable="false"
+                android:background="@color/white"
+                android:inputType="none|date" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Phone input (moved below Birth Date) -->
         <EditText
             android:id="@+id/phoneinput"
             android:layout_width="0dp"
@@ -115,7 +144,7 @@
             android:textColorHint="#01111F"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/emailinput"/>
+            app:layout_constraintTop_toBottomOf="@id/birthDateLayout"/>
 
         <!-- Full Width Fields -->
         <EditText
@@ -187,74 +216,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/fathernameinput" />
 
-        <!-- Total Fees -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tpainputLayout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp"
-            android:hint="Total Fees"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/mothernameinput">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tpainput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:inputType="number" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Amount Paid (optional) -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/amountfilledLayout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="12dp"
-            android:hint="Amount Paid (optional)"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tpainputLayout">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/amountfilled"
-                android:background="@color/white"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Birth Date -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/birthDateLayout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp"
-            android:hint="Birth Date (DD/MM/YYYY)"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/amountfilledLayout">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etBirthDate"
-                android:background="@color/white"
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="date" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Course Selection -->
+        <!-- Course Selection (moved ABOVE Fees) -->
         <TextView
             android:id="@+id/courseLabel"
             android:layout_width="0dp"
@@ -268,7 +230,7 @@
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/birthDateLayout" />
+            app:layout_constraintTop_toBottomOf="@id/mothernameinput" />
 
         <Spinner
             android:id="@+id/spinnerCourse"
@@ -306,21 +268,65 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="24dp"
             android:background="@drawable/border_rectangle"
             android:padding="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/batchLabel"
-            app:layout_constraintBottom_toTopOf="@id/savedetails" />
+            app:layout_constraintTop_toBottomOf="@id/batchLabel" />
+
+        <!-- Total Fees -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tpainputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            android:hint="Total Fees"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/spinnerBatch">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tpainput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Amount Paid (optional) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/amountfilledLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="12dp"
+            android:hint="Amount Paid (optional)"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tpainputLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/amountfilled"
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Save Button -->
         <Button
             android:id="@+id/savedetails"
             android:layout_width="0dp"
             android:layout_height="55dp"
+            android:background="@drawable/border_rectangle"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="24dp"
             android:backgroundTint="@color/Accent_green"
             android:elevation="8dp"
@@ -329,7 +335,7 @@
             android:textSize="16sp"
             android:textStyle="bold"
             android:translationZ="3dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/amountfilledLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 

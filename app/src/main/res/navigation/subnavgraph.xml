@@ -6,12 +6,12 @@
     app:startDestination="@id/fragment_feesReport">
     <fragment
         android:id="@+id/fragmentOrdinaryReport"
-        android:name="com.example.rtsoftsolutions.FragmentOrdinaryReport"
+        android:name="com.example.rtsoftsolutions.Fragments.FragmentOrdinaryReport"
         android:label="FragmentOrdinaryReport" />
     <action android:id="@+id/action_global_fragmentOrdinaryReport" app:destination="@id/fragmentOrdinaryReport" />
     <fragment
         android:id="@+id/fragment_feesReport"
-        android:name="com.example.rtsoftsolutions.Fragment_feesReport"
+        android:name="com.example.rtsoftsolutions.Fragments.Fragment_feesReport"
         android:label="Fragment_feesReport" />
     <action android:id="@+id/action_global_fragment_feesReport" app:destination="@id/fragment_feesReport" />
 </navigation>

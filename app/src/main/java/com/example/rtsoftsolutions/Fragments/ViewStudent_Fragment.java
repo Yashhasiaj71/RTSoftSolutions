@@ -1,5 +1,9 @@
-package com.example.rtsoftsolutions;
+package com.example.rtsoftsolutions.Fragments;
 
+import static android.content.Context.MODE_PRIVATE;
+import static androidx.navigation.fragment.FragmentKt.findNavController;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,9 +20,13 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.rtsoftsolutions.Adapters.StudentAdapter;
+import com.example.rtsoftsolutions.Models.Student;
+import com.example.rtsoftsolutions.R;
 import com.google.android.material.chip.Chip;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,7 +36,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -340,13 +347,19 @@ public class ViewStudent_Fragment extends Fragment implements StudentAdapter.OnS
             studentRecyclerView.setVisibility(View.GONE);
         }
     }
-
     @Override
     public void onStudentClick(Student student, String studentId) {
         // Navigate to student details or profile
-        Toast.makeText(requireContext(), "Selected: " + student.name, Toast.LENGTH_SHORT).show();
-        
-        // TODO: Navigate to student profile or details fragment
+        NavController controller = findNavController(ViewStudent_Fragment.this);
+        controller.navigate(R.id.action_viewStudent_Fragment_to_studentProfile);
+
+        SharedPreferences nameShare = getActivity().getSharedPreferences("myPref",MODE_PRIVATE);
+        SharedPreferences.Editor editor = nameShare.edit();
+        editor.putString("Name",student.name);
+        editor.commit();
+        editor.apply();
+        Log.d("name",student.name);
+
         // You can implement navigation to a student details fragment here
     }
 }

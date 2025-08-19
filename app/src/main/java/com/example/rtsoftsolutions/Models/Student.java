@@ -1,4 +1,4 @@
-package com.example.rtsoftsolutions;
+package com.example.rtsoftsolutions.Models;
 
 public class Student {
     public String name;
@@ -17,6 +17,10 @@ public class Student {
     public String selectedBatchName;
 
     public Student() {} // Needed for Firebase
+
+    public Student(String name){
+
+    }
 
     public Student(String name, String email, String phoneNo, String aadharNo,
                    String address, String fatherName, String motherName, int totalFees,

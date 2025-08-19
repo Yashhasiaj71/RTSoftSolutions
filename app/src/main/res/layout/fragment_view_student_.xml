@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context=".ViewStudent_Fragment">
+    tools:context=".Fragments.ViewStudent_Fragment">
 
     <!-- Header Section -->
     <LinearLayout
@@ -71,7 +71,7 @@
                     android:paddingEnd="48dp"
                     android:background="@drawable/search_input_background"
                     android:inputType="text"
-                    android:drawableStart="@drawable/magnifying_glass_solid_full"
+                    android:drawableStart="@drawable/serach_resized"
                     android:drawablePadding="12dp"
                     android:drawableTint="#666666" />
 

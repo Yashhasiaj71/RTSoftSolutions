@@ -1,10 +1,9 @@
-package com.example.rtsoftsolutions;
+package com.example.rtsoftsolutions.Fragments;
 
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -13,20 +12,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.ShareCompat;
 import androidx.fragment.app.Fragment;
 
+import com.example.rtsoftsolutions.Models.Student;
+import com.example.rtsoftsolutions.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -40,7 +39,7 @@ import java.util.List;
 import android.widget.ArrayAdapter;
 import android.widget.AdapterView;
 import android.widget.TextView;
-import com.example.rtsoftsolutions.Course;
+import com.example.rtsoftsolutions.Models.Course;
 
 public class AddStudent_Fragment extends Fragment {
 
@@ -58,6 +57,7 @@ public class AddStudent_Fragment extends Fragment {
     private EditText mothernameinput;
     private EditText tpainput ;
     private EditText etBirthDate;
+    private DatePicker datePicker;
     private Spinner spinnerCourse;
     private Spinner spinnerBatch;
     private EditText amountfilled ;
@@ -96,6 +96,15 @@ public class AddStudent_Fragment extends Fragment {
         // Load courses for the spinner
         loadCoursesForSpinner();
 
+        etBirthDate.setFocusable(false); // Prevent keyboard from showing
+        etBirthDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDatePicker();
+            }
+        });
+
+
 //        ======== handle save button put data to databse =======
         Button save = view.findViewById(R.id.savedetails);
         save.setOnClickListener(new View.OnClickListener() {
@@ -106,6 +115,31 @@ public class AddStudent_Fragment extends Fragment {
             }
         });
     }
+
+
+        private void openDatePicker() {
+            // Get today’s date as default
+            final java.util.Calendar calendar = java.util.Calendar.getInstance();
+            int year = calendar.get(java.util.Calendar.YEAR);
+            int month = calendar.get(java.util.Calendar.MONTH);
+            int day = calendar.get(java.util.Calendar.DAY_OF_MONTH);
+
+            android.app.DatePickerDialog datePickerDialog = new android.app.DatePickerDialog(
+                    requireContext(),
+                    (view, selectedYear, selectedMonth, selectedDay) -> {
+                        // Month is 0-based, so add +1
+                        String date = selectedDay + "/" + (selectedMonth + 1) + "/" + selectedYear;
+                        etBirthDate.setText(date);
+                    },
+                    year, month, day
+            );
+
+            // Optional: restrict future dates (since it's a DOB field)
+            datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
+
+            datePickerDialog.show();
+        }
+
 
     //    function to check if all the input fields are valid and not null
     private boolean isFormValid() {
@@ -297,6 +331,7 @@ public class AddStudent_Fragment extends Fragment {
 
     // Load courses for the spinner
     private void loadCoursesForSpinner() {
+
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://rtsoftsolutions-fc2cf-default-rtdb.firebaseio.com/");
 
         DatabaseReference coursesRef = database.getReference("courses");
@@ -305,7 +340,8 @@ public class AddStudent_Fragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 List<Course> courseList = new ArrayList<>();
-                courseList.add(new Course("", "Select a Course", "", "", "", "", "", "", "", "", "", "", ""));
+
+                courseList.add(new Course( "", "Select A Course", "", "", "", "", "", "", "", "", "", "","",""));
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Course course = snapshot.getValue(Course.class);

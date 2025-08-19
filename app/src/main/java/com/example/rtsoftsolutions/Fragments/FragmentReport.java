@@ -1,4 +1,4 @@
-package com.example.rtsoftsolutions;
+package com.example.rtsoftsolutions.Fragments;
 
 import static androidx.navigation.fragment.FragmentKt.findNavController;
 
@@ -15,6 +15,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
+
+import com.example.rtsoftsolutions.R;
 
 public class FragmentReport extends Fragment {
 

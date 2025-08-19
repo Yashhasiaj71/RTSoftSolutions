@@ -1,4 +1,4 @@
-package com.example.rtsoftsolutions;
+package com.example.rtsoftsolutions.Fragments;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +20,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.rtsoftsolutions.Models.FeesTransaction;
+import com.example.rtsoftsolutions.Models.Student;
+import com.example.rtsoftsolutions.PdfExporter;
+import com.example.rtsoftsolutions.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,7 +32,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.example.rtsoftsolutions.FeesTransaction;
 
 public class FeesFragment extends Fragment {
 
@@ -48,6 +50,17 @@ public class FeesFragment extends Fragment {
     private ListView searchResultsListView;
     private LinearLayout searchResultsContainer;
     
+    // New UI Components for View Students section
+    private LinearLayout viewStudentsContainer;
+    private ListView studentsListView;
+    private Button viewStudentsButton;
+    private Button generateReceiptButton;
+
+    // payment mode layouts
+    private LinearLayout upi ;
+    private LinearLayout cash ;
+    private LinearLayout bank ;
+
     // Firebase
     private FirebaseDatabase database;
     private DatabaseReference studentsRef;
@@ -57,10 +70,15 @@ public class FeesFragment extends Fragment {
     private Student currentStudent;
     private String currentStudentId;
     private String selectedPaymentMode = "";
+    private FeesTransaction lastTransaction;
     
     // Search results
     private List<StudentSearchResult> searchResults;
     private ArrayAdapter<StudentSearchResult> searchAdapter;
+    
+    // All students for view section
+    private List<Student> allStudents;
+    private ArrayAdapter<Student> studentsAdapter;
     
     // Payment modes
     private static final String PAYMENT_MODE_UPI = "UPI";
@@ -98,13 +116,15 @@ public class FeesFragment extends Fragment {
         studentsRef = database.getReference("students");
         transactionsRef = database.getReference("fees_transactions");
         
-        // Initialize search results
+        // Initialize lists
         searchResults = new ArrayList<>();
+        allStudents = new ArrayList<>();
         
         // Initialize UI components
         initializeViews(view);
         setupClickListeners();
         setupSearchAdapter();
+        setupStudentsAdapter();
         
         // Hide search results when clicking outside
         view.setOnClickListener(v -> hideSearchResults());
@@ -127,13 +147,22 @@ public class FeesFragment extends Fragment {
         searchResultsContainer = view.findViewById(R.id.SearchResultsContainer);
         searchResultsListView = view.findViewById(R.id.SearchResultsListView);
         
+        // View Students section components
+        viewStudentsContainer = view.findViewById(R.id.ViewStudentsContainer);
+        studentsListView = view.findViewById(R.id.StudentsListView);
+        viewStudentsButton = view.findViewById(R.id.ViewStudentsButton);
+        generateReceiptButton = view.findViewById(R.id.GenerateReceiptButton);
+        
         // Process payment button
         Button processPaymentButton = view.findViewById(R.id.ProcessPaymentButton);
         processPaymentButton.setOnClickListener(v -> processPayment());
         
-        // Initially hide student view and search results
+        // Initially hide containers
         studentView.setVisibility(View.GONE);
         searchResultsContainer.setVisibility(View.GONE);
+        viewStudentsContainer.setVisibility(View.GONE);
+        generateReceiptButton.setVisibility(View.GONE);
+
     }
     
     private void setupClickListeners() {
@@ -165,6 +194,12 @@ public class FeesFragment extends Fragment {
         
         // WhatsApp reminder
         whatsappButton.setOnClickListener(v -> sendWhatsAppReminder());
+        
+        // View Students button
+        viewStudentsButton.setOnClickListener(v -> toggleViewStudents());
+        
+        // Generate Receipt button
+        generateReceiptButton.setOnClickListener(v -> generateReceipt());
     }
     
     public void setupSearchAdapter() {
@@ -190,6 +225,68 @@ public class FeesFragment extends Fragment {
             StudentSearchResult selectedResult = searchResults.get(position);
             selectStudent(selectedResult.getStudentId());
             hideSearchResults();
+        });
+    }
+    
+    public void setupStudentsAdapter() {
+        studentsAdapter = new ArrayAdapter<Student>(requireContext(), 
+                android.R.layout.simple_list_item_1, allStudents) {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+                if (view instanceof TextView) {
+                    Student student = allStudents.get(position);
+                    String displayText = student.name + " - " + student.selectedCourseName + 
+                                       " (" + student.selectedBatchName + ")\n" +
+                                       "Phone: " + student.phoneNo + " | Remaining: ₹" + student.remainingFees;
+                    ((TextView) view).setText(displayText);
+                    ((TextView) view).setTextSize(14);
+                    ((TextView) view).setPadding(20, 15, 20, 15);
+                }
+                return view;
+            }
+        };
+        
+        studentsListView.setAdapter(studentsAdapter);
+        
+        // Handle student selection for WhatsApp notification
+        studentsListView.setOnItemClickListener((parent, view, position, id) -> {
+            Student selectedStudent = allStudents.get(position);
+            sendWhatsAppNotification(selectedStudent);
+        });
+    }
+    
+    private void toggleViewStudents() {
+        if (viewStudentsContainer.getVisibility() == View.VISIBLE) {
+            viewStudentsContainer.setVisibility(View.GONE);
+            viewStudentsButton.setText("View All Students");
+        } else {
+            loadAllStudents();
+            viewStudentsContainer.setVisibility(View.VISIBLE);
+            viewStudentsButton.setText("Hide Students");
+        }
+    }
+    
+    private void loadAllStudents() {
+        studentsRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                allStudents.clear();
+                
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Student student = snapshot.getValue(Student.class);
+                    if (student != null) {
+                        allStudents.add(student);
+                    }
+                }
+                
+                studentsAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(requireContext(), "Failed to load students", Toast.LENGTH_SHORT).show();
+            }
         });
     }
     
@@ -302,26 +399,38 @@ public class FeesFragment extends Fragment {
     
     private void selectPaymentMode(String mode) {
         selectedPaymentMode = mode;
-        
+
+        // layouts of modes
+        upi = getActivity().findViewById(R.id.UPI);
+        cash = getActivity().findViewById(R.id.CASH);
+        bank = getActivity().findViewById(R.id.BANK);
+
+
         // Reset all button backgrounds
-        upiModeButton.setBackgroundResource(android.R.color.transparent);
-        cashModeButton.setBackgroundResource(android.R.color.transparent);
-        bankModeButton.setBackgroundResource(android.R.color.transparent);
-        
+        upi.setBackgroundResource(R.drawable.payment_mode_background);
+        cash.setBackgroundResource(R.drawable.payment_mode_background);
+        bank.setBackgroundResource(R.drawable.payment_mode_background);
+
         // Highlight selected mode
         switch (mode) {
             case PAYMENT_MODE_UPI:
-                upiModeButton.setBackgroundResource(R.color.Accent_green);
+                upi.setBackgroundResource(R.drawable.payment_mode_select);
+                TextView u_text = upi.findViewById(R.id.Upi_text);
+                u_text.setTextColor(getResources().getColor(R.color.white));
                 break;
             case PAYMENT_MODE_CASH:
-                cashModeButton.setBackgroundResource(R.color.Accent_green);
+                cash.setBackgroundResource(R.drawable.payment_mode_select);
+                TextView c_text = cash.findViewById(R.id.Cash_text);
+                c_text.setTextColor(getResources().getColor(R.color.white));
                 break;
             case PAYMENT_MODE_BANK:
-                bankModeButton.setBackgroundResource(R.color.Accent_green);
+                bank.setBackgroundResource(R.drawable.payment_mode_select);
+                TextView b_text = bank.findViewById(R.id.Bank_text);
+                b_text.setTextColor(getResources().getColor(R.color.white));
                 break;
         }
         
-        Toast.makeText(requireContext(), "Payment mode: " + mode, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(requireContext(), "Payment mode: " + mode, Toast.LENGTH_SHORT).show();
     }
     
     private void processPayment() {
@@ -360,11 +469,11 @@ public class FeesFragment extends Fragment {
         }
         
         // Create transaction record
-        FeesTransaction transaction = new FeesTransaction(currentStudentId, currentStudent.name, amount, selectedPaymentMode);
+        lastTransaction = new FeesTransaction(currentStudentId, currentStudent.name, amount, selectedPaymentMode);
         
         // Save transaction to Firebase
         String transactionKey = transactionsRef.push().getKey();
-        transactionsRef.child(transactionKey).setValue(transaction)
+        transactionsRef.child(transactionKey).setValue(lastTransaction)
                 .addOnSuccessListener(aVoid -> {
                     // Update student's paid fees
                     updateStudentFees(amount);
@@ -399,6 +508,13 @@ public class FeesFragment extends Fragment {
                     cashModeButton.setBackgroundResource(android.R.color.transparent);
                     bankModeButton.setBackgroundResource(android.R.color.transparent);
                     
+                    // Show generate receipt button
+                    generateReceiptButton.setVisibility(View.VISIBLE);
+                    generateReceiptButton.setVisibility(View.VISIBLE);
+                    
+                    // Show confirmation dialog for sending receipt
+                    showReceiptConfirmationDialog(amountPaid, newPaidFees, newRemainingFees);
+                    
                     Toast.makeText(requireContext(), "Payment processed successfully! Amount: ₹" + amountPaid, Toast.LENGTH_LONG).show();
                 })
                 .addOnFailureListener(e -> {
@@ -407,9 +523,41 @@ public class FeesFragment extends Fragment {
                 });
     }
     
+    private void generateReceipt() {
+        if (lastTransaction != null && currentStudent != null) {
+            PdfExporter.generateFeeReceipt(requireContext(), currentStudent, lastTransaction);
+            generateReceiptButton.setVisibility(View.GONE);
+            generateReceiptButton.setVisibility(View.GONE);
+        } else {
+            Toast.makeText(requireContext(), "No recent payment to generate receipt", Toast.LENGTH_SHORT).show();
+        }
+    }
+    
     private void sendWhatsAppReminder() {
         if (currentStudent == null) {
             Toast.makeText(requireContext(), "Please search for a student first", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        
+        sendWhatsAppNotification(currentStudent);
+    }
+    
+    private void showReceiptConfirmationDialog(int amountPaid, int totalPaid, int remainingFees) {
+        new androidx.appcompat.app.AlertDialog.Builder(requireContext())
+                .setTitle("Send Receipt to Student")
+                .setMessage("Do you want to send the payment receipt to " + currentStudent.name + " via WhatsApp?")
+                .setPositiveButton("Send Receipt", (dialog, which) -> {
+                    sendReceiptToStudent(amountPaid, totalPaid, remainingFees);
+                })
+                .setNegativeButton("Skip", (dialog, which) -> {
+                    Toast.makeText(requireContext(), "Receipt not sent", Toast.LENGTH_SHORT).show();
+                })
+                .setCancelable(false)
+                .show();
+    }
+    
+    private void sendReceiptToStudent(int amountPaid, int totalPaid, int remainingFees) {
+        if (currentStudent == null) {
             return;
         }
         
@@ -418,14 +566,66 @@ public class FeesFragment extends Fragment {
             phoneNo = phoneNo.substring(3); // Remove +91 prefix
         }
         
-        String message = "Dear " + currentStudent.name + ", your remaining fees (₹" + currentStudent.remainingFees + 
+        // Create detailed receipt message
+        StringBuilder message = new StringBuilder();
+        message.append("🎓 *RT Soft Solutions - Fee Receipt*\n\n");
+        message.append("Dear *").append(currentStudent.name).append("*,\n\n");
+        message.append("Thank you for your payment! Here are your payment details:\n\n");
+        message.append("📋 *Student Details:*\n");
+        message.append("• Name: ").append(currentStudent.name).append("\n");
+        message.append("• Course: ").append(currentStudent.selectedCourseName).append("\n");
+        message.append("• Batch: ").append(currentStudent.selectedBatchName).append("\n");
+        message.append("• Phone: ").append(currentStudent.phoneNo).append("\n\n");
+        
+        message.append("💰 *Payment Details:*\n");
+        message.append("• Total Course Fees: ₹").append(currentStudent.totalFees).append("\n");
+        message.append("• Previously Paid: ₹").append(totalPaid - amountPaid).append("\n");
+        message.append("• Amount Paid Now: ₹").append(amountPaid).append("\n");
+        message.append("• Total Paid: ₹").append(totalPaid).append("\n");
+        message.append("• Remaining Fees: ₹").append(remainingFees).append("\n");
+        message.append("• Payment Mode: ").append(selectedPaymentMode).append("\n\n");
+        
+        message.append("📅 *Transaction Details:*\n");
+        message.append("• Receipt No: ").append(lastTransaction.getTransactionId()).append("\n");
+        message.append("• Date: ").append(lastTransaction.getDate()).append("\n\n");
+        
+        message.append("✅ *Payment Status:* ");
+        if (remainingFees == 0) {
+            message.append("FULLY PAID ✅\n\n");
+        } else {
+            message.append("PARTIALLY PAID ⚠️\n\n");
+            message.append("💡 *Next Payment:* Please pay the remaining ₹").append(remainingFees).append(" to complete your course fees.\n\n");
+        }
+        
+        message.append("📞 For any queries, please contact us. 7020795007\n");
+        message.append("Thank you for choosing RT Soft Solutions!\n\n");
+        message.append("Best regards,\nTeam RT Soft Solutions");
+
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("https://wa.me/91" + phoneNo + "?text=" + Uri.encode(message.toString())));
+
+        try {
+            startActivity(intent);
+            Toast.makeText(requireContext(), "Receipt sent to student via WhatsApp", Toast.LENGTH_SHORT).show();
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(requireContext(), "WhatsApp not installed", Toast.LENGTH_SHORT).show();
+        }
+    }
+    
+    private void sendWhatsAppNotification(Student student) {
+        String phoneNo = student.phoneNo;
+        if (phoneNo.startsWith("+91")) {
+            phoneNo = phoneNo.substring(3); // Remove +91 prefix
+        }
+        
+        String message = "Dear " + student.name + ", your remaining fees (₹" + student.remainingFees + 
                         ") is pending. Kindly pay it by the due date. - Team RT Soft Solutions";
 
-                Intent intent = new Intent(Intent.ACTION_VIEW);
+        Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse("https://wa.me/91" + phoneNo + "?text=" + Uri.encode(message)));
 
         try {
-                    startActivity(intent);
+            startActivity(intent);
         } catch (ActivityNotFoundException e) {
             Toast.makeText(requireContext(), "WhatsApp not installed", Toast.LENGTH_SHORT).show();
         }

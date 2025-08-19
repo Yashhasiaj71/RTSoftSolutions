@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/ColorBG"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".studentmanager">
+    tools:context=".Fragments.studentmanager">
 
 
     <FrameLayout
@@ -44,7 +44,7 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center_vertical|right"
                 android:layout_marginEnd="80dp"
-                android:hint="13121"
+                android:hint="0"
                 android:padding="0dp"
                 android:textColorHint="@color/Accent_green"
                 android:textSize="25dp"/>
