@@ -2,17 +2,22 @@ package com.example.rtsoftsolutions.Fragments;
 
 import static android.content.Context.MODE_PRIVATE;
 
+import static androidx.navigation.fragment.FragmentKt.findNavController;
+
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import com.example.rtsoftsolutions.Models.Student;
 import com.example.rtsoftsolutions.R;
@@ -41,6 +46,7 @@ public class StudentProfile extends Fragment {
     private EditText genderbox;
     private EditText fathernamebox ;
     private EditText mothernamebox ;
+    private ImageButton navigateback ;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -77,6 +83,7 @@ public class StudentProfile extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
@@ -91,7 +98,7 @@ public class StudentProfile extends Fragment {
         initializeall(view);
         SharedPreferences nameShare = getActivity().getSharedPreferences("myPref",MODE_PRIVATE);
        String name =  nameShare.getString("Name","yash");
-Log.d("Name",name);
+       Log.d("Name",name);
 
 SearchQuery = name.trim();
         database = FirebaseDatabase.getInstance("https://rtsoftsolutions-fc2cf-default-rtdb.firebaseio.com/");
@@ -114,12 +121,11 @@ SearchQuery = name.trim();
                         Log.d("Student", "Name: " + student.name + ", Fees: " + student.totalFees);
                         namebox.setText(student.name);
                         addressbox.setText(student.address);
-                        feesbox.setText(student.totalFees) ;
+                       feesbox.setText(String.valueOf(student.totalFees)) ;
                         emailbox.setText(student.email) ;
                         phonebox.setText(student.phoneNo) ;
                         genderbox.setText("male") ;
                         fathernamebox.setText(student.fatherName);
-                        mothernamebox.setText(student.motherName);
                         // Here you would update your UI elements (TextViews, etc.)
                         // e.g., studentNameTextView.setText(student.getName());
                     }
@@ -135,17 +141,22 @@ SearchQuery = name.trim();
         // ❌ INCORRECT: Don't try to use the 'student' object here. It will still be null.
         // if(student!=null){ ... }
 
+        navigateback.setOnClickListener(v -> {
+            NavController controller = findNavController(StudentProfile.this);
+            controller.popBackStack() ;
+        }) ;
+
         return view;
     }
 
     public void initializeall(View rootview) {
-        namebox = rootview.findViewById(R.id.nameinput) ;
+        namebox = rootview.findViewById(R.id.StudentName) ;
          addressbox = rootview.findViewById(R.id.studentaddressinput) ;
          feesbox = rootview.findViewById(R.id.feesinput) ;
-        emailbox = rootview.findViewById(R.id.emailinput) ;
-     phonebox = rootview.findViewById(R.id.phoneinput) ;
+        emailbox = rootview.findViewById(R.id.studentemailinput) ;
+     phonebox = rootview.findViewById(R.id.studentPhoneNoinput) ;
          genderbox = rootview.findViewById(R.id.studentgenderinput) ;
        fathernamebox = rootview.findViewById(R.id.fathernameinput) ;
-         mothernamebox = rootview.findViewById(R.id.mothernameinput) ;
+       navigateback = rootview.findViewById(R.id.ViewAllButtons) ;
     }
 }

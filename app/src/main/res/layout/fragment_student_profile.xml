@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragments.StudentProfile"
-    android:background="#1B5B61">
+    android:background="@color/ColorBG">
 
 <!--    edit and delete buttons-->
     <LinearLayout
@@ -49,7 +49,7 @@
         android:layout_height="73dp"
         android:background="@drawable/semi_circle"
         android:scaleType="centerInside"
-        android:src="@drawable/arrow_right_solid_full"
+        android:src="@drawable/arrow_left"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -67,15 +67,15 @@
         />
 
     <!--    student name-->
-    <TextView
+    <EditText
         android:id="@+id/StudentName"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         app:layout_constraintTop_toBottomOf="@id/StudentImage"
         android:layout_marginTop="30dp"
-        android:text="Student name"
+        android:hint="Student name"
         android:textSize="24sp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:gravity="center"
         />
 
@@ -96,14 +96,14 @@
             android:layout_height="30dp"
             android:layout_marginTop="20dp"
             android:text="Student Email : "
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
 
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:layout_width="200dp"
             android:layout_height="50dp"
             android:id="@+id/studentemailinput"
@@ -119,13 +119,12 @@
             android:layout_height="30dp"
             android:layout_marginTop="20dp"
             android:text="Student Address:"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/EmailText" />
         <EditText
-
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:id="@+id/studentaddressinput"
@@ -141,17 +140,16 @@
             android:layout_height="30dp"
             android:layout_marginTop="20dp"
             android:text="Student PhoneNo:"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/AddressText" />
 
         <EditText
-
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:layout_width="250dp"
             android:layout_height="50dp"
-            android:id="@+id/studentPhoneNoText"
+            android:id="@+id/studentPhoneNoinput"
             app:layout_constraintBottom_toBottomOf="@id/PhoneNOText"
             app:layout_constraintTop_toTopOf="@id/PhoneNOText"
             app:layout_constraintStart_toEndOf="@id/PhoneNOText"
@@ -160,7 +158,7 @@
         <!--    Genter Text-->
         <TextView
 
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:id="@+id/GenderText"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
@@ -172,7 +170,7 @@
 
         <EditText
 
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:id="@+id/studentgenderinput"
@@ -184,7 +182,7 @@
         <!--    father's name-->
         <TextView
 
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:id="@+id/FatherNameText"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
@@ -194,7 +192,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/GenderText" />
         <EditText
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:id="@+id/fathernameinput"
@@ -205,7 +203,7 @@
 
         <!--    fees text :TODO add remaining fees dynamicly -->
         <TextView
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:id="@+id/FeesText"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
@@ -216,7 +214,7 @@
             app:layout_constraintTop_toBottomOf="@+id/FatherNameText" />
 
         <EditText
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:id="@+id/feesinput"
